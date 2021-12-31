@@ -1,5 +1,5 @@
 import React from 'react'
-import url from '../../util/urls'
+import { subStackURL } from '../../util/urls'
 
 class FullStackIcon  extends React.Component {
     
@@ -9,7 +9,7 @@ class FullStackIcon  extends React.Component {
 
     render() {
         return (<img 
-                src={url}
+                src={subStackURL}
                 id='full-stack-icon'/>)
     }
 

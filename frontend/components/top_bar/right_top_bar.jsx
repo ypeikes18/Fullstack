@@ -1,11 +1,20 @@
 import React from 'react';
+import DropDown from './dropdown';
 
-class TopRightBar extends React.Component {
+class RightTopBar extends React.Component {
 
+    
+    
     render() {
-        
+        return (
+            <ul id='right-top-bar'>
+                <DropDown/>
+                <DropDown/>
+                <DropDown/>
+            </ul>
+        )
     }
 
 }
 
-export default TopRightBar;
+export default RightTopBar;

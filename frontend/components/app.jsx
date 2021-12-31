@@ -5,9 +5,12 @@ import {
   Redirect,
   Switch,
   Link,
-  HashRouter
+  HashRouter,
+  Routes
 } from 'react-router-dom';
+
 import TopBar from './top_bar/top_bar';
+import AccountSettings from './account_settings/account_settings'
 
 export default class App extends React.Component {
 
@@ -18,6 +21,10 @@ export default class App extends React.Component {
     render() {
       return (<div>
                <TopBar/>
+               <Routes>
+                  <Route path='/account_settings'
+                   element={<AccountSettings/>}/>  
+               </Routes>
              </div>)  
     }
 

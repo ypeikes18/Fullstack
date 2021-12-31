@@ -24,6 +24,16 @@
     flex-direction: row;
 }
 
+#right-top-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+#right-top-bar > * {
+    margin-right: 10px;
+}
+
+
 .full-stack-icon {
     width: 30px;
     height: 28px;
