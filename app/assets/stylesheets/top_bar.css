@@ -1,0 +1,49 @@
+#top-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+#left-top-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+#right-top-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+#right-top-bar > * {
+    margin-right: 10px;
+}
+
+
+#full-stack-icon {
+    width: 30px;
+    height: 28px;
+    margin: 10px;
+}
+
+.orange-button {
+    background-color: rgb(255, 166, 0);
+    color: white;
+    border-radius: 4px;
+    padding: 8px 10px;
+    height: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+
+
+#user-icon {
+    border-radius: 50px;
+}
+
+#search-bar-form {
+    width: 300px;
+}
+
+#search-bar {
+    width: 285px;
+}

@@ -1,13 +1,16 @@
 import React from 'react'
 
 import SearchBar from "../search_bar/search_bar";
-import FullStackIcon from "./fullstack_icon";
+import { subStackURL } from '../../util/urls'
 
 const LeftTopBar = () => (
     <ul id='left-top-bar'>
-        <FullStackIcon/>
+        <img 
+            src={subStackURL}
+            id='full-stack-icon'/>
         <SearchBar/>
     </ul>
 )
 
 export default LeftTopBar;
+

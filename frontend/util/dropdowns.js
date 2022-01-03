@@ -2,4 +2,7 @@ const dropdowns = {
     Readers: ['Discover', 'Featured'],   
 }
 
-export default dropdowns;
+
+export const dropdown1 = [{ name: 'help', link: ''},
+                   { name: 'Learn more', link: ''},
+                   { name: 'contact us'}]

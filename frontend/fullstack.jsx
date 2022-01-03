@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore();
   window.createUser = createUser;
   window.updateUser = updateUser;
-  window.login = () => login;
-  window.logout = () => logout;
+  window.login = login;
+  window.logout = logout;
   window.fetchUser = fetchUser;
   window.store = store;
 

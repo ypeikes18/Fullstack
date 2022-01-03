@@ -14,29 +14,23 @@
  *= require_self
  */
 
-#top-bar {
-    display: flex;
-    justify-content: space-between;
-}
-
-#left-top-bar {
-    display: flex;
-    flex-direction: row;
-}
-
-#right-top-bar {
-    display: flex;
-    flex-direction: row;
-}
-
-#right-top-bar > * {
-    margin-right: 10px;
-}
+ @import './top_bar.css';
+ @import './splash_content.css';
+ @import './user_forms.css';
 
 
-.full-stack-icon {
-    width: 30px;
-    height: 28px;
-    margin: 10px;
-    background-color: red;
+a {
+    text-decoration: none;
 }
+
+/* .top-bar  * {
+
+} */
+
+.hidden {
+    height: 0;
+    overflow: hidden;
+}
+
+
+

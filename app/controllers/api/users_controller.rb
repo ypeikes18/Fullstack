@@ -25,14 +25,17 @@ class Api::UsersController < ApplicationController
         end
     end
 
-    #This is not working in the window
     def update
         @user = User.find_by(id: user_params[:id])
         if @user && @user.update(user_params)
             render :show
         else
             ## not sure if I need the full messages or something else
-            render json: @user.errors.full_messages, status: 422
+            if @user 
+                render json: @user.errors.full_messages, status: 422
+            else
+                render json: ['Unable to find user'] , status: 422
+            end
         end
     end
 

@@ -14,9 +14,11 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <form onMouseEnter={this.search}>
+            <form onMouseEnter={this.search}
+                  id='search-bar-form'>
                 <input type='text'
-                       placeholder="Search for a writer, topic, or publication"/>
+                       placeholder="Search for a writer, topic, or publication"
+                       id='search-bar'/>
             </form>
         )
     }

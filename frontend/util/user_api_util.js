@@ -13,7 +13,6 @@ export const createUser = user => (
     })
 )
 
-// doesn't work yet
 export const updateUser = user => (
     $.ajax({
         method: 'PATCH',

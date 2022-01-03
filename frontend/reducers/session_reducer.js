@@ -1,11 +1,11 @@
-import { LOGOUT_CURRENT_USER } from '../actions/session_actions.js'
-import { RECEIVE_CURRENT_USER } from '../actions/user_actions.js'
+import { LOGOUT_CURRENT_USER, 
+         RECEIVE_CURRENT_USER } 
+         from '../actions/session_actions.js'
 
 const _nullUser = { currentUserId: null }
 
 const sessionReducer = (prevState = _nullUser, action) => {
     Object.freeze(prevState);
-
     switch(action.type) {
         case RECEIVE_CURRENT_USER:            
             return { currentUserId: action.user.id }
