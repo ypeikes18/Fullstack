@@ -27,3 +27,11 @@
     justify-content: center;
 }
 
+#demo-user-login-button {
+   background-color: grey;
+   color: white;
+   margin-top: 10px;
+   border-radius: 4px;
+
+}
+

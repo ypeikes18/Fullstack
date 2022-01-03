@@ -56,6 +56,12 @@ class UserForm extends React.Component {
                              className='orange-button'>
                             Continue
                             </Link>);
+        const demoUser = <button id='demo-user-login-button' 
+                                 onClick={() => this.props.action(
+                                 { email: 'demouser@demouser.com', 
+                                   password: '123456'})}>
+                                Demo user
+                          </button>         
 
         const infoForm = (<form className='user-form'
                                 onSubmit={this.handleSubmit}> 
@@ -71,6 +77,7 @@ class UserForm extends React.Component {
                                 {email}
                                 {password}
                                 {submit}
+                                {demoUser}
                                 </form>); 
 
         return (
