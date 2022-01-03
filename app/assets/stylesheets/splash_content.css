@@ -40,10 +40,31 @@
 }
 
 #splash-content-banner * {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
+}
+
+#splash-content-banner > .orange-button {
+    justify-content: center;
+    word-wrap: normal;
 }
 
 #blurb-index {
     padding: 120px 0;
 }
+
+#calculator-and-small-blurb {
+    display: flex;
+    flex-direction: row;
+}
+
+#calculator-and-small-blurb > div {
+    margin: 20px;
+    padding: 15px;
+}
+
+
+

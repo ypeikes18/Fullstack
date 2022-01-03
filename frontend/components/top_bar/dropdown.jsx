@@ -15,23 +15,20 @@ export default class DropDown extends React.Component {
     }
     
     render() {
-        const  img = (<img src={this.props.img}/>);
-        const listTitle = this.props.img ? img : 'Dropdown menu'
         const options = this.props.options;
         let content = <></>;
-        // if(options) {
-        //     content = options.map((option, i) =>
-        //     <li key={i}
-        //         className={this.state.className}>
-        //         <Link to={option.link}>{option.name}</Link>
-        //     </li>);
-        // }
+        if(options) {
+            content = options.map((option, i) =>
+            <li key={i}
+                className={this.state.className}>
+                <Link to={option.link}>{option.name}</Link>
+            </li>);
+        }
         
         return (
             <div>
                 <ul>
-                    {listTitle}
-                    {content}             
+                    Dropdown
                 </ul>
             </div>  
         )

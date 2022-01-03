@@ -7,7 +7,21 @@ import Root from './components/root';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
+  let store;
+  if(window.currentUser) {
+    const id = window.currentUser.id;
+    const preloadedState = {
+      session: { currentUserId: id },
+      entities: { 
+        users: { [id]: currentUser } 
+      }         
+    };
+    store = configureStore(preloadedState);
+    delete window.currentUser; 
+  } else {
+    store = configureStore();
+  }
+
   window.createUser = createUser;
   window.updateUser = updateUser;
   window.login = login;

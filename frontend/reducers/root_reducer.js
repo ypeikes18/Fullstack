@@ -4,7 +4,7 @@ import sessionReducer from './session_reducer.js'
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    entitites: entitiesReducer
+    entities: entitiesReducer
 })
 
 export default rootReducer;
