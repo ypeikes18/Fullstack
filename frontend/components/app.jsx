@@ -14,6 +14,7 @@ import AccountSettings from './account_settings/account_settings';
 import SignInFormContainer from './forms/sign_in_form_container';
 import SplashContent from './splash_content/splash_content';
 import GetStartedFormContainer from './forms/start_writing_form_container'
+import { AuthRoute, ProtectedRoute} from '../util/route_util'
 
 export default class App extends React.Component {
 
@@ -28,9 +29,9 @@ export default class App extends React.Component {
                   < Route exact path='/' component={ SplashContent }/>
                   < Route path='/account_settings'
                    component={ AccountSettings }/> 
-                  < Route path='/sign-in'
+                  < AuthRoute path='/sign-in'
                           component={SignInFormContainer}/> 
-                  < Route path='/sign-up'
+                  < AuthRoute path='/sign-up'
                           component={ GetStartedFormContainer }/>                    
                </Switch>
              </div>)  

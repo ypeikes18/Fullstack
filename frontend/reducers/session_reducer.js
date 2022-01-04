@@ -14,7 +14,9 @@ const sessionReducer = (prevState = _nullUser, action) => {
         default:
             return prevState; 
     }
-
 }
 
 export default sessionReducer;
+
+
+

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    useNavigate,
     Route,
     Link,
     Routes
@@ -23,6 +22,18 @@ class UserForm extends React.Component {
             e.preventDefault();
             this.setState({[field]: e.currentTarget.value});
         }
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={i}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )
     }
 
     render() {
@@ -64,8 +75,9 @@ class UserForm extends React.Component {
                                 Demo user
                           </button>         
 
-        const infoForm = (<form className='user-form'
+        const signUpForm = (<form className='user-form'
                                 onSubmit={this.handleSubmit}> 
+                                {this.renderErrors()}
                                 {name}
                                 {bio}
                                 {email}
@@ -73,17 +85,17 @@ class UserForm extends React.Component {
                                 {submit}
                                 </form> );  
 
-        const credentialsForm = (<form className='user-form'
+        const loginForm = (<form className='user-form'
                                 onSubmit={this.handleSubmit}> 
+                                {this.renderErrors()}
                                 {email}
                                 {password}
                                 {submit}
                                 {demoUser}
                                 </form>); 
-
         return (
             <div className='user-form-page'>
-                {this.props.formType === 'Sign in' ? credentialsForm : infoForm}
+                {this.props.formType === 'Sign in' ? loginForm : signUpForm}
             </div>
         )
     }
