@@ -5,6 +5,12 @@ import { login, logout } from './actions/session_actions.js'
 import configureStore from './store/store';
 import Root from './components/root';
 
+import { createBlog, 
+         deleteBlog, 
+         fetchBlog, 
+         updateBlog } 
+        from './actions/blog_actions.js'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -28,7 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logout = logout;
   window.fetchUser = fetchUser;
   window.store = store;
-
+  window.createBlog = createBlog;
+  window.deleteBlog = deleteBlog;
+  window.fetchBlog = fetchBlog;
+  window.updateBlog = updateBlog;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root)
