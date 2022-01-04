@@ -23,19 +23,28 @@ class RightTopBar extends React.Component {
                 img={userIconUrl}/>
         );
 
+        const loggedInComponents = [
+            userIconDropdown 
+        ];
+
+        const loggedOutComponents = [(< Link to='/sign-up' 
+                                        className='orange-button '
+                                        id='start-writing'>
+                                        Start Writing
+                                        </Link>),
+                                        (<Link to='/sign-in' 
+                                        className='sign-in'>
+                                            Sign in</Link>)]
+
         return (
             <ul id='right-top-bar'>
                 < DropDown />
                 < DropDown />
                 < DropDown />
-                < Link to='/sign-up' 
-                       className='orange-button '
-                       id='start-writing'>
-                Start Writing
-                </Link>
-                <Link to='/sign-in' className='sign-in'>Sign in</Link>
-                {this.props.currentUserId ? userIconDropdown : (<></>)}
-                
+                {this.props.currentUserId ? (
+                    loggedInComponents) : (
+                    loggedOutComponents   
+                    )}
             </ul>
         )
     }
