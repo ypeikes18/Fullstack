@@ -24,18 +24,15 @@ export default class App extends React.Component {
     render() {
       return (<div>
                <TopBar/>
-               <Routes>
-                  < Route path='/' element={< SplashContent/>}/>
+               <Switch>
+                  < Route exact path='/' component={ SplashContent }/>
                   < Route path='/account_settings'
-                   element={<AccountSettings/>}/> 
+                   component={ AccountSettings }/> 
                   < Route path='/sign-in'
-                          element={<SignInFormContainer/>}/> 
+                          component={SignInFormContainer}/> 
                   < Route path='/sign-up'
-                          element={<GetStartedFormContainer/>}>    
-                    < Route path='sign-up/2'
-                          element={<GetStartedFormContainer/>}/>   
-                  </ Route >                
-               </Routes>
+                          component={ GetStartedFormContainer }/>                    
+               </Switch>
              </div>)  
     }
 

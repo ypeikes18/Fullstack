@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes, BrowseRouter } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 
 
@@ -13,15 +13,12 @@ class TopBar extends React.Component {
     render() {
         return (
             <nav id='top-bar'> 
-                <Routes>
-                    < Route path={`/`} element={<>
-                        < img src={subStackURL}
-                              id='full-stack-icon'/>
-                        < SearchBar />
-                        < RightTopBar />
-                    </>}/>
-                    <Route path={`/blogs/:id`} element ={< BlogLogo />}/>
-                </Routes>                  
+                    < Route path={`/`} render={()=> (
+                            < img src={subStackURL}
+                              id='full-stack-icon'/>)}/>
+                    < Route path={'/'} component={ SearchBar }/>
+                    < Route path={'/'} component={ RightTopBar }/>
+                    < Route path={`/blogs/:id`} component={ BlogLogo }/>                  
             </nav>
         )
     }
