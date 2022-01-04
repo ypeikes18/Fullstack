@@ -11,7 +11,7 @@ class Api::BlogsController < ApplicationController
             render :show
         else
             ## not sure if I need the full messages or something else
-            render json: @user.errors.full_messages, status: 404
+            render json: @blog.errors.full_messages, status: 404
         end    
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_001839) do
+ActiveRecord::Schema.define(version: 2022_01_04_023322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 2022_01_04_001839) do
     t.index ["author_id", "title"], name: "index_blogs_on_author_id_and_title", unique: true
     t.index ["author_id"], name: "index_blogs_on_author_id"
     t.index ["title"], name: "index_blogs_on_title"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "blog_id", null: false
+    t.string "title", limit: 200, null: false
+    t.string "subtitle", limit: 200
+    t.string "body", null: false
+    t.string "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
+    t.index ["blog_id"], name: "index_posts_on_blog_id"
+    t.index ["title"], name: "index_posts_on_title"
   end
 
   create_table "users", force: :cascade do |t|
