@@ -6,7 +6,7 @@ const Blurb = (props) => {
             imageLink,
             index} = props;
     
-    const content = (<div>
+    const content = (<div className={'blurb-text-container'}>
         <h1>{header}</h1>
         <p>{description}</p>
     </div>);

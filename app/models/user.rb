@@ -4,9 +4,7 @@ class User < ApplicationRecord
   foreign_key: :author_id,
   class_name: :Blog
 
-  has_many :posts,
-  foreign_key: :author_id,
-  class_name: :Post
+  has_many :posts, through: :blogs
 
   attr_reader :password
 

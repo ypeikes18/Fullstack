@@ -13,11 +13,11 @@ class TopBar extends React.Component {
     render() {
         return (
             <nav id='top-bar'> 
-                    < Route path={`/`} render={()=> (
+                    < Route exact path={`/`} render={()=> (
                             < img src={subStackURL}
                               id='full-stack-icon'/>)}/>
-                    < Route path={'/'} component={ SearchBar }/>
-                    < Route path={'/'} component={ RightTopBar }/>
+                    < Route exact path={'/'} component={ SearchBar }/>
+                    < Route exact path={'/'} component={ RightTopBar }/>
                     < Route path={`/blogs/:id`} component={ BlogLogo }/>                  
             </nav>
         )

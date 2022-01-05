@@ -9,9 +9,9 @@ const receiveBlogs = blogs => ({
     blogs
 })
 
-const receiveBlog = blogId => ({
+const receiveBlog = blog => ({
     type: RECEIVE_BLOG,
-    blogId
+    blog
 })
 
 const removeBlog = blogId => ({
@@ -19,11 +19,11 @@ const removeBlog = blogId => ({
     blogId
 })
 
-export const fetchBlog = blogId => dispatch (
-    BlogApiUtil.fetchBlog(blogId)
+export const fetchBlog = blogId => dispatch => {
+    return BlogApiUtil.fetchBlog(blogId)
     .then(blog => dispatch(receiveBlog(blog)),
     errors => dispatch(receiveErrors(errors.responseJSON)))
-)
+}
 
 export const deleteBlog = blogId => dispatch => (
     BlogApiUtil.deleteBlog(blogId)

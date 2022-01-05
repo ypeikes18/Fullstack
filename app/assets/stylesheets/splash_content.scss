@@ -1,3 +1,71 @@
+#splash-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#splash-content  > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid lightgray;
+    padding: 120px 200px;
+    margin: 0 285px;
+}
+
+#splash-content p {
+    font-size: 14px;
+}
+
+.blurb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.blurb > * {
+    overflow-wrap: normal;
+    margin: 30px 90px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blurb img {
+    height: 300px;
+    width: 300px;
+}
+
+#splash-content-banner * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#splash-content-banner > h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+}
+
+#splash-content-banner > .orange-button {
+    justify-content: center;
+    word-wrap: normal;
+}
+
+#splash-content-banner > h1 {
+    font-size: 60px;
+}
+
+#blurb-index {
+    background-color: white;
+}
+
+.blurb-text-container {
+    margin: 10px;
+}
+
 #calculator {
     display: flex;
     flex-direction: column;
@@ -13,58 +81,17 @@
     height: 43px;
 }
 
-#splash-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#splash-content  > * {
-    overflow-wrap: normal;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-
-.blurb {
-    display: flex;
-    flex-direction: row;
-    margin: 10px 50px 10px 50px; 
-}
-
-.blurb img {
-    height: 220px;
-    width: 220;
-}
-
-#splash-content-banner * {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-#splash-content-banner > .orange-button {
-    justify-content: center;
-    word-wrap: normal;
-}
-
-#blurb-index {
-    padding: 120px 0;
-}
-
 #calculator-and-small-blurb {
     display: flex;
     flex-direction: row;
 }
 
 #calculator-and-small-blurb > div {
-    margin: 20px;
     padding: 15px;
 }
 
+#calculator-and-small-blurb > h1 {
+    font-size: 6px;
+}
 
 

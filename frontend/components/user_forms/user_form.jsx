@@ -4,6 +4,9 @@ import {
     Link,
     Routes
   } from 'react-router-dom';
+
+import { subStackURL } from '../../util/urls';
+
 class UserForm extends React.Component {
 
     constructor(props) {
@@ -94,7 +97,11 @@ class UserForm extends React.Component {
                                 {demoUser}
                                 </form>); 
         return (
-            <div className='user-form-page'>
+            <div id='user-form-container'>
+                < img src={subStackURL}
+                           id='full-stack-icon'/>
+                <span>continue to</span>
+                <strong>Fullstack</strong>
                 {this.props.formType === 'Sign in' ? loginForm : signUpForm}
             </div>
         )

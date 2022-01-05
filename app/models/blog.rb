@@ -11,4 +11,5 @@ class Blog < ApplicationRecord
     validates :author_id, :title, :description, presence: true
     validates :title, uniqueness: {scope: [:author_id]}
 
+
 end

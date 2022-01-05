@@ -49,6 +49,7 @@ class Calculator extends React.Component {
         const revenue = this.state.subscribers * this.state.fee;
         return (
             <div id="calculator">
+                <h1>Estimate what you could make on Fullstack</h1>
                 <select name='subscribers'
                         onChange={this.update('subscribers')}>
                             {this.possibleSubscribers.map((num, i) => (

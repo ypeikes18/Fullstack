@@ -6,9 +6,28 @@
     justify-content: center;
 }
 
+#user-form-container > * {
+    margin: 10px;
+}
+
 .user-form button {
     height: 50px;
     width: 100px;
+}
+
+.user_form img {
+    height: 45px;
+    width: 43px;
+}
+
+.user-form > * {
+    width: 325px;
+    border-bottom: 1px solid grey;
+    outline: none;
+}
+
+.user-form > textarea {
+    height: 200px;
 }
 
 
@@ -21,8 +40,9 @@
     box-sizing: border-box;
 }
 
-#user-form-page {
+#user-form-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }

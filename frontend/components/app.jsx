@@ -11,10 +11,11 @@ import {
 
 import TopBar from './top_bar/top_bar';
 import AccountSettings from './account_settings/account_settings';
-import SignInFormContainer from './forms/sign_in_form_container';
+import SignInFormContainer from './user_forms/sign_in_form_container';
 import SplashContent from './splash_content/splash_content';
-import GetStartedFormContainer from './forms/start_writing_form_container'
-import { AuthRoute, ProtectedRoute} from '../util/route_util'
+import GetStartedFormContainer from './user_forms/start_writing_form_container'
+import { AuthRoute, ProtectedRoute} from '../util/route_util';
+import BlogShowContainer from './blog_show/blog_show_container'
 
 export default class App extends React.Component {
 
@@ -32,7 +33,8 @@ export default class App extends React.Component {
                   < AuthRoute path='/sign-in'
                           component={SignInFormContainer}/> 
                   < AuthRoute path='/sign-up'
-                          component={ GetStartedFormContainer }/>                    
+                          component={ GetStartedFormContainer }/>
+                  < Route exact path='/blogs/:id' component={ BlogShowContainer }/>                           
                </Switch>
              </div>)  
     }
