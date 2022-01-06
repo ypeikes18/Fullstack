@@ -37,10 +37,11 @@ export default class App extends React.Component {
                           component={SignInFormContainer}/> 
                   < AuthRoute path='/sign-up'
                           component={ GetStartedFormContainer }/>
+                  < ProtectedRoute exact path="/new-blog" component={CreateBlogContainer} />
+
                   < Route exact path='/blogs/:blogId' component={ BlogShowContainer }/>
                   < Route exact path='/blogs/:blogId/posts/:postId' 
                           component={ PostShowContainer }/>
-                  <ProtectedRoute exact path="/blogs/new" component={CreateBlogContainer} />
 
                </Switch>
              </div>)  

@@ -32,12 +32,12 @@ class PostPreview extends React.Component {
                              <span>{ subtitle }</span>
                              <div>
                                  {created_at}
-                                 {<Link to={`/blogs/${blogId}/posts/${postId}/edit`}/>}
+                                 {<Link to={`/blogs/i/${blogId}/posts/${postId}/edit`}/>}
                              </div>
                        </div>);
        
         return (<Link 
-                 to={`/blogs/${blogId}/posts/${postId}`}>
+                 to={`/blogs/i/${blogId}/posts/${postId}`}>
                     {latestPost ? (
                     <div id='latest-post-preview'>
                         {img}{text}

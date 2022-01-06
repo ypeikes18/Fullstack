@@ -1,17 +1,21 @@
-export const fetchBlog = blogId => (
-    $.ajax({
+export const fetchBlog = blogId => {
+    return ($.ajax({
         method: 'GET',
         url: `/api/blogs/${blogId}`
-    })
-)
+    }))
+}
 
-export const createBlog = blog => (
-    $.ajax({
+
+
+export const createBlog = blog => {
+    return ($.ajax({
         method: 'POST',
         url: `/api/blogs`,
         data: { blog }
-    })
-)
+    }))
+}
+
+
 
 export const updateBlog = blog => (
     $.ajax({

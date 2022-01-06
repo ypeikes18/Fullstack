@@ -3,3 +3,4 @@ export const userIconUrl = 'https://cdn.substack.com/image/fetch/w_80,h_80,c_fil
 export const blurbImageURL1 = 'https://cdn.substack.com/image/fetch/w_520,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fhome_page%2Ftelescope.png';
 export const blurbImageURL2 = 'https://cdn.substack.com/image/fetch/w_520,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fhome_page%2Flightbulb.png';
 export const blurbImageURL3 = 'https://cdn.substack.com/image/fetch/w_520,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fhome_page%2Flock.png'
+export const defaultBlogIconUrl = 'https://images.unsplash.com/photo-1500989145603-8e7ef71d639e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80';

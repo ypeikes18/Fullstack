@@ -20,10 +20,13 @@ const removeBlog = blogId => ({
     blogId
 })
 
-const receiveErrors = errors => ({
-    type: RECEIVE_BLOG_ERRORS,
-    errors
-}) 
+const receiveErrors = errors => {
+    return {
+        type: RECEIVE_BLOG_ERRORS,
+        errors
+    }
+}
+
 
 export const fetchBlog = blogId => dispatch => {
     return BlogApiUtil.fetchBlog(blogId)

@@ -8,7 +8,7 @@ class BlogBanner extends React.Component {
 
     componentDidMount() {
         const blogId = this.props.match.params.blogId;
-        this.props.fetchBlog(blogId)
+        this.props.fetchBlog(blogId);
     }
 
     render() {

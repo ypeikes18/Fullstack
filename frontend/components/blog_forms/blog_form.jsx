@@ -34,7 +34,6 @@ class BlogForm extends React.Component {
     
     render() {
         const { title, description } = this.state;
-    
         return(
             <div id='blog-form-container'>
                 <form onSubmit={this.handleSubmit}>
