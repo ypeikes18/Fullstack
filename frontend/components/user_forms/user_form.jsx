@@ -61,8 +61,7 @@ class UserForm extends React.Component {
                             placeholder='Your Email'/>);
 
         const submit =     (<button type='submit'
-                            className='orange-button'
-                            onChange={this.update('password')}>
+                            className='orange-button'>
                             {this.props.formType}
                             </button>);
 

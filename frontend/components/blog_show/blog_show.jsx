@@ -10,31 +10,32 @@ class BlogShow extends React.Component {
     }
 
     componentDidMount() {
-        const blogId = parseInt(this.props.match.params.id);
+        const blogId = parseInt(this.props.match.params.blogId);
         this.props.fetchBlog(blogId);
     }
 
     render() {
-        debugger
-
+        if(!this.props.blog) return null; 
         const { posts } = this.props.blog;
 
+        if(!posts[0]) return null;
         const postPreview = (< PostPreviewContainer 
                                 latestPost={true} 
-                                id={posts[0]}
-                                key={posts[0]}/>)
+                                postId={posts[0]}/>)
 
-        const postIndex = ( <div>
-                        {
-                         posts.slice(1).map( postId => (
-                         < PostPreviewContainer 
-                            id={postId}
-                            key={postId}/>)
-                         )          
-                         }
-                        </div> )
+        const postIndex = ( posts[1] ? (
+                            <div id='post-index-container'>
+                            {
+                                posts.slice(1).map( postId => (
+                                
+                                <PostPreviewContainer 
+                                postId={postId}
+                                key={postId}/>)
+                            )
+                            }</div>) : (<div></div>));
+        
         return (
-            <div>
+            <div id='blog-show-page'>
                 {posts[0] ? postPreview : (<></>)}
                 {posts[1] ? postIndex : (<></>)}
             </div>

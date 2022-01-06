@@ -1,6 +1,6 @@
 import { RECEIVE_POST,
-    RECEIVE_POSTS,
-    REMOVE_POST,
+        RECEIVE_POSTS,
+        REMOVE_POST,
    } from '../actions/post_actions'
 
 const postReducer = (prevState = {}, action) => {

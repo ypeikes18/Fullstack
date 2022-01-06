@@ -4,13 +4,16 @@ import { fetchBlog } from '../../actions/blog_actions';
 import BlogShow from './blog_show';
 
 const mSTP = (state, ownProps) => {
+    const blogId = ownProps.match.params.blogId;
     return (
-        { blog: state.entities.blogs[ownProps.match.params.id]  }
+        { blog: state.entities.blogs[blogId] }
     )
 }
 
-const mDTP = dispatch => ({
+const mDTP = dispatch => {
+    return {
     fetchBlog: blogId => dispatch(fetchBlog(blogId))
-});
+    }
+};
 
 export default connect(mSTP,mDTP)(BlogShow);

@@ -15,7 +15,10 @@ import SignInFormContainer from './user_forms/sign_in_form_container';
 import SplashContent from './splash_content/splash_content';
 import GetStartedFormContainer from './user_forms/start_writing_form_container'
 import { AuthRoute, ProtectedRoute} from '../util/route_util';
-import BlogShowContainer from './blog_show/blog_show_container'
+import BlogShowContainer from './blog_show/blog_show_container';
+import PostShowContainer from './post_show/post_show_container';
+import CreateBlogContainer from './blog_forms/create_blog_container';
+
 
 export default class App extends React.Component {
 
@@ -24,7 +27,7 @@ export default class App extends React.Component {
     }
 
     render() {
-      return (<div>
+      return (<div>                        
                <TopBar/>
                <Switch>
                   < Route exact path='/' component={ SplashContent }/>
@@ -34,7 +37,11 @@ export default class App extends React.Component {
                           component={SignInFormContainer}/> 
                   < AuthRoute path='/sign-up'
                           component={ GetStartedFormContainer }/>
-                  < Route exact path='/blogs/:id' component={ BlogShowContainer }/>                           
+                  < Route exact path='/blogs/:blogId' component={ BlogShowContainer }/>
+                  < Route exact path='/blogs/:blogId/posts/:postId' 
+                          component={ PostShowContainer }/>
+                  <ProtectedRoute exact path="/blogs/new" component={CreateBlogContainer} />
+
                </Switch>
              </div>)  
     }

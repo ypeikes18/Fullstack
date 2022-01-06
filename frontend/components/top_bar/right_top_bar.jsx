@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import DropDown from './dropdown';
 import IconMenuContainer from './icon_menu_container';
 import { userIconUrl } from '../../util/urls';
-import Button from './button';
 import { Link } from 'react-router-dom';
 import { dropdown1 } from '../../util/dropdowns'
 import { logout } from '../../actions/session_actions'

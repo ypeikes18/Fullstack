@@ -1,41 +1,62 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchPost } from '../../actions/post_actions';
 
 class PostPreview extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = null;
     }
 
     componentDidMount() {
-        this.state = this.props.fetchPost(this.props.id);
+        this.props.fetchPost(this.props.postId);
     }
 
     render() {
-        const img = (<div id='latest-post-image-container'>
-                        <img src={''}/>
-                    </div>);
+
+        const { latestPost, post, postId } = this.props;
+
+        if(!post) return null;
+
+        const { title, 
+                subtitle, 
+                created_at, 
+                blogId } = post;
+
+
+        const img = (<img src={post.image_url}/>);
 
         const text = ( <div id='post-preview-text'>
-                          <h1>{ title }</h1>
-                          <span>{ subtitle }</span>
+                             <h1>{ title }</h1>
+                             <span>{ subtitle }</span>
+                             <div>
+                                 {created_at}
+                                 {<Link to={`/blogs/${blogId}/posts/${postId}/edit`}/>}
+                             </div>
                        </div>);
-
-        const { title, subtitle } = this.state;
-
-        return (
-            this.props.latestPost ? (
-                <div>{img}{text}</div>) : (text)
+       
+        return (<Link 
+                 to={`/blogs/${blogId}/posts/${postId}`}>
+                    {latestPost ? (
+                    <div id='latest-post-preview'>
+                        {img}{text}
+                    </div>
+                    ) : (text)}
+                </Link>
         )
             
     }
 }
 
-const mSTP = () => ({});
+const mSTP = (state, ownProps) => {
+    return { post: state.entities.posts[ownProps.postId] }
+}
 
-const mDTP = dispatch => ({
+const mDTP = dispatch => {
+    return {
     fetchPost: postId => dispatch(fetchPost(postId))    
-})
+    }
+}
 
 export default connect(mSTP, mDTP)(PostPreview);
