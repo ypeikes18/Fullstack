@@ -1,4 +1,5 @@
 import React from 'react';
+import { defaultBlogIconUrl } from '../../util/urls';
 
 class BlogForm extends React.Component {
 
@@ -8,9 +9,16 @@ class BlogForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(e) {
+    handleSubmit(e) {   
         e.preventDefault()
-        this.props.action(this.state);
+        const stateToSubmit = Object.assign(
+            {}, 
+            this.state,
+            this.props.hiddenInput);
+        if(this.state.icon_url === '') {
+            stateToSubmit.icon_url = defaultBlogIconUrl
+        }
+        this.props.action(stateToSubmit);
     }
 
     update(field) {
@@ -33,31 +41,51 @@ class BlogForm extends React.Component {
     }
     
     render() {
-        const { title, description } = this.state;
+        const { title, icon_url, description } = this.state;
+        const { submitButtonText, formTitle } = this.props;
         return(
             <div id='blog-form-container'>
-                <form onSubmit={this.handleSubmit}>
-
+                <h1>
+                    { formTitle }
+                    </h1>
+                <form onSubmit={this.handleSubmit}
+                id='blog-form'>
+                    
+                    <label 
+                    for='blog-title-input'
+                    id='blog-title-label'>
+                        Publication name *
+                    </label>
                     <input 
+                    id='blog-title-input'
                     type='text'
                     value={title}
+                    placeholder={`Enter your publication's name...`}
                     onChange={this.update('title')}>
                     </input>
 
+
+                    <label 
+                    for='blog-description-input'
+                    id='blog-description-label'>
+                        {`What’s it about? *`}
+                    </label>
                     <input 
                     type='text'
+                    placeholder={`E.g "Everything you need to know about finance"`}
+                    id='blog-description-input'
                     value={description}
                     onChange={this.update('description')}>
                     </input>
 
                     <button type='submit'
                      className='orange-button'>
-                        {this.props.formType}
+                        { submitButtonText }
                     </button>
 
                 </form>
-            </div>
-        )
+            </div>)
+        
     }
 }
 

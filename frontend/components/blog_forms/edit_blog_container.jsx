@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
 import BlogForm from './blog_form';
-import { createBlog } from '../../actions/blog_actions';
+import { editBlog } from '../../actions/blog_actions';
 
-const mSTP = state => {
+const mSTP = (state, ownParams) => {
     return  {
         blog: {
             title: '',
@@ -20,7 +20,7 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return {
-    action: blog => dispatch(createBlog(blog))
+    action: blog => dispatch(editBlog(blog))
     }
 };
 

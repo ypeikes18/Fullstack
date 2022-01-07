@@ -22,7 +22,7 @@ class PostPreview extends React.Component {
         const { title, 
                 subtitle, 
                 created_at, 
-                blogId } = post;
+                blog_id } = post;
 
 
         const img = (<img src={post.image_url}/>);
@@ -32,12 +32,12 @@ class PostPreview extends React.Component {
                              <span>{ subtitle }</span>
                              <div>
                                  {created_at}
-                                 {<Link to={`/blogs/i/${blogId}/posts/${postId}/edit`}/>}
+                                 {/* {<Link to={`/blogs/${blogId}/posts/${postId}/edit`}/>} */}
                              </div>
                        </div>);
        
         return (<Link 
-                 to={`/blogs/i/${blogId}/posts/${postId}`}>
+                 to={`/blogs/${blog_id}/posts/${postId}`}>
                     {latestPost ? (
                     <div id='latest-post-preview'>
                         {img}{text}

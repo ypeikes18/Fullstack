@@ -23,6 +23,11 @@ class RightTopBar extends React.Component {
         );
 
         const loggedInComponents = [
+            <Link 
+             to='/writer-dashboard'
+             className='orange-button'>
+               Writer Dashboard
+            </Link>,
             userIconDropdown 
         ];
 

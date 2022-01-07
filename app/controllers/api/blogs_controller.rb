@@ -6,7 +6,7 @@ class Api::BlogsController < ApplicationController
     end
     
     def show
-        @blog = Blog.find(params[:id])
+        @blog = Blog.find(params[:id]) || Blog.find(params[:title])
         if @blog
             render :show
         else

@@ -18,6 +18,9 @@ import { AuthRoute, ProtectedRoute} from '../util/route_util';
 import BlogShowContainer from './blog_show/blog_show_container';
 import PostShowContainer from './post_show/post_show_container';
 import CreateBlogContainer from './blog_forms/create_blog_container';
+import CreatePostContainer from './post_forms/create_post_form_container';
+import WriterDashboard from './writer_dashboard/writer_dashboard';
+
 
 
 export default class App extends React.Component {
@@ -38,10 +41,14 @@ export default class App extends React.Component {
                   < AuthRoute path='/sign-up'
                           component={ GetStartedFormContainer }/>
                   < ProtectedRoute exact path="/new-blog" component={CreateBlogContainer} />
+                  < ProtectedRoute exact path="/blogs/:id/new-post" component={CreatePostContainer} />
 
                   < Route exact path='/blogs/:blogId' component={ BlogShowContainer }/>
                   < Route exact path='/blogs/:blogId/posts/:postId' 
                           component={ PostShowContainer }/>
+                  < Route exact path='/:blogTitle' component={ BlogShowContainer }/>
+                  < ProtectedRoute exact path='/blogs/:id/writer-dashboard' component={ WriterDashboard }/>
+
 
                </Switch>
              </div>)  

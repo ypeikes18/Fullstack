@@ -14,7 +14,7 @@ const SplashContent = (props) => {
                 <h1>{greeting.h}</h1>
                 <p>{greeting.p}</p>
                 <div>
-                <Link to='/sign-up' 
+                <Link to='/new-blog' 
                       className='orange-button '
                       id='start-writing'>
                 Start Writing
