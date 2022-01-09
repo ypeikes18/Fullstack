@@ -1,9 +1,10 @@
 .user-form {
     display: flex;
     flex-direction: column;
-    flex-grow: inherit;
     align-items: center;
     justify-content: center;
+    width: 50%;
+    margin-top: 20%;
 }
 
 #user-form-container > * {
@@ -16,28 +17,49 @@
 }
 
 .user_form img {
-    height: 45px;
-    width: 43px;
+    height: 4em;
+    width: 3.75em;
 }
 
 .user-form > * {
-    width: 325px;
-    border-bottom: 1px solid grey;
+    width: 50%;
     outline: none;
 }
 
 .user-form > textarea {
-    height: 200px;
+    height: 15%;
+    width: 50%;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    outline: none;
+    resize: none;
 }
 
 
-.user-form input {
-    width: 400px;
-    margin-bottom: 10px;
-    height: 55px;
-    padding: 16px;
+.user-form > input {
+    width: 50%;
+    height: 2%;
+    padding: 2%;
     font-size: 16px;
-    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+
+input:-webkit-autofill {
+    background-color: white;
+}
+
+input:autofill {
+    background-color: white;
+}
+
+.user-form > input:first-of-type {
+    border-top: 1px solid lightgray;
+}
+
+.user-form > input:last-of-type {
+    margin-bottom: 1.5em;
 }
 
 #user-form-container {

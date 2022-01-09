@@ -44,6 +44,7 @@ class BlogForm extends React.Component {
         const { title, icon_url, description } = this.state;
         const { submitButtonText, formTitle } = this.props;
         return(
+            <div>
             <div id='blog-form-container'>
                 <h1>
                     { formTitle }
@@ -84,6 +85,9 @@ class BlogForm extends React.Component {
                     </button>
 
                 </form>
+            </div>
+            <span id='below-blog-form-text'>
+            </span>
             </div>)
         
     }

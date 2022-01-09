@@ -16,10 +16,13 @@ class IconMenu extends React.Component {
     }
     
     render() {
-        const  img = (<img src={this.props.img}/>);
+        const  img = (<img 
+                      src={this.props.img}
+                      id='user-icon'/>);
         
         return (
-            <div onClick={this.toggleReveal}>
+            <div 
+            onClick={this.toggleReveal}>
                 {img}
                 <ul className={this.state.className}>
                     <li onClick={this.props.logout}>

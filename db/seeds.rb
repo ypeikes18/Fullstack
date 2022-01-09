@@ -23,3 +23,8 @@ post1 = Post.create(blog_id: blog1.id, title: 'First SSC Post',
 post2 = Post.create(blog_id: blog1.id, title: 'Second SSC Post', 
         subtitle: 'Also pretty self explanatory', body: 'My second post',
         image_url: image_url)
+
+zvi =  User.create(name: 'Zvi Mowhshowitz', email: 'zvi123456@gmail.com', password: '123456')    
+
+blog2 = Blog.create(author_id: zvi.id, title: "Don't Worry About the Vase", description: 'Trying to dig out from minus a million points', 
+        icon_url: 'https://defaultcustomheadersdata.files.wordpress.com/2016/07/city1.jpg?resize=940,198')

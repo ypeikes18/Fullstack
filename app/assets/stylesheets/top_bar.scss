@@ -36,16 +36,19 @@
     color: white;
     border-radius: 4px;
     height: 20px;
-    width: 100px;
+    width: fit-content;    
     text-align: center;
     padding: 8px 10px;
-    display: inline-block;
+    display: inline-block;   
 }
 
 
 
 #user-icon {
-    border-radius: 50px;
+    border-radius: 50%;
+    height: 45%;
+    width: 45%;
+    margin-left: 5%;
 }
 
 #search-bar-form {

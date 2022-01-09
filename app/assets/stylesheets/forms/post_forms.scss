@@ -1,0 +1,81 @@
+#post-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+    height: 100em;
+    border: 1px solid yellow;
+}
+
+
+#post-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+
+#post-form > input, textarea {
+    width: 42%;
+    margin: 1em auto;
+    height: 3%;
+    border: 1px solid gray;
+    outline: none;
+}
+
+#post-title::placeholder  {
+    font-size: 2vw;
+    font-weight: bold;
+    text-justify: center;
+}
+
+#post-title {
+    font-size: 2vw;
+}
+
+#post-subtitle::placeholder  {
+    font-size: 1vw;
+}
+
+#post-subtitle {
+    font-size: 1vw;
+}
+
+#post-form > button {
+    width: 100%;
+    height: 3em;
+}
+
+#post-body {
+    height: 75%;
+    border-top: .75px light gray;
+    font-size: 1.5em;
+}
+
+#bottom-buttons-container {
+    border: 1px solid black;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+}
+
+#post-submit-button, 
+#post-unsubmittable-button {
+    height: 100%;
+    padding: 1em;
+    border-radius: 2%;
+    color: white;
+    margin-left: 80%;
+}
+
+#post-unsubmittable-button {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
+#post-submit-button {
+    background-color: purple;
+}
+

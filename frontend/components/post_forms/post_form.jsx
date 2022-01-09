@@ -20,6 +20,13 @@ class PostForm extends React.Component {
         }
     }
 
+    postValid() {
+        let valid = true;
+        Object.values(this.state).forEach(value => {
+            if(value === '') valid = false; 
+        })   
+    }
+
     renderErrors() {
         return (
             <ul>
@@ -38,46 +45,67 @@ class PostForm extends React.Component {
             body,
             image_url 
         } = this.state;
-        debugger
-    return(
-        <div id='post-form-container'>
-            <form onSubmit={this.handleSubmit}
-             id='post-form'>
 
-                <input 
-                id='post-title'
-                type='text'
-                value={title}
-                onChange={this.update('title')}>
-                </input>
 
-                <input
-                id='post-subtitle' 
-                type='text'
-                value={subtitle}
-                onChange={this.update('subtitle')}>
-                </input>
+        const submitButton = (<button 
+                              type='submit'
+                              id='post-submit-button'>
+                                {this.props.formType}
+                              </button>)
+            
+        const button = (<button 
+                        type='button'
+                        id='post-unsubmittable-button'>
+                            {this.props.formType}
+                        </button>)    
 
-                <textarea
-                id='post-body' 
-                type='text'
-                value={body}
-                onChange={this.update('body')}>
-                </textarea>
+        return(
+            <div id='post-form-container'>
+                <form onSubmit={this.handleSubmit}
+                    id='post-form'>
 
-                <input
-                id='post-image_url' 
-                type='text'
-                value={image_url}
-                onChange={this.update('image_url')}>
-                </input>
+                    <input 
+                    placeholder='Enter a title...'
+                    id='post-title'
+                    type='text'
+                    value={title}
+                    onChange={this.update('title')}>
+                    </input>
 
-                <button type='submit'
-                 className='orange-button'>
-                    {this.props.formType}
-                </button>
-            </form>
-        </div>)
+                    <input
+                    placeholder='Subtitle'
+                    id='post-subtitle' 
+                    type='text'
+                    value={subtitle}
+                    onChange={this.update('subtitle')}>
+                    </input>
+
+                    <textarea
+                    id='post-body' 
+                    type='text'
+                    value={body}
+                    onChange={this.update('body')}>
+                    </textarea>
+
+                    <input
+                    id='post-image_url' 
+                    type='text'
+                    value={image_url}
+                    onChange={this.update('image_url')}>
+                    </input>
+
+                    <div 
+                    id='bottom-buttons-container'>
+                        {
+                        this.postValid() ? ( 
+                            submitButton) : (
+                                button
+                            )
+                        }
+                    </div>
+
+                </form>
+            </div>)
         
     }
 }

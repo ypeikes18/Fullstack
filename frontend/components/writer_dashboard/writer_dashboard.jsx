@@ -16,7 +16,7 @@ class WriterDashboard extends React.Component {
                 <div>
                     <Link
                     className='purple-button'
-                    to=''>
+                    to='blogs/:id/new-post'>
                         New Post
                     </Link>
                     <Link
@@ -32,3 +32,4 @@ class WriterDashboard extends React.Component {
 }
 
 export default WriterDashboard;
+

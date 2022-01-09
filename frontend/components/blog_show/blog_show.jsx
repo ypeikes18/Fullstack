@@ -35,7 +35,7 @@ class BlogShow extends React.Component {
                             }</div>) : (<div></div>));
         
         return (
-            <div id='blog-show-page'>
+            <div id='blog-show-container'>
                 {posts[0] ? postPreview : (<></>)}
                 {posts[1] ? postIndex : (<></>)}
             </div>

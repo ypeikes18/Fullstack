@@ -46,16 +46,22 @@
 
 #splash-content-banner > h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 60px;
+    font-size: 4em;
 }
 
 #splash-content-banner > .orange-button {
     justify-content: center;
     word-wrap: normal;
+    margin-top: 4px;
 }
 
 #splash-content-banner > h1 {
     font-size: 60px;
+}
+
+#splash-content-banner > p {
+    width: 55%;
+    margin: auto;
 }
 
 #blurb-index {
