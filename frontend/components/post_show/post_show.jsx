@@ -16,9 +16,15 @@ class PostShow extends React.Component {
         
         const { title, subtitle, body } = post;
         return (
-            <div>
-                <h1 id='post-title'>{title}</h1>
+            <div id='post-container'>
+                <div id='post-title-container'>
+                    <h1 id='post-title'>{title}</h1>
+                </div>
+
+                <div id='post-subtitle-container'>
                 <h3 id='post-subtitle'>{subtitle}</h3>
+                </div>
+
                 <p id='post-body'>{body}</p>
             </div>
         )

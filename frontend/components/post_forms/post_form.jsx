@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { defaultPostIconUrl } from '../../util/urls';
+
 class PostForm extends React.Component {
 
     constructor(props) {
@@ -10,7 +12,16 @@ class PostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        this.props.action(this.state);
+
+        if(this.state.image_url === '') {
+            this.setState({
+                image_url: defaultPostIconUrl
+            })
+        }
+
+        if(this.props.action(this.state)){
+            this.props.history.push(`/blogs/${this.props.match.params.blogId}`)
+        }
     }
 
     update(field) {
@@ -82,6 +93,7 @@ class PostForm extends React.Component {
 
                     <textarea
                     id='post-body' 
+                    placeholder='Write your post...'
                     type='text'
                     value={body}
                     onChange={this.update('body')}>
@@ -99,7 +111,7 @@ class PostForm extends React.Component {
                         {
                         this.postValid() ? ( 
                             submitButton) : (
-                                button
+                                submitButton
                             )
                         }
                     </div>

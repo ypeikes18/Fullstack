@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class BlogBanner extends React.Component {   
     constructor(props) {
@@ -11,9 +12,23 @@ class BlogBanner extends React.Component {
         this.props.fetchBlog(blogId);
     }
 
-    render() {
+    authorizedUser() {
+        const { currentUserId, blog } = this.props;
+        return currentUserId === blog.author_id;
+    }
 
-        if(!this.props.blog) return null;
+    render() {
+        const { blog, usersBlog } = this.props
+        
+        if(!blog) return null;
+
+        const authorsButtons = this.authorizedUser() ? (
+            <div id='authors-buttons-container'>
+                <Link to={`/`}>
+                    New Post
+                </Link>
+            </div>
+            ) : ( <div></div>);
             
         const { icon_url, title } = this.props.blog;
         return (<div id='blog-banner'>
@@ -22,13 +37,17 @@ class BlogBanner extends React.Component {
                     <h2  id='top-bar-blog-title'>
                         {title}
                     </h2>
+                    {authorsButtons}
                 </div>)
     }
 }
 
 const mSTP = (state, ownProps) => {
+    const blog = state.entities.blogs[ownProps.match.params.blogId];
+    const currentUserId = state.session.currentUserId;
     return { 
-        blog: state.entities.blogs[ownProps.match.params.blogId] 
+        blog, 
+        currentUserId
     }
 }
 

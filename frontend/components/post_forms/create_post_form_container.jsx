@@ -9,7 +9,7 @@ const mSTP = (state, ownProps) => ({
        subtitle:'',
        body: '',
        image_url: '',
-       blog_id: ownProps.match.params.id 
+       blog_id: ownProps.match.params.blogId 
     },
     formType: 'Create post'
 });

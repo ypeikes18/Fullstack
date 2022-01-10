@@ -11,14 +11,19 @@ class BlogForm extends React.Component {
 
     handleSubmit(e) {   
         e.preventDefault()
-        const stateToSubmit = Object.assign(
+        const stateToSubmit = (
+            Object.assign(
             {}, 
             this.state,
-            this.props.hiddenInput);
+            this.props.hiddenInput));
+
         if(this.state.icon_url === '') {
             stateToSubmit.icon_url = defaultBlogIconUrl
         }
-        this.props.action(stateToSubmit);
+
+        if(this.props.action(stateToSubmit)) {
+            this.props.history.push('/')
+        }
     }
 
     update(field) {

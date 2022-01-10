@@ -11,12 +11,12 @@
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid lightgray;
-    padding: 120px 200px;
-    margin: 0 285px;
+    padding: 4% 25%;
 }
 
 #splash-content p {
-    font-size: 14px;
+    font-size: 17px;
+    line-height: 1.5;
 }
 
 .blurb {
@@ -49,10 +49,10 @@
     font-size: 4em;
 }
 
-#splash-content-banner > .orange-button {
+#splash-content-banner * .orange-button {
     justify-content: center;
     word-wrap: normal;
-    margin-top: 4px;
+    margin-top: 4%;
 }
 
 #splash-content-banner > h1 {
@@ -60,8 +60,9 @@
 }
 
 #splash-content-banner > p {
-    width: 55%;
+    width: 58%;
     margin: auto;
+    text-align: center;
 }
 
 #blurb-index {
