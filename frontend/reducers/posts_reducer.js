@@ -3,7 +3,7 @@ import { RECEIVE_POST,
         REMOVE_POST,
    } from '../actions/post_actions'
 
-const postReducer = (prevState = {}, action) => {
+const postsReducer = (prevState = {}, action) => {
 Object.freeze(prevState);
 const newState = Object.assign({}, prevState)
 
@@ -21,4 +21,4 @@ switch(action.type) {
 }
 }
 
-export default postReducer;
+export default postsReducer;

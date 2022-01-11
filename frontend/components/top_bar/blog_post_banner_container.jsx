@@ -13,7 +13,8 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = dispatch => ({
-    fetchBlog: blogId => dispatch(fetchBlog(blogId))
+    fetchBlog: blogId => dispatch(fetchBlog(blogId)),
+    deletePost: postId => dispatch(deletePost(postId))
 })
 
 export default connect(mSTP,mDTP)(BlogBanner);

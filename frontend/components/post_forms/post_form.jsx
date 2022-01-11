@@ -10,6 +10,11 @@ class PostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        const postId = this.props.match.params.postId;
+        this.props.fetchPost(postId);
+    }
+
     handleSubmit(e) {
         e.preventDefault()
         const imageUrl = defaultPostIconUrl;
@@ -52,6 +57,9 @@ class PostForm extends React.Component {
     }
     
     render() {
+
+        if(!this.state) return null;
+
         const { title, 
             subtitle,
             body,

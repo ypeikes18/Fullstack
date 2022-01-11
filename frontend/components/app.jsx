@@ -22,6 +22,8 @@ import CreateBlogContainer from './blog_forms/create_blog_container';
 import EditBlogContainer from './blog_forms/edit_blog_container';
 
 import CreatePostContainer from './post_forms/create_post_form_container';
+import EditPostContainer from './post_forms/edit_post_form_container';
+
 import WriterDashboard from './writer_dashboard/writer_dashboard';
 import BlogBannerContainer from './top_bar/blog_banner_container'
 import BlogPostBannerContainer from './top_bar/blog_banner_container'
@@ -35,8 +37,8 @@ export default class App extends React.Component {
     render() {
       return (<div>                        
                 <Switch>
+                  <Route exact path='/blogs/:blogId' component={ BlogBannerContainer }/>
                   <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/>
-                  <Route path='/blogs/:blogId' component={ BlogBannerContainer }/>
                   <Route path='/' component={ TopBar }/>
                 </Switch>            
                
@@ -51,6 +53,7 @@ export default class App extends React.Component {
                   < ProtectedRoute exact path="/new-blog" component={CreateBlogContainer} />
                   < ProtectedRoute exact path="/blogs/:blogId/edit" component={EditBlogContainer} />
                   < ProtectedRoute exact path="/blogs/:blogId/new-post" component={CreatePostContainer} />
+                  < Route path="/blogs/:blogId/posts/:postId/edit" component={EditPostContainer} />
 
                   < Route exact path='/blogs/:blogId' component={ BlogShowContainer }/>
                   < Route exact path='/blogs/:blogId/posts/:postId' 

@@ -28,3 +28,9 @@ zvi =  User.create(name: 'Zvi Mowhshowitz', email: 'zvi123456@gmail.com', passwo
 
 blog2 = Blog.create(author_id: zvi.id, title: "Don't Worry About the Vase", description: 'Trying to dig out from minus a million points', 
         icon_url: 'https://defaultcustomheadersdata.files.wordpress.com/2016/07/city1.jpg?resize=940,198')
+
+# comment1 = Comment.create(body: 'first comment', commenter_id: 43, post_id: 24 )
+# comment2 = Comment.create(body: 'child of first comment', 
+#                           commenter_id: 43, 
+#                           post_id: 24, 
+#                           parent_comment_id: 1 )
