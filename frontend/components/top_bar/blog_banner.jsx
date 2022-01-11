@@ -1,34 +1,43 @@
 import React from 'react'
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class BlogBanner extends React.Component {   
     constructor(props) {
         super(props);
+        this.state = { showButton: true }
     }
 
     componentDidMount() {
-        const blogId = this.props.match.params.blogId;
-        this.props.fetchBlog(blogId);
+        const { fetchBlog, match } = this.props;
+        const blogId = match.params.blogId;
+        fetchBlog(blogId);
+
+        if(this.props.fetchPost) {
+            this.props.fetchPost(match.params.postId)
+        }
     }
 
-    authorizedUser() {
+    showButton() {
         const { currentUserId, blog } = this.props;
-        return currentUserId === blog.author_id;
+        return (currentUserId === blog.author_id);
     }
 
     render() {
-        const { blog, usersBlog } = this.props
+        const { blog, match } = this.props
         
         if(!blog) return null;
 
-        const authorsButtons = this.authorizedUser() ? (
+        const buttons = (this.showButton()) ? (
             <div id='authors-buttons-container'>
-                <Link to={`/`}>
-                    New Post
+                <Link to={`/blogs/${blog.id}/new-post`}>
+                    New post
+                </Link>
+                <Link to={`/blogs/${blog.id}/edit`}>
+                    Edit blog
                 </Link>
             </div>
-            ) : ( <div></div>);
+            ) : ( <div>
+                  </div>);
             
         const { icon_url, title } = this.props.blog;
         return (<div id='blog-banner'>
@@ -37,22 +46,9 @@ class BlogBanner extends React.Component {
                     <h2  id='top-bar-blog-title'>
                         {title}
                     </h2>
-                    {authorsButtons}
+                    {buttons}
                 </div>)
     }
 }
 
-const mSTP = (state, ownProps) => {
-    const blog = state.entities.blogs[ownProps.match.params.blogId];
-    const currentUserId = state.session.currentUserId;
-    return { 
-        blog, 
-        currentUserId
-    }
-}
-
-const mDTP = dispatch => ({
-    fetchBlog: blogId => dispatch(fetchBlog(blogId))
-})
-
-export default connect(mSTP,mDTP)(BlogBanner);
+export default BlogBanner;

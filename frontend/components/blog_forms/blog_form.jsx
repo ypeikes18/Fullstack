@@ -11,18 +11,16 @@ class BlogForm extends React.Component {
 
     handleSubmit(e) {   
         e.preventDefault()
-        const stateToSubmit = (
-            Object.assign(
-            {}, 
-            this.state,
-            this.props.hiddenInput));
+        const { id, image_url } = this.state;
 
-        if(this.state.icon_url === '') {
-            stateToSubmit.icon_url = defaultBlogIconUrl
+        if(image_url) {
+            this.setState({
+                icon_url: defaultBlogIconUrl
+            })
         }
 
-        if(this.props.action(stateToSubmit)) {
-            this.props.history.push('/')
+        if(this.props.action(this.state)) {
+            this.props.history.push(`/blogs/${id}`)
         }
     }
 
@@ -31,6 +29,11 @@ class BlogForm extends React.Component {
             e.preventDefault();
             this.setState({[field]: e.currentTarget.value});
         }
+    }
+
+    componentDidMount() {
+        const blogId = this.props.match.params.blogId;
+        this.props.fetchBlog(blogId);
     }
 
     renderErrors() {
@@ -46,6 +49,7 @@ class BlogForm extends React.Component {
     }
     
     render() {
+        if(!this.props.blog) return null;
         const { title, icon_url, description } = this.state;
         const { submitButtonText, formTitle } = this.props;
         return(
@@ -54,7 +58,8 @@ class BlogForm extends React.Component {
                 <h1>
                     { formTitle }
                     </h1>
-                <form onSubmit={this.handleSubmit}
+                <form 
+                onSubmit={this.handleSubmit}
                 id='blog-form'>
                     
                     <label 
@@ -82,6 +87,19 @@ class BlogForm extends React.Component {
                     id='blog-description-input'
                     value={description}
                     onChange={this.update('description')}>
+                    </input>
+
+                    <label 
+                    for='blog-image_url-input'
+                    id='blog-description-label'>
+                        {`Choose an image url *`}
+                    </label>
+                    <input 
+                    type='text'
+                    placeholder={`Your image url goes here`}
+                    id='blog-icon_url-input'
+                    value={icon_url}
+                    onChange={this.update('icon_url')}>
                     </input>
 
                     <button type='submit'

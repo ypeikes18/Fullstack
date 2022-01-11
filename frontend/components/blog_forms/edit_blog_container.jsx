@@ -1,26 +1,21 @@
 import { connect } from 'react-redux';
 
 import BlogForm from './blog_form';
-import { editBlog } from '../../actions/blog_actions';
+import { updateBlog, fetchBlog } from '../../actions/blog_actions';
 
-const mSTP = (state, ownParams) => {
+const mSTP = (state, ownProps) => {
+    const blogId = ownProps.match.params.blogId;
     return  {
-        blog: {
-            title: '',
-            description: '',
-            icon_url: ''
-        },
-        hiddenInput: {
-            author_id: state.session.currentUserId
-        },
-        formTitle: 'Create your publication',
+        blog: state.entities.blogs[blogId],
+        formTitle: 'Edit your blog info',
         submitButtonText: 'Continue'
     }
 };
 
 const mDTP = dispatch => {
     return {
-    action: blog => dispatch(editBlog(blog))
+    action: blog => dispatch(updateBlog(blog)),
+    fetchBlog: blogId => dispatch(fetchBlog(blogId))
     }
 };
 

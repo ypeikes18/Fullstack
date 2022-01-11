@@ -1,0 +1,40 @@
+#authors-buttons-container > a:first-child {
+    padding: 1em 1.75em;
+    background-color: lightsalmon;
+    color: white;
+    border-radius: 5%;
+}
+
+#authors-buttons-container > a:last-child {
+    padding: 1em 1.75em;
+    background-color: white;
+    color: lightsalmon;
+    border: 0.1em solid lightsalmon;
+    border-radius: 5%;
+    margin-left: 1em;
+}
+
+
+#authors-buttons-container {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0.5%;
+    right: 1%;
+    margin: 10% 0;
+}
+
+#blog-banner > * {
+    margin: 0.1em;
+    padding: 0.5em;
+}
+
+#blog-banner {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 0.1em solid lightgray;
+}

@@ -11,7 +11,6 @@ class TopBar extends React.Component {
     render() {
         return (
             <nav id='top-bar'> 
-                    < Route path='/blogs/:blogId' component={ BlogBanner }/>
                     < Route exact path={`/`} render={()=> (
                             < img src={subStackURL}
                               id='full-stack-icon'/>)}/>

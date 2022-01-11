@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid lightgray;
 }
 
 #top-bar > * {
@@ -61,22 +62,12 @@
     height: 30px;
 }
 
-#top-bar {
-    border-bottom: 1px solid lightgray;
-}
-
-#blog-banner {
-    margin: auto;
-}
-
-#blog-banner > * {
-    margin: 15px;
-}
-
 #top-bar-blog-image {
     height: 45px;
     width: 45px;
 }
+
+
 
 
 

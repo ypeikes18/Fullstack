@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 
 import PostPreviewContainer from './post_preview_container';
 
@@ -6,7 +8,7 @@ class BlogShow extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { stop: 10 };
+        this.state = { stop: 10, sort: 'latest' };
     }
 
     componentDidMount() {
@@ -19,6 +21,9 @@ class BlogShow extends React.Component {
         const { posts } = this.props.blog;
 
         if(!posts[0]) return null;
+
+        const blogId = this.props.match.params.blogId;
+
         const postPreview = (< PostPreviewContainer 
                                 latestPost={true} 
                                 postId={posts[0]}/>)
@@ -37,6 +42,15 @@ class BlogShow extends React.Component {
         return (
             <div id='blog-show-container'>
                 {posts[0] ? postPreview : (<></>)}
+                <div id='blog-nav-link-list'>
+                        <NavLink to={`blogs/${blogId}`}>
+                            Latest
+                        </NavLink>
+
+                        <NavLink to={`blogs/${blogId}/sort=popular`}>
+                            Popular
+                        </NavLink>
+                </div>
                 {posts[1] ? postIndex : (<></>)}
             </div>
         )

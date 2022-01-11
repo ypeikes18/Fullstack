@@ -12,10 +12,11 @@ class PostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
+        const imageUrl = defaultPostIconUrl;
 
         if(this.state.image_url === '') {
             this.setState({
-                image_url: defaultPostIconUrl
+                image_url: imageUrl
             })
         }
 

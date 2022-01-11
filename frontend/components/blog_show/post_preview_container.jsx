@@ -22,35 +22,51 @@ class PostPreview extends React.Component {
         const { title, 
                 subtitle, 
                 created_at, 
-                blog_id } = post;
+                blog_id,
+                id } = post;
 
+        const postUrl = `/blogs/${blog_id}/posts/${id}`;
+        
+        const editButton = (< Link to={`/blogs/${blog_id}/posts/${id}`}> 
+                            Edit 
+                            </Link>)        
 
-        const img = (<img src={post.image_url}/>);
+        const img = (<img 
+                     src={post.image_url}
+                     id='post-preview-image'/>);
 
-        const text = ( <div id='post-preview-text'>
+        const text = ( <div className='post-preview-text'>
                              <h1>{ title }</h1>
                              <span>{ subtitle }</span>
                              <div>
                                  {created_at}
-                                 {/* {<Link to={`/blogs/${blogId}/posts/${postId}/edit`}/>} */}
                              </div>
                        </div>);
+        const latestPostPreview = (<div id='latest-post-preview'>
+                            <Link to={postUrl}>
+                                {img}{text}
+                            </Link>
+                            </div>);               
        
-        return (<Link 
-                 to={`/blogs/${blog_id}/posts/${postId}`}>
-                    {latestPost ? (
-                    <div id='latest-post-preview'>
-                        {img}{text}
-                    </div>
-                    ) : (text)}
-                </Link>
-        )
-            
+        const postPreview = (<div className='post-preview-container'>
+                                <Link to={postUrl}>
+                                    {text}
+                                </Link> 
+                            </div>)
+
+        if(latestPost) {
+            return latestPostPreview;
+        } else {
+            return postPreview;
+        }      
     }
 }
 
 const mSTP = (state, ownProps) => {
-    return { post: state.entities.posts[ownProps.postId] }
+    return { 
+        post: state.entities.posts[ownProps.postId], 
+        currentUserId: state.session.currentUserId
+    }
 }
 
 const mDTP = dispatch => {

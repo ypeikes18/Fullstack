@@ -19,10 +19,12 @@ import { AuthorizedPosterRoute } from '../util/authorized_route';
 import BlogShowContainer from './blog_show/blog_show_container';
 import PostShowContainer from './post_show/post_show_container';
 import CreateBlogContainer from './blog_forms/create_blog_container';
+import EditBlogContainer from './blog_forms/edit_blog_container';
+
 import CreatePostContainer from './post_forms/create_post_form_container';
 import WriterDashboard from './writer_dashboard/writer_dashboard';
-
-
+import BlogBannerContainer from './top_bar/blog_banner_container'
+import BlogPostBannerContainer from './top_bar/blog_banner_container'
 
 export default class App extends React.Component {
 
@@ -32,7 +34,12 @@ export default class App extends React.Component {
 
     render() {
       return (<div>                        
-               <TopBar/>
+                <Switch>
+                  <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/>
+                  <Route path='/blogs/:blogId' component={ BlogBannerContainer }/>
+                  <Route path='/' component={ TopBar }/>
+                </Switch>            
+               
                <Switch>
                   < Route exact path='/' component={ SplashContent }/>
                   < Route path='/account_settings'
@@ -42,6 +49,7 @@ export default class App extends React.Component {
                   < AuthRoute path='/sign-up'
                           component={ GetStartedFormContainer }/>
                   < ProtectedRoute exact path="/new-blog" component={CreateBlogContainer} />
+                  < ProtectedRoute exact path="/blogs/:blogId/edit" component={EditBlogContainer} />
                   < ProtectedRoute exact path="/blogs/:blogId/new-post" component={CreatePostContainer} />
 
                   < Route exact path='/blogs/:blogId' component={ BlogShowContainer }/>
