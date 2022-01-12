@@ -8,11 +8,10 @@ class HomeTopBar extends React.Component {
     render() {
         return (
             <nav id='top-bar'> 
-                    
-                            < img src={subStackURL}
-                              id='full-stack-icon'/>
-                            <SearchBar/> 
-                            <RightTopBar/> 
+                <img src={subStackURL}
+                 id='full-stack-icon'/>
+                <SearchBar/> 
+                <RightTopBar/> 
             </nav>
         )
     }
