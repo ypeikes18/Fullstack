@@ -12,7 +12,8 @@ class PostForm extends React.Component {
 
     componentDidMount() {
         const postId = this.props.match.params.postId;
-        this.props.fetchPost(postId);
+        const fetchPost = this.props.fetchPost;
+        if(fetchPost) fetchPost(postId);   
     }
 
     handleSubmit(e) {

@@ -33,7 +33,10 @@ class BlogForm extends React.Component {
 
     componentDidMount() {
         const blogId = this.props.match.params.blogId;
-        this.props.fetchBlog(blogId);
+        if(blogId) {
+            this.props.fetchBlog(blogId);
+        }
+ 
     }
 
     renderErrors() {
