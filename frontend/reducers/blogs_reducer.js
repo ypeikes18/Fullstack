@@ -6,7 +6,7 @@ import { RECEIVE_BLOG,
 const blogReducer = (prevState = {}, action) => {
     Object.freeze(prevState);
     const newState = Object.assign({}, prevState)
-
+    
     switch(action.type) {
         case RECEIVE_BLOG:
             newState[action.blog.id] = action.blog;

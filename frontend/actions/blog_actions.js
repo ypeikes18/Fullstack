@@ -47,7 +47,6 @@ export const updateBlog = blog => dispatch => (
 )
 
 export const createBlog = blog => dispatch => {
-
     return BlogApiUtil.createBlog(blog)
     .then(blog => dispatch(receiveBlog(blog)),
     errors => dispatch(receiveErrors(errors.responseJSON)))

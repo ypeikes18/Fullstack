@@ -1,5 +1,6 @@
 import React from 'react';
 import { defaultBlogIconUrl } from '../../util/urls';
+import { history } from 'react-router-dom';
 
 class BlogForm extends React.Component {
 
@@ -11,7 +12,7 @@ class BlogForm extends React.Component {
 
     handleSubmit(e) {   
         e.preventDefault()
-        const { id, image_url } = this.state;
+        const { image_url } = this.state;
 
         if(image_url) {
             this.setState({
@@ -19,9 +20,9 @@ class BlogForm extends React.Component {
             })
         }
 
-        if(this.props.action(this.state)) {
-            this.props.history.push(`/blogs/${id}`)
-        }
+        this.props.action(this.state)
+        .then(action => this.props.history.push(`/blogs/${action.blog.id}`))
+                 
     }
 
     update(field) {

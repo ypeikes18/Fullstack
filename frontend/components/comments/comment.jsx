@@ -39,7 +39,7 @@ class Comment extends React.Component {
         }
 
         const dropdown = (
-            <div className="dropdown-container" tabindex="-1">
+            <div className="dropdown-container" tabIndex="-1">
             <div className="three-dots"></div>
             <div className="dropdown">
                 <button 

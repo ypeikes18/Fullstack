@@ -8,7 +8,8 @@ const mSTP = state => {
         blog: {
             title: '',
             description: '',
-            icon_url: ''
+            icon_url: '',
+            author_id: state.session.currentUserId
         },
         hiddenInput: {
             author_id: state.session.currentUserId
