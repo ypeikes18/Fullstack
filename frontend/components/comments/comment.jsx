@@ -32,13 +32,13 @@ class Comment extends React.Component {
                 </div>
                 <p>{body}</p>
 
-                <div class="dropdown-container" tabindex="-1">
+                {/* <div class="dropdown-container" tabindex="-1">
                     <div class="three-dots"></div>
                     <div class="dropdown">
                         <a href="#">Edit</a>
                         <a href="#">Delete</a>
                     </div>
-                </div>
+                </div> */}
 
                 { < CreateCommentContainer 
                     parentCommentId={this.props.comment.id}/>}
