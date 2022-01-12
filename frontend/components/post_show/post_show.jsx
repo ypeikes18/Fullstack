@@ -1,13 +1,14 @@
 import React from 'react';
 
 import CommentContainer from '.././comments/comment_container';
+import CreateCommentContainer from '.././comments/create_comment_container';
 
 class PostShow extends React.Component {
 
     
     constructor(props) {
         super(props);
-        this.createCommentsIndex = this.createCommentsIndex.bind(this);
+        this.CreateCommentContainer = this.createCommentsIndex.bind(this);
     }
     
     componentDidMount() {
@@ -24,9 +25,9 @@ class PostShow extends React.Component {
         const parentComments = this.props.post.parentComments;
 
         return parentComments.map((commentId, i) => {
-            return < CommentContainer 
+            return (< CommentContainer 
                     commentId={commentId}
-                    key={i}/>
+                    key={i}/>)
         })
     }
 
@@ -48,6 +49,11 @@ class PostShow extends React.Component {
                 </div>
 
                 <p id='post-body'>{body}</p>
+
+                {< CreateCommentContainer
+                 postId={post.id}
+                 topLevel={true}
+                 parentCommentId={''}/>}
                 {this.createCommentsIndex()}
             </div>
         )

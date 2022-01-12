@@ -26,19 +26,19 @@ class Comment extends React.Component {
         return (
             <div className='comment'>
                 <div>
-                    <span>{commenterName}</span>
+                    <strong>{commenterName}</strong>
                     {}
                     <span>{created_at}</span>
                 </div>
                 <p>{body}</p>
 
-                {/* <div class="dropdown-container" tabindex="-1">
+                <div class="dropdown-container" tabindex="-1">
                     <div class="three-dots"></div>
                     <div class="dropdown">
                         <a href="#">Edit</a>
                         <a href="#">Delete</a>
                     </div>
-                </div> */}
+                </div>
 
                 { < CreateCommentContainer 
                     parentCommentId={this.props.comment.id}/>}

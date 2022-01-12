@@ -5,11 +5,14 @@ import { createComment } from '../../actions/comment_actions'
 
 const mSTP = (state, ownProps) => {
     const parentCommentId = ownProps.parentCommentId;
+    const postId = (parentCommentId ? (
+        state.entities.comments[parentCommentId]['post_id']) : (ownProps.postId));
+        
     return {
         comment: {
             commenter_id: state.session.currentUserId,
-            parent_comment_id: ownProps.parentCommentId,
-            post_id: state.entities.comments[parentCommentId]['post_id'],
+            parent_comment_id: (parentCommentId ? parentCommentId : ''),
+            post_id: postId,
             body: ''
         },
         type: 'create'

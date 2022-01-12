@@ -4,10 +4,16 @@ class CommentForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { show: 'button',
-                       comment: this.props.comment };
+        this.state = this.createState();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    createState() {
+        const state = { show: 'button',
+                        comment: this.props.comment };
+        if(this.props.topLevel) state.show = 'form';
+        return state;
     }
 
     componentDidMount() {
@@ -42,6 +48,21 @@ class CommentForm extends React.Component {
             })
         }
     }
+
+    createCancelButton() {
+        if(this.props.topLevel){
+            return null;
+        } else {
+            return (
+                <button
+                type='button'
+                className='comment-cancel-button'
+                onClick={this.handleClick}>
+                    cancel
+                </button>
+            )
+        }
+    }
     
     render() {
 
@@ -68,12 +89,7 @@ class CommentForm extends React.Component {
                                     Post
                                 </button>
 
-                                <button
-                                type='button'
-                                className='comment-cancel-button'
-                                onClick={this.handleClick}>
-                                    cancel
-                                </button>
+                                {this.createCancelButton()}
 
                             </form>
                         </div>)
