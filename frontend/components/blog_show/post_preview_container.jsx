@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPost, deletePost } from '../../actions/post_actions';
+import ThreeDotsDropdown from '.././dropdowns/three_dots_dropdown';
 
 class PostPreview extends React.Component {
 
@@ -44,7 +45,10 @@ class PostPreview extends React.Component {
                        </div>);
         const latestPostPreview = (<div id='latest-post-preview'>
                             <Link to={postUrl}>
-                                {img}{text}
+                                {img}
+                                {text}
+                                {<ThreeDotsDropdown 
+                                  options={[(<p>1</p>),(<p>2</p>)]}/>}
                             </Link>
                             </div>);               
        

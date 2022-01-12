@@ -5,7 +5,7 @@ const ThreeDotsDropdown = (props) => {
             <div className="dropdown-container" tabindex="-1">
             <div className="three-dots"></div>
             <div className="dropdown">
-                {this.props.options.map( option => (
+                {props.options.map( option => (
                     option
                 ))}
             </div>
