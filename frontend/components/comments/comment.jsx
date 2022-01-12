@@ -39,9 +39,9 @@ class Comment extends React.Component {
         }
 
         const dropdown = (
-            <div class="dropdown-container" tabindex="-1">
-            <div class="three-dots"></div>
-            <div class="dropdown">
+            <div className="dropdown-container" tabindex="-1">
+            <div className="three-dots"></div>
+            <div className="dropdown">
                 <button 
                 type='button'
                 onClick={() => this.props.deleteComment(id)}>
