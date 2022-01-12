@@ -1,15 +1,12 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import {
   Route,
-  Redirect,
   Switch,
   Link,
   HashRouter,
-  Routes
 } from 'react-router-dom';
 
-import TopBar from './top_bar/top_bar';
+import HomeTopBar from './top_bar/home_top_bar';
 import AccountSettings from './account_settings/account_settings';
 import SignInFormContainer from './user_forms/sign_in_form_container';
 import SplashContent from './splash_content/splash_content';
@@ -39,7 +36,7 @@ export default class App extends React.Component {
                 <Switch>
                   <Route exact path='/blogs/:blogId' component={ BlogBannerContainer }/>
                   <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/>
-                  <Route path='/' component={ TopBar }/>
+                  <Route path='/' component={ HomeTopBar }/>
                 </Switch>            
                
                <Switch>
