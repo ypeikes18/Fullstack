@@ -41,7 +41,7 @@ class BlogShow extends React.Component {
         
         return (
             <div id='blog-show-container'>
-                {posts[0] ? postPreview : (<></>)}
+                {posts[0] ? postPreview : null}
                 <div id='blog-nav-link-list'>
                         <NavLink to={`blogs/${blogId}`}>
                             Latest
@@ -51,7 +51,7 @@ class BlogShow extends React.Component {
                             Popular
                         </NavLink>
                 </div>
-                {posts[1] ? postIndex : (<></>)}
+                {posts[1] ? postIndex : null}
             </div>
         )
     }

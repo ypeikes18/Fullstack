@@ -5,15 +5,18 @@ import { fetchComment,
          updateComment } from '../../actions/comment_actions'
 
 const mSTP = (state, ownProps) => {
+    
     return {
-        comment: state.entities.comments[ownProps.commentId]
+        comment: state.entities.comments[ownProps.commentId],
+        type: 'edit'        
     }
 }
 
 const mDTP = dispatch => {
+
     return {
         fetchComment: commentId => dispatch(fetchComment(commentId)),
-        action: comment => dispatch(updateComment(comment))
+        action: comment => dispatch(updateComment(comment)),
     }
 }
 

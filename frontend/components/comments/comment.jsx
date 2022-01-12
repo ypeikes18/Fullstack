@@ -1,18 +1,27 @@
 import React from 'react';
 
 import CreateCommentContainer from './create_comment_container';
+import EditCommentContainer from './edit_comment_container';
 import CommentContainer from './comment_container';
 
 class Comment extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = this.props;
+        this.state = { editable: this.props.editable };
+        this.makeEditable = this.makeEditable.bind(this);
     }
 
     componentDidMount() {        
         const { fetchComment, commentId } = this.props;
         fetchComment(commentId);
+    }
+
+    makeEditable(e) {
+        e.preventDefault()
+        this.setState({
+            editable: true
+        })
     }
 
     render() {
@@ -21,7 +30,32 @@ class Comment extends React.Component {
         const { commenterName, 
                 body, 
                 created_at, 
-                childComments } = this.props.comment;
+                childComments,
+                id } = this.props.comment;
+
+        if(this.state.editable) {
+            return <EditCommentContainer 
+                    commentId={id}/>
+        }
+
+        const dropdown = (
+            <div class="dropdown-container" tabindex="-1">
+            <div class="three-dots"></div>
+            <div class="dropdown">
+                <button 
+                type='button'
+                onClick={() => this.props.deleteComment(id)}>
+                    Delete
+                </button>
+
+                <button 
+                type='button'
+                onClick={this.makeEditable}>
+                    Edit
+                </button>
+            </div>
+        </div>
+        );
 
         return (
             <div className='comment'>
@@ -32,17 +66,12 @@ class Comment extends React.Component {
                 </div>
                 <p>{body}</p>
 
-                {/* <div class="dropdown-container" tabindex="-1">
-                    <div class="three-dots"></div>
-                    <div class="dropdown">
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
-                    </div>
-                </div> */}
-
+            <div className='comment-buttons-container'>
                 { < CreateCommentContainer 
                     parentCommentId={this.props.comment.id}/>}
-
+                { this.props.isCommenter ? dropdown : null}
+            </div>
+            
                 {childComments.map((commentId, i) => {
                     return < CommentContainer 
                             commentId={commentId}

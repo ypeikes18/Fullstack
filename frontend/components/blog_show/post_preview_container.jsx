@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchPost } from '../../actions/post_actions';
+import { fetchPost, deletePost } from '../../actions/post_actions';
 
 class PostPreview extends React.Component {
 
@@ -54,6 +54,7 @@ class PostPreview extends React.Component {
                                 </Link> 
                             </div>)
 
+
         if(latestPost) {
             return latestPostPreview;
         } else {
@@ -71,7 +72,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return {
-    fetchPost: postId => dispatch(fetchPost(postId))    
+    fetchPost: postId => dispatch(fetchPost(postId)),
+    deletePost: postId => dispatch(deletePost(postId)) 
     }
 }
 

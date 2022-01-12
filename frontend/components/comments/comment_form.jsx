@@ -10,9 +10,12 @@ class CommentForm extends React.Component {
     }
 
     createState() {
+        const { type, topLevel } = this.props;
         const state = { show: 'button',
                         comment: this.props.comment };
-        if(this.props.topLevel) state.show = 'form';
+
+        if(topLevel || type === 'edit') state.show = 'form';
+
         return state;
     }
 
@@ -29,6 +32,7 @@ class CommentForm extends React.Component {
     }
 
     handleClick(e) {
+        
         e.preventDefault();
         const value = (
             this.state.show === 'button' ? 'form' : 'button');
@@ -50,14 +54,19 @@ class CommentForm extends React.Component {
     }
 
     createCancelButton() {
+
         if(this.props.topLevel){
             return null;
         } else {
+            const action = this.props.type === 'create' ? (
+                this.handleClick) : (
+                this.handleSubmit);
+                
             return (
                 <button
                 type='button'
                 className='comment-cancel-button'
-                onClick={this.handleClick}>
+                onClick={action}>
                     cancel
                 </button>
             )
@@ -81,6 +90,7 @@ class CommentForm extends React.Component {
                                 <textarea
                                 className='comment-body-field'
                                 placeholder='write a comment...'
+                                value={this.state.comment.body}
                                 onChange={this.update('body')}/>
 
                                 <button
