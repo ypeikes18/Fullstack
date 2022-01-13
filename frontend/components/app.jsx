@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import HomeTopBar from './top_bar/home_top_bar';
-import AccountSettings from './account_settings/account_settings';
+import AccountDashboard from './account_dashboard/account_dashboard';
 import SignInFormContainer from './user_forms/sign_in_form_container';
 import SplashContent from './splash_content/splash_content';
 import GetStartedFormContainer from './user_forms/start_writing_form_container'
@@ -21,7 +21,6 @@ import EditBlogContainer from './blog_forms/edit_blog_container';
 import CreatePostContainer from './post_forms/create_post_form_container';
 import EditPostContainer from './post_forms/edit_post_form_container';
 
-import WriterDashboard from './writer_dashboard/writer_dashboard';
 import BlogBannerContainer from './top_bar/blog_banner_container'
 import BlogPostBannerContainer from './top_bar/blog_banner_container'
 
@@ -41,8 +40,7 @@ export default class App extends React.Component {
                
                <Switch>
                   < Route exact path='/' component={ SplashContent }/>
-                  < Route path='/account_settings'
-                   component={ AccountSettings }/> 
+
                   < AuthRoute path='/sign-in'
                           component={SignInFormContainer}/> 
                   < AuthRoute path='/sign-up'
@@ -55,7 +53,7 @@ export default class App extends React.Component {
                   < Route exact path='/blogs/:blogId' component={ BlogShowContainer }/>
                   < Route exact path='/blogs/:blogId/posts/:postId' 
                           component={ PostShowContainer }/>
-                  < ProtectedRoute exact path='/blogs/:id/writer-dashboard' component={ WriterDashboard }/>
+                  < ProtectedRoute exact path='/account-dashboard' component={ AccountDashboard }/>
 
 
                </Switch>

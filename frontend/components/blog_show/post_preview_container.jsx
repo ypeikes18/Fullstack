@@ -35,6 +35,10 @@ class PostPreview extends React.Component {
         this.forceUpdate();
     }
 
+    userIsAuthor() {
+        return this.props.currentUserId === this.props.post.authorId;
+    }
+
     render() {
 
         const { latestPost, post, postId } = this.props;
@@ -45,15 +49,10 @@ class PostPreview extends React.Component {
                 subtitle, 
                 created_at, 
                 blog_id,
+                author_id,
                 id } = post;
 
-        const postUrl = `/blogs/${blog_id}/posts/${id}`;
-        const editPostUrl = `/blogs/${blog_id}/posts/${id}/edit`;
-
-        
-        const editButton = (< Link to={editPostUrl}> 
-                            Edit 
-                            </Link>)        
+        const postUrl = `/blogs/${blog_id}/posts/${id}`;    
 
         const img = (<img 
                      src={post.image_url}
@@ -79,15 +78,15 @@ class PostPreview extends React.Component {
                             <div onClick={this.handleClick}>
                                 {img}
                                 {text}
-                                {dropdown}
-
+                                {this.userIsAuthor() ? dropdown : null}
                             </div>
                             </div>);               
        
         const postPreview = (<div className='post-preview-container'>
-                                <Link to={postUrl}>
+                                <div onClick={this.handleClick}>
                                     {text}
-                                </Link> 
+                                    {this.userIsAuthor() ? dropdown : null}
+                                </div> 
                             </div>)
 
 

@@ -4,7 +4,7 @@ class Post < ApplicationRecord
     foreign_key: :blog_id,
     class_name: :Blog
 
-    has_one :author, through: :blogs, foreign_key: :author_id
+    has_one :author, through: :blog, foreign_key: :author_id
 
     has_many :comments,
     foreign_key: :post_id,

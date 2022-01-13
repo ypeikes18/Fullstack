@@ -29,6 +29,7 @@ class CommentForm extends React.Component {
     handleSubmit(e) {
         this.handleClick(e)
         this.props.action(this.state.comment);
+        this.setState(this.state);
     }
 
     handleClick(e) {

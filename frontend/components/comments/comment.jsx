@@ -39,43 +39,23 @@ class Comment extends React.Component {
                     commentId={id}/>
         }
 
-        // const dropdown = (
-        //     <div className="dropdown-container" tabIndex="-1">
-        //         <div className="three-dots"></div>
-        //     <div className="dropdown">
-        //         <button 
-        //         type='button'
-        //         onClick={() => this.props.deleteComment(id)}>
-        //             Delete
-        //         </button>
+        const editButton = (<button 
+                            type='button'
+                            onClick={this.makeEditable}>
+                                Edit
+                            </button>);
 
-        //         <button 
-        //         type='button'
-        //         onClick={this.makeEditable}>
-        //             Edit
-        //         </button>
-        //     </div>
-        // </div>
-        // );
+        const deleteButton = (<button 
+                               type='button'
+                               onClick={() => this.props.deleteComment(id)}>
+                                  Delete
+                              </button>);
 
-                const dropdown = (
-            <div className="dropdown-container" tabIndex="-1">
-                <div className="three-dots"></div>
-            <div className="dropdown">
-                <button 
-                type='button'
-                onClick={() => this.props.deleteComment(id)}>
-                    Delete
-                </button>
-
-                <button 
-                type='button'
-                onClick={this.makeEditable}>
-                    Edit
-                </button>
-            </div>
-        </div>
-        );
+        const dropdown = (
+            < ThreeDotsDropdown
+            options=
+            {[editButton,
+              deleteButton]}/>);
 
         return (
             <div className='comment'>
@@ -85,11 +65,11 @@ class Comment extends React.Component {
                     <span>{created_at}</span>
                 </div>
                 <p>{body}</p>
+                
+            { < CreateCommentContainer 
+                parentCommentId={this.props.comment.id}/>}
 
             <div className='comment-buttons-container'>
-                { < CreateCommentContainer 
-                    parentCommentId={this.props.comment.id}/>}
-
                 { this.props.isCommenter ? dropdown : null}
             </div>
             
