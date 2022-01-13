@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { fetchPost, deletePost } from '../../actions/post_actions';
 import ThreeDotsDropdown from '.././dropdowns/three_dots_dropdown';
 
@@ -8,10 +8,31 @@ class PostPreview extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.editPost = this.editPost.bind(this);
+        this.deletePost = this.deletePost.bind(this);
+        this.forceUpdate = this.forceUpdate.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchPost(this.props.postId);
+    }
+
+    handleClick(e) {
+        const { postId, history, post } = this.props;
+        history.push(`/blogs/${post.blog_id}/posts/${postId}`);
+    }
+
+    editPost() {
+        const { post, history } = this.props;
+        const { id, blog_id } = post;
+        history.push(`/blogs/${blog_id}/posts/${id}/edit`); 
+    }
+
+    deletePost() {
+        const { deletePost, post } = this.props;
+        deletePost(post.id);
+        this.forceUpdate();
     }
 
     render() {
@@ -27,8 +48,10 @@ class PostPreview extends React.Component {
                 id } = post;
 
         const postUrl = `/blogs/${blog_id}/posts/${id}`;
+        const editPostUrl = `/blogs/${blog_id}/posts/${id}/edit`;
+
         
-        const editButton = (< Link to={`/blogs/${blog_id}/posts/${id}`}> 
+        const editButton = (< Link to={editPostUrl}> 
                             Edit 
                             </Link>)        
 
@@ -43,13 +66,22 @@ class PostPreview extends React.Component {
                                  {created_at}
                              </div>
                        </div>);
+
+        const dropdown = (<div class='button-bar'>
+                        {/* takes in an array of props to display as option */}
+                            {<ThreeDotsDropdown 
+                              options=
+                              {[(<div onClick={this.editPost}>Edit</div>),
+                                (<div onClick={this.deletePost}>Delete</div>)]}/>}
+                         </div>);
+
         const latestPostPreview = (<div id='latest-post-preview'>
-                            <Link to={postUrl}>
+                            <div onClick={this.handleClick}>
                                 {img}
                                 {text}
-                                {<ThreeDotsDropdown 
-                                  options={[(<p>1</p>),(<p>2</p>)]}/>}
-                            </Link>
+                                {dropdown}
+
+                            </div>
                             </div>);               
        
         const postPreview = (<div className='post-preview-container'>
@@ -77,8 +109,9 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
     return {
     fetchPost: postId => dispatch(fetchPost(postId)),
-    deletePost: postId => dispatch(deletePost(postId)) 
+    deletePost: postId => dispatch(deletePost(postId))
     }
 }
 
-export default connect(mSTP, mDTP)(PostPreview);
+export default  withRouter(
+                    connect(mSTP, mDTP)(PostPreview));

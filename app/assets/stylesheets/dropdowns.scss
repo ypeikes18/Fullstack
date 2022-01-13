@@ -3,23 +3,24 @@
     content: '\2026';
     cursor: pointer;
     font-size: 1.25em;
-    z-index: 1;
+    z-index: 100;
   }
 
   .dropdown {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      cursor: pointer;
   }
   
-  .dropdown a {
+  .dropdown > * {
     color: black;
     width:fit-content;
     width: 100%;
     padding: 2%;
   }
 
-  .dropdown a:hover {
+  .dropdown *:hover {
     background-color: rgb(238, 234, 234);
   }
   

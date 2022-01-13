@@ -3,6 +3,7 @@ import React from 'react';
 import CreateCommentContainer from './create_comment_container';
 import EditCommentContainer from './edit_comment_container';
 import CommentContainer from './comment_container';
+import ThreeDotsDropdown from '../dropdowns/three_dots_dropdown';
 
 class Comment extends React.Component {
 
@@ -38,7 +39,26 @@ class Comment extends React.Component {
                     commentId={id}/>
         }
 
-        const dropdown = (
+        // const dropdown = (
+        //     <div className="dropdown-container" tabIndex="-1">
+        //         <div className="three-dots"></div>
+        //     <div className="dropdown">
+        //         <button 
+        //         type='button'
+        //         onClick={() => this.props.deleteComment(id)}>
+        //             Delete
+        //         </button>
+
+        //         <button 
+        //         type='button'
+        //         onClick={this.makeEditable}>
+        //             Edit
+        //         </button>
+        //     </div>
+        // </div>
+        // );
+
+                const dropdown = (
             <div className="dropdown-container" tabIndex="-1">
                 <div className="three-dots"></div>
             <div className="dropdown">
@@ -69,6 +89,7 @@ class Comment extends React.Component {
             <div className='comment-buttons-container'>
                 { < CreateCommentContainer 
                     parentCommentId={this.props.comment.id}/>}
+
                 { this.props.isCommenter ? dropdown : null}
             </div>
             
