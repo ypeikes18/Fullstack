@@ -1,2 +1,3 @@
-json.extract! @blog, :id, :title, :description, :icon_url, :author_id, :created_at
+json.extract! @blog, :id, :title, :description, :icon_url, :author_id
 json.posts @blog.posts.pluck(:id).reverse
+json.created_at parse_time_stamp(@blog.created_at)

@@ -4,4 +4,5 @@ module ApplicationHelper
         timestamp.to_formatted_s(:long)
     end
 
+
 end
