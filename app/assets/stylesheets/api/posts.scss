@@ -1,50 +1,58 @@
 // Place all the styles related to the api/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#comments-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: 0.08em solid lightgray;
+}
+
+#post-content-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
 
 #post-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-}
-
-#post-container #post-body, 
-#post-title-container, 
-#post-subtitle-container {
-    margin: 1% 0 1% 3%;
+    width: 45%;
 }
 
 #post-title,
 #post-header,
 #post-subtitle {
-    margin: 0;
     line-height: 1.25;
+}
+
+#post-body-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 #post-body {
     line-height: 1.75;
     font-size: large;
     white-space: pre-wrap;
-    margin: 0 0 3em 0;
-    width: 50%;
+    
 }
 
-#post-container > .comment {
-    width: 10%;
-}
 
 #comments-container {
-    width: 100%;
-    border-top: 0.08em solid lightgray;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 1000px 0 1000px;
+    width: 45%;
 }
 
 #comments-container-banner-text {
     color:gray;
-    margin: auto;
+    margin: 2em 0;
 }
 
 

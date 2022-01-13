@@ -5,7 +5,6 @@ import CreateCommentContainer from '.././comments/create_comment_container';
 
 class PostShow extends React.Component {
 
-    
     constructor(props) {
         super(props);
         this.CreateCommentContainer = this.createCommentsIndex.bind(this);
@@ -39,30 +38,33 @@ class PostShow extends React.Component {
         const { title, subtitle, body } = post;
 
         return (
-            <div id='post-container'>
-                <div id='post-title-container'>
-                    <h1 id='post-title'>{title}</h1>
+            <div id='post-content-section'>
+                <div id='post-container'>
+                    <div id='post-title-container'>
+                        <h1 id='post-title'>{title}</h1>
+                    </div>
+
+                    <div id='post-subtitle-container'>
+                    <h3 id='post-subtitle'>{subtitle}</h3>
+                    </div>
+
+                    <div id='post-body-container'>
+                        <p id='post-body'>{body}</p>
+                    </div>
                 </div>
 
-                <div id='post-subtitle-container'>
-                <h3 id='post-subtitle'>{subtitle}</h3>
+                <div id='comments-section'>
+                    <div id='comments-container'>
+                        <span id='comments-container-banner-text'>
+                            Discussion
+                        </span>
+                        {< CreateCommentContainer
+                        postId={post.id}
+                        topLevel={true}
+                        parentCommentId={''}/>}
+                        {this.createCommentsIndex()}
+                    </div>
                 </div>
-
-                <div id='post-body-container'>
-                    <p id='post-body'>{body}</p>
-                </div>
-
-                <div id='comments-container'>
-                    <span id='comments-container-banner-text'>
-                        Discussion
-                    </span>
-                    {< CreateCommentContainer
-                    postId={post.id}
-                    topLevel={true}
-                    parentCommentId={''}/>}
-                    {this.createCommentsIndex()}
-                </div>
-
             </div>
         )
     }
