@@ -26,7 +26,7 @@ export const fetchPost = postId => dispatch => (
 
 export const deletePost = postId => dispatch => (
     PostApiUtil.deletePost(postId)
-    .then(post => dispatch(removePost(post)))
+    .then(post => dispatch(removePost(post.id)))
 )
 
 export const updatePost = post => dispatch => (

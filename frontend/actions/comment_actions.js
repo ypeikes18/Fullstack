@@ -36,7 +36,7 @@ export const fetchComment = commentId => dispatch => {
 
 export const deleteComment = commentId => dispatch => (
     CommentApiUtil.deleteComment(commentId)
-    .then(() => dispatch(removeComment(commentId)),
+    .then(comment => dispatch(removeComment(comment.id)),
     errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 

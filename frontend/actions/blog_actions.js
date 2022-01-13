@@ -36,7 +36,7 @@ export const fetchBlog = blogId => dispatch => {
 
 export const deleteBlog = blogId => dispatch => (
     BlogApiUtil.deleteBlog(blogId)
-    .then(blog => dispatch(removeBlog(blog)),
+    .then(blog => dispatch(removeBlog(blogId)),
     errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 
