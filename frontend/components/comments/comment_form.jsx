@@ -7,6 +7,7 @@ class CommentForm extends React.Component {
         this.state = this.createState();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.createState = this.createState.bind(this)
     }
 
     createState() {
@@ -27,13 +28,21 @@ class CommentForm extends React.Component {
     }
 
     handleSubmit(e) {
+        const { fetchComment } = this.props; 
+        const { comment } = this.state;
+
         this.handleClick(e)
-        this.props.action(this.state.comment);
-        this.setState(this.state);
+
+        this.props.action(comment)
+        .then(action => (
+            fetchComment(action.comment.parent_comment_id)))
+        .then(() => this.setState(
+            this.createState())
+        )
+    
     }
 
-    handleClick(e) {
-        
+    handleClick(e) {        
         e.preventDefault();
         const value = (
             this.state.show === 'button' ? 'form' : 'button');
@@ -76,7 +85,7 @@ class CommentForm extends React.Component {
     
     render() {
 
-        const button = (<button
+        const buttons = (<button
                         className='comment-reply-button'
                         type='button'
                         onClick={this.handleClick}>
@@ -105,7 +114,7 @@ class CommentForm extends React.Component {
                             </form>
                         </div>)
         return (<div>
-                    {this.state.show === 'form' ? form : button}    
+                    {this.state.show === 'form' ? form : buttons}    
                 </div>)
         
     }

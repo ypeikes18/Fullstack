@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import CommentForm from './comment_form';
-import { createComment } from '../../actions/comment_actions'
+import { createComment, fetchComment } from '../../actions/comment_actions'
 
 const mSTP = (state, ownProps) => {
     const parentCommentId = ownProps.parentCommentId;
@@ -21,7 +21,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return {
-        action: comment => dispatch(createComment(comment))
+        action: comment => dispatch(createComment(comment)),
+        fetchComment: commentId => dispatch(fetchComment(commentId))
     }
 }
 
