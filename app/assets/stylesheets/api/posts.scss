@@ -26,6 +26,7 @@
     font-size: large;
     white-space: pre-wrap;
     margin: 0 0 3em 0;
+    width: 50%;
 }
 
 #post-container > .comment {
@@ -37,15 +38,15 @@
     border-top: 0.08em solid lightgray;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 0 1000px 0 1000px;
 }
 
 #comments-container-banner-text {
     color:gray;
+    margin: auto;
 }
 
-#comment-container {
 
-}
 
 

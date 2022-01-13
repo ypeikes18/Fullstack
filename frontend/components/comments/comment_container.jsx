@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 
 import Comment from './comment';
-import { fetchComment, deleteComment } from '../../actions/comment_actions'
+import { fetchComment, 
+         deleteComment, 
+         updateComment } from '../../actions/comment_actions'
 
 const mSTP = (state, ownProps) => {
     const commentId = ownProps.commentId;
@@ -16,7 +18,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
     return {
         fetchComment: commentId => dispatch(fetchComment(commentId)),
-        deleteComment: commentId => dispatch(deleteComment(commentId))
+        deleteComment: commentId => dispatch(deleteComment(commentId)),
+        updateComment: comment => dispatch(updateComment(comment))
     }
 }
 

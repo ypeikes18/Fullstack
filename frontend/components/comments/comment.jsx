@@ -11,6 +11,7 @@ class Comment extends React.Component {
         super(props);
         this.state = { editable: this.props.editable };
         this.makeEditable = this.makeEditable.bind(this);
+        this.deleteComment = this.deleteComment.bind(this);
     }
 
     componentDidMount() {        
@@ -23,6 +24,15 @@ class Comment extends React.Component {
         this.setState({
             editable: true
         })
+    }
+
+    deleteComment() {
+        const { updateComment, comment, fetchComment } = this.props;
+        const newComment = Object.assign(
+            comment, { body: 'deleted'}
+        );
+        updateComment(newComment)
+        .then(action => fetchComment(action.comment.id))
     }
 
     render() {
@@ -47,7 +57,7 @@ class Comment extends React.Component {
 
         const deleteButton = (<button 
                                type='button'
-                               onClick={() => this.props.deleteComment(id)}>
+                               onClick={this.deleteComment}>
                                   Delete
                               </button>);
 
