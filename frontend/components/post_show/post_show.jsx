@@ -15,14 +15,14 @@ class PostShow extends React.Component {
         const { fetchPost, match, post } = this.props;
         const postId = match.params.postId;
         if(!post) {
-            this.props.fetchPost(postId);
+            fetchPost(postId);
         }
     }
 
     createCommentsIndex() {
         if(!this.props.post) return null;
 
-        const parentComments = this.props.post.parentComments;
+        const { parentComments } = this.props.post;
 
         return parentComments.map((commentId, i) => {
             return (< CommentContainer 
@@ -48,13 +48,21 @@ class PostShow extends React.Component {
                 <h3 id='post-subtitle'>{subtitle}</h3>
                 </div>
 
-                <p id='post-body'>{body}</p>
+                <div id='post-body-container'>
+                    <p id='post-body'>{body}</p>
+                </div>
 
-                {< CreateCommentContainer
-                 postId={post.id}
-                 topLevel={true}
-                 parentCommentId={''}/>}
-                {this.createCommentsIndex()}
+                <div id='comments-container'>
+                    <span id='comments-container-banner-text'>
+                        Discussion
+                    </span>
+                    {< CreateCommentContainer
+                    postId={post.id}
+                    topLevel={true}
+                    parentCommentId={''}/>}
+                    {this.createCommentsIndex()}
+                </div>
+
             </div>
         )
     }

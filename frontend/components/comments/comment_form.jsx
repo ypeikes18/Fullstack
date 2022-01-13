@@ -92,28 +92,26 @@ class CommentForm extends React.Component {
                           Reply
                         </button>);
 
-        const form = (  <div className='comment-form-container'>
-                            <form 
-                            onSubmit={this.handleSubmit}
-                            className='comment-form'>
+        const form = (<form 
+                        onSubmit={this.handleSubmit}
+                        className='comment-form'>
 
-                                <textarea
-                                className='comment-body-field'
-                                placeholder='write a comment...'
-                                value={this.state.comment.body}
-                                onChange={this.update('body')}/>
+                            <textarea
+                            className='comment-body-field'
+                            placeholder='write a comment...'
+                            value={this.state.comment.body}
+                            onChange={this.update('body')}/>
 
-                                <button
-                                type='submit'
-                                className='comment-submit-button'>
-                                    Post
-                                </button>
+                            <button
+                            type='submit'
+                            className='comment-submit-button'>
+                                Post
+                            </button>
 
-                                {this.createCancelButton()}
+                            {this.createCancelButton()}
+                        </form>)
 
-                            </form>
-                        </div>)
-        return (<div>
+        return (<div className='comment-form-container'>
                     {this.state.show === 'form' ? form : buttons}    
                 </div>)
         

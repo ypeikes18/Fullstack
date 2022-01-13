@@ -5,14 +5,13 @@
 #post-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #post-container #post-body, 
 #post-title-container, 
 #post-subtitle-container {
-    margin: 0 28%;
-    margin-top: 2%;
-
+    margin: 1% 0 1% 3%;
 }
 
 #post-title,
@@ -26,5 +25,27 @@
     line-height: 1.75;
     font-size: large;
     white-space: pre-wrap;
+    margin: 0 0 3em 0;
 }
+
+#post-container > .comment {
+    width: 10%;
+}
+
+#comments-container {
+    width: 100%;
+    border-top: 0.08em solid lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#comments-container-banner-text {
+    color:gray;
+}
+
+#comment-container {
+
+}
+
 
