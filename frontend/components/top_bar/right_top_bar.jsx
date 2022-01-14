@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import DropDown from './dropdown';
 import IconMenuContainer from './icon_menu_container';
 import { userIconUrl } from '../../util/urls';
 import { Link } from 'react-router-dom';
-import { dropdown1 } from '../../util/dropdowns'
+import Dropdown from '.././dropdowns/dropdown';
 import { logout } from '../../actions/session_actions'
 
 
@@ -42,9 +41,13 @@ class RightTopBar extends React.Component {
 
         return (
             <ul id='right-top-bar'>
-                < DropDown />
-                < DropDown />
-                < DropDown />
+                < Dropdown 
+                options={[]}
+                icon={'Menu'}/>
+                < Dropdown 
+                options={[]}/>
+                < Dropdown 
+                options={[]}/>                
                 {this.props.currentUserId ? (
                     loggedInComponents) : (
                     loggedOutComponents   

@@ -3,7 +3,7 @@ import React from 'react';
 import CreateCommentContainer from './create_comment_container';
 import EditCommentContainer from './edit_comment_container';
 import CommentContainer from './comment_container';
-import ThreeDotsDropdown from '../dropdowns/three_dots_dropdown';
+import Dropdown from '../dropdowns/dropdown';
 
 class Comment extends React.Component {
 
@@ -62,7 +62,7 @@ class Comment extends React.Component {
                               </button>);
 
         const dropdown = (
-            < ThreeDotsDropdown
+            < Dropdown
             options=
             {[editButton,
               deleteButton]}/>);

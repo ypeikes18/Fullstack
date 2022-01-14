@@ -21,8 +21,9 @@ import EditBlogContainer from './blog_forms/edit_blog_container';
 import CreatePostContainer from './post_forms/create_post_form_container';
 import EditPostContainer from './post_forms/edit_post_form_container';
 
-import BlogBannerContainer from './top_bar/blog_banner_container'
-import BlogPostBannerContainer from './top_bar/blog_banner_container'
+import BlogBannerContainer from './top_bar/blog_banner_container';
+import BlogPostBannerContainer from './top_bar/blog_banner_container';
+import Footer from './footer/footer';
 
 export default class App extends React.Component {
 
@@ -54,9 +55,8 @@ export default class App extends React.Component {
                   < Route exact path='/blogs/:blogId/posts/:postId' 
                           component={ PostShowContainer }/>
                   < ProtectedRoute exact path='/account-dashboard' component={ AccountDashboard }/>
-
-
                </Switch>
+                  < Route path='/' component={ Footer }/>
              </div>)  
     }
 

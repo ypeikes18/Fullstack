@@ -27,11 +27,6 @@
 }
 
 .user-form > textarea {
-    height: 15%;
-    width: 50%;
-    border: none;
-    border-bottom: 1px solid lightgray;
-    outline: none;
     resize: none;
 }
 
@@ -44,6 +39,17 @@
     outline: none;
     border: none;
     border-bottom: 1px solid lightgray;
+}
+
+.user-form > textarea {
+    width: 50%;
+    height: 1%;
+    padding: 2%;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    line-height: 1.5;
 }
 
 input:-webkit-autofill {
@@ -77,3 +83,7 @@ input:autofill {
 
 }
 
+.orange-span {
+    color: orange;
+    margin-left: 0.25em;
+}

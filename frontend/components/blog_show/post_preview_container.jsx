@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchPost, deletePost } from '../../actions/post_actions';
-import ThreeDotsDropdown from '.././dropdowns/three_dots_dropdown';
+import Dropdown from '.././dropdowns/dropdown';
 
 class PostPreview extends React.Component {
 
@@ -68,7 +68,7 @@ class PostPreview extends React.Component {
 
         const dropdown = (<div class='button-bar'>
                         {/* takes in an array of props to display as option */}
-                            {<ThreeDotsDropdown 
+                            {<Dropdown 
                               options=
                               {[(<div onClick={this.editPost}>Edit</div>),
                                 (<div onClick={this.deletePost}>Delete</div>)]}/>}

@@ -85,12 +85,14 @@ class CommentForm extends React.Component {
     
     render() {
 
-        const buttons = (<button
-                        className='comment-reply-button'
-                        type='button'
-                        onClick={this.handleClick}>
-                          Reply
-                        </button>);
+        const buttons = (<div className='comment-form-reply-container'>
+                            <button
+                            className='comment-reply-button'
+                            type='button'
+                            onClick={this.handleClick}>
+                            Reply
+                            </button>
+                        </div>);
 
         const form = (<form 
                         onSubmit={this.handleSubmit}
@@ -102,13 +104,14 @@ class CommentForm extends React.Component {
                             value={this.state.comment.body}
                             onChange={this.update('body')}/>
 
-                            <button
-                            type='submit'
-                            className='comment-submit-button'>
-                                Post
-                            </button>
-
-                            {this.createCancelButton()}
+                            <div className='comment-form-button-container'>
+                                <button
+                                type='submit'
+                                className='comment-submit-button'>
+                                    Post
+                                </button>
+                                {this.createCancelButton()}
+                            </div>
                         </form>)
 
         return (<div className='comment-form-container'>

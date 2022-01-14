@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ThreeDotsDropdown from '.././dropdowns/three_dots_dropdown';
+import Dropdown from '.././dropdowns/dropdown';
 
 class BlogPreview extends React.Component {
 
@@ -46,7 +46,7 @@ class BlogPreview extends React.Component {
                 <h1 className='blog-title'>{blog.title}</h1>
                 <h2 className='blog-title'>{blog.description}</h2>
                 <img src={blog.icon_url}/>
-                < ThreeDotsDropdown options={
+                < Dropdown options={
                     [
                         <div onClick={this.deleteBlog}>
                             Delete

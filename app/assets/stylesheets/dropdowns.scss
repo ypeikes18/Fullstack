@@ -1,5 +1,10 @@
-.three-dots:after {
+.three-dots-container:after {
     color: gray;
+    content: '\2026';
+  }
+
+  .dropdown-icon-container:after,
+  .three-dots-container:after {
     content: '\2026';
     cursor: pointer;
     font-size: 1.25em;

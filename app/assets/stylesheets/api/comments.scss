@@ -2,13 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.comment {
+.comment > .comment {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    width: 80%;
+    margin-left: 20%;
     border-left: 0.1em solid lightgray;
-    padding: 1em 0 0 1em;
+}
+
+.comment {
+    margin-left: 0;
 }
 
 .comment-reply-button {
@@ -19,8 +21,11 @@
 }
 
 .comment-body-field {
-    outline: normal;
-    border: lightblue;
+    border: 0.1em solid lightgray;
+    resize: none;
+    border-radius: 5%;
+    outline: rgb(28, 179, 230);
+    width: 100%;
 }
 
 .comment-buttons-container {
@@ -28,5 +33,27 @@
     flex-direction: row;
     justify-content: flex-start;
     position: relative;
+}
+
+.comment-form-container {
+    width: 100%;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comment-form-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
 }
 

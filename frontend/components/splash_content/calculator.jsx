@@ -75,7 +75,7 @@ class Calculator extends React.Component {
                     <strong>{`$${this.addComas(revenue)}`}</strong> per month
                 </span>
                 <Link className='orange-button' 
-                      to=''>
+                      to='/sign-up'>
                       Get Started
                 </Link>
             </div>

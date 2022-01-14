@@ -95,13 +95,40 @@ class UserForm extends React.Component {
                                 {submit}
                                 {demoUser}
                                 </form>); 
+
+
+
+        const signInLink = (<p to='/sign-in'>
+                            Already have an account? 
+                            <span className='orange-span'>
+                                <Link to='/sign-in'>
+                                    Sign in
+                                </Link>    
+                            </span>
+                            </p>);
+
+        const signUpLink = (<p to='/sign-in'>
+                                Don't have an account yet? 
+                                <span className='orange-span'>
+                                    <Link to='/sign-up'>
+                                        Sign up
+                                    </Link>    
+                                </span>
+                            </p>);
+
+
+        const { formType } = this.props;                                
+
         return (
             <div id='user-form-container'>
                 < img src={subStackURL}
                            id='full-stack-icon'/>
                 <span>continue to</span>
                 <strong>Fullstack</strong>
-                {this.props.formType === 'Sign in' ? loginForm : signUpForm}
+                {formType === 'Sign in' ? loginForm : signUpForm}
+                <div id='other-link'>
+                    {formType === 'Sign in' ? signUpLink : signInLink}
+                </div>
             </div>
         )
     }
