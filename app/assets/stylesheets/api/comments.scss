@@ -27,14 +27,12 @@
     resize: none;
     border-radius: 5%;
     outline: rgb(28, 179, 230);
-    width: 100%;
 }
 
 .comment-buttons-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    position: relative;
 }
 
 .comment-form-container {
@@ -44,19 +42,11 @@
 .comment-form {
     display: flex;
     flex-direction: column;
-    width: 95%;
-}
-
-.comment-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
 }
 
 .comment-form-button-container {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
 }
 
 .comment-buttons-container {
