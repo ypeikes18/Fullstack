@@ -1,4 +1,4 @@
-# Size Limit
+# Fullstack
 
 [Fullstack](https://fullstack-aa.herokuapp.com/#/) is a clone of the popular blogging platform [Substack](https://substack.com/). Fullstack allows writers to create blogs, posts, and also allows for commenting on posts. The UI is designed to be clean and simple. Fullstack is commited to free speech and will never censor it's writers.
 
