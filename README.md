@@ -17,6 +17,33 @@ This was accomplished as follows:
 ![image](https://user-images.githubusercontent.com/59425912/149537263-d3ef6aa2-09ee-4691-9d28-beb8a2b64b47.png)
 * sample state of a post with it's top level comments' *
 
+* Similiarly, each comment in the the state has an array of child comment IDs. This allows us to recursively render comments in the `Comment` component by iterating through each child comment Id and rendering it as another comment. 
+
+`
+     return (
+          <div className='comment'>
+              <div className='comment-banner-container'>
+                  <strong>{commenterName}</strong>
+                  <span className='comment-date'>{created_at}</span>
+              </div>
+              <p>{body}</p>
+
+          <div className='comment-buttons-container'>
+              { < CreateCommentContainer 
+              parentCommentId={this.props.comment.id}/>}
+              { this.props.isCommenter ? dropdown : null}
+          </div>         
+              {childComments.map((commentId, i) => {
+                  return < CommentContainer 
+                          commentId={commentId}
+                          key={i}/>
+              })}
+          </div>
+        )
+    }`
+
+
+
 
 
 
