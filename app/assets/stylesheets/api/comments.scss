@@ -11,6 +11,8 @@
 
 .comment {
     margin-left: 0;
+    padding: 0 0 0 3vw;  
+    margin: 1vh 0 0 0;  
 }
 
 .comment-reply-button {
@@ -36,7 +38,7 @@
 }
 
 .comment-form-container {
-    width: 100%;
+    width: fit-content;
 }
 
 .comment-form {
@@ -55,5 +57,51 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
+}
+
+.comment-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.comment-buttons-container > *:last-child {
+    padding: 0 0 0 1vw;
+}
+
+.dropdown .comment-form-button {
+    padding: 1vh 1vw;
+    width: auto;
+} 
+
+.comment-body-field {
+    width: 33vw;
+    z-index: 101;
+}
+
+.comment .dropdown-container {
+    position: -webkit-sticky;
+}
+
+.comment-date {
+    margin: 0 0 0 0.75vw;
+}
+
+.comment-submit-button {
+    background-color: lightskyblue;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 15%;
+    font-size: 1.8vh;
+    padding: .75vh 0.5vw;
+    margin: 1vh 0 0 0;
+}
+
+.comment-cancel-button {
+    background-color: white;
+    border: none;
+    color: gray;
+    padding: .75vh 0.5vw;
 }
 

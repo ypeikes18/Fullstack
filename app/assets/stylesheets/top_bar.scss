@@ -43,13 +43,44 @@
     display: inline-block;   
 }
 
-
-
 #user-icon {
     border-radius: 50%;
     height: 45%;
     width: 45%;
     margin-left: 5%;
+}
+
+#icon-menu-container {
+    position: relative;
+    cursor: pointer;
+}
+
+#icon-menu-container > ul {
+    list-style: none;
+    position: absolute;
+    cursor: pointer;
+}
+
+
+
+#icon-menu-container > ul.revealed {
+    padding: 0 1em;
+    border: 0.1em solid lightgray; 
+    border-radius: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   
+    width: fit-content;
+}
+
+ul.revealed > *:hover {
+    background-color: #f8f8f8;
+}
+
+ul.revealed  * {
+    width: fit-content;
+    background-color: white;
+    z-index: 100;
 }
 
 #search-bar-form {
@@ -65,6 +96,10 @@
 #top-bar-blog-image {
     height: 45px;
     width: 45px;
+}
+
+#top-bar .dropdown-container {
+    padding-right: 0.5em;
 }
 
 

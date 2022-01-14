@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class IconMenu extends React.Component {
 
@@ -11,7 +12,7 @@ class IconMenu extends React.Component {
 
     toggleReveal(e) {
         e.preventDefault();
-        const newState = this.state.className === 'hidden' ? '' : 'hidden';
+        const newState = this.state.className === 'hidden' ? 'revealed' : 'hidden';
         this.setState({className: newState})
     }
     
@@ -21,13 +22,15 @@ class IconMenu extends React.Component {
                       id='user-icon'/>);
         
         return (
-            <div 
+            <div
+            id='icon-menu-container' 
             onClick={this.toggleReveal}>
                 {img}
                 <ul className={this.state.className}>
                     <li onClick={this.props.logout}>
                         logout
                     </li>
+
                 </ul>
             </div>  
         )

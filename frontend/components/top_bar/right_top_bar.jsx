@@ -43,11 +43,13 @@ class RightTopBar extends React.Component {
             <ul id='right-top-bar'>
                 < Dropdown 
                 options={[]}
-                icon={'Menu'}/>
+                icon={'Reader'}/>
                 < Dropdown 
-                options={[]}/>
+                options={[]}
+                icon={'Resources'}/>
                 < Dropdown 
-                options={[]}/>                
+                options={[]}
+                icon={'Writers'}/>                
                 {this.props.currentUserId ? (
                     loggedInComponents) : (
                     loggedOutComponents   
