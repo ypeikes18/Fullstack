@@ -1,7 +1,8 @@
 #post-form-container {
     display: flex;
     flex-direction: column;
-    padding: 0 15% 0 15%;
+    align-items: center;
+    padding: 0 15% 0 0;
     width: 100%;
     height: 100em;
 }
@@ -50,14 +51,6 @@
     font-size: 1.5em;
 }
 
-#bottom-buttons-container {
-    position: fixed;
-    bottom: 0%;
-    width: 100%;
-    padding: 1.5em 0;
-    border-top: .085em solid lightgray;
-}
-
 #post-submit-button, 
 #post-unsubmittable-button {
     height: 100%;
@@ -74,5 +67,14 @@
 
 #post-submit-button {
     background-color: purple;
+}
+
+#post-form-bottom-buttons-container{
+    z-index: 1;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    padding: 1.5em 0;
+    border-top: .085em solid lightgray;
 }
 

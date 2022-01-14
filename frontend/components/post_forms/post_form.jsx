@@ -117,7 +117,7 @@ class PostForm extends React.Component {
                     </input>
 
                     <div 
-                    id='bottom-buttons-container'>
+                    id='post-form-bottom-buttons-container'>
                         {
                         this.postValid() ? ( 
                             submitButton) : (

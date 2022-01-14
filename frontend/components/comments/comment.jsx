@@ -81,12 +81,7 @@ class Comment extends React.Component {
                 { < CreateCommentContainer 
                 parentCommentId={this.props.comment.id}/>}
                 { this.props.isCommenter ? dropdown : null}
-            </div>
-                
-
-
-
-            
+            </div>         
                 {childComments.map((commentId, i) => {
                     return < CommentContainer 
                             commentId={commentId}
