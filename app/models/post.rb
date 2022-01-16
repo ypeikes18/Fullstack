@@ -10,6 +10,9 @@ class Post < ApplicationRecord
     foreign_key: :post_id,
     class_name: :Comment
 
+    has_many :likes, as: :likable
+
+
     def parent_comments
         Comment
             .where('parent_comment_id IS NULL')
