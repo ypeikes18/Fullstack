@@ -6,7 +6,13 @@ class Like < ApplicationRecord
 
     validates :likable_id, uniqueness: {
         scope: [:liker_id, :likable_id]
-    } 
+    }
+    
+    def self.is_liked?(likable_id, user_id)
+        !!Like.find_by(
+            likable_id: likable_id,
+            liker_id: user_id)
+    end
 
 end
 
