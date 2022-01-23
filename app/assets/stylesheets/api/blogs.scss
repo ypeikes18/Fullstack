@@ -2,6 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+#blog-search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blog-preview-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.blog-preview-text {
+    display:flex;
+    flex-direction: column;
+}
+
+
+
 #blog-show-container {
     display: flex;
     flex-direction: column;

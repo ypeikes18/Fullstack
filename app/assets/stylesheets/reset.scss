@@ -28,8 +28,14 @@
 // footer, header, hgroup, menu, nav, section {
 // 	display: block;
 // }
-// body {
-// 	line-height: 1;
+body {
+    position: relative;
+    margin: 3vw 0 0 0;
+    min-height: 71vw;
+}
+
+// body :nth-last-child(2n) {
+//     margin-bottom: 16em !important;
 // }
 // ol, ul {
 // 	list-style: none;
