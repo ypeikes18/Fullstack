@@ -1,14 +1,16 @@
-.heart::after {
+.not-liked .heart::after {
     content: '\2764';
     width: 3vw;
     height: 3vw;
-    border: black;
-    color: white;
+    color: gray;
 }
 
 .liked  .heart::after {
     content: '\2764';
+    width: 3vw;
+    height: 3vw;
     background-color: white;
     color: red;
 }
+
 
