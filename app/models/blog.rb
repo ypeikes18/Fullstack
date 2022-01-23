@@ -11,5 +11,12 @@ class Blog < ApplicationRecord
     validates :author_id, :title, :description, presence: true
     validates :title, uniqueness: {scope: [:author_id]}
 
+    def self.search(string)
+        string = "%#{string.upcase}%"
+        Blog
+          .joins(:author)
+          .where('upper(title) LIKE ? OR upper(users.name) LIKE ?', string, string)
+          .limit(10)
+    end
 
 end
