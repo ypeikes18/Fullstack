@@ -16,4 +16,4 @@ const mDTP = dispatch => {
     }
 }
 
-export default connect(mSTP,mDTP)(LikeButton)
+export default connect(mSTP,mDTP)(LikeButton);

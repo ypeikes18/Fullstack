@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import SubscribeButtonContainer from '../buttons/subscribe_button_container';
 
 class BlogBanner extends React.Component {   
     constructor(props) {
@@ -72,11 +73,13 @@ class BlogBanner extends React.Component {
                 <Link to={`/blogs/${blog.id}/edit`}>
                     Edit blog
                 </Link>
+                < SubscribeButtonContainer
+                        blogId={blog.id}
+                        subscriptionId={blog.subscriptionId}/>
             </div>
-            ) : ( <div>
-                  </div>);
+            ) : (null);
             
-        const { icon_url, title } = this.props.blog;
+        const { icon_url, title } = blog;
         return (<div id='blog-banner'>
                     <img id='top-bar-blog-image' 
                          src={icon_url}/>
