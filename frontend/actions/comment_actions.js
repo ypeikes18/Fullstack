@@ -10,7 +10,7 @@ const receiveComments = comments => ({
     comments
 })
 
-const receiveComment = comment => ({
+export const receiveComment = comment => ({
     type: RECEIVE_COMMENT,
     comment
 })

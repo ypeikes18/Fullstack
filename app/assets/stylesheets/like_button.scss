@@ -1,0 +1,14 @@
+.heart::after {
+    content: '\2764';
+    width: 3vw;
+    height: 3vw;
+    border: black;
+    color: white;
+}
+
+.liked  .heart::after {
+    content: '\2764';
+    background-color: white;
+    color: red;
+}
+

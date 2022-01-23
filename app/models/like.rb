@@ -8,10 +8,12 @@ class Like < ApplicationRecord
         scope: [:liker_id, :likable_id]
     }
     
-    def self.is_liked?(likable_id, user_id)
-        !!Like.find_by(
+    def self.find_like(likable_id, user_id, likable_type)
+        like = Like.find_by(
             likable_id: likable_id,
-            liker_id: user_id)
+            liker_id: user_id,
+            likable_type: likable_type)
+        return (like ? like.id : nil)
     end
 
 end

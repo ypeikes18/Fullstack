@@ -2,6 +2,7 @@ import React from 'react';
 
 import CommentContainer from '.././comments/comment_container';
 import CreateCommentContainer from '.././comments/create_comment_container';
+import LikeButtonContainer from '../buttons/like_button_container';
 
 class PostShow extends React.Component {
 
@@ -35,18 +36,23 @@ class PostShow extends React.Component {
 
         if(!post) return null;
         
-        const { title, subtitle, body } = post;
+        const { title, subtitle, body, id, likeId } = post;
 
         return (
             <div id='post-content-section'>
                 <div id='post-container'>
                     <div id='post-title-container'>
-                        <h1 id='post-title'>{title}</h1>
+                        <h1 id='post-title'>{ title }</h1>
                     </div>
 
                     <div id='post-subtitle-container'>
                     <h3 id='post-subtitle'>{subtitle}</h3>
                     </div>
+
+                    <LikeButtonContainer
+                        likableType='Post'
+                        likableId={ id }
+                        likeId={ likeId }/>
 
                     <div id='post-body-container'>
                         <p id='post-body'>{body}</p>

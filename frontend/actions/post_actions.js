@@ -9,10 +9,13 @@ const receivePosts = posts => ({
     posts
 })
 
-const receivePost = post => ({
-    type: RECEIVE_POST,
-    post
-})
+export const receivePost = post => {
+    debugger
+    return {
+        type: RECEIVE_POST,
+        post
+    }
+}
 
 const removePost = postId => ({
     type: REMOVE_POST,
