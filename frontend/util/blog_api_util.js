@@ -5,6 +5,13 @@ export const fetchBlog = blogId => {
     }))
 }
 
+export const fetchBlogs = (string) => {
+    return ($.ajax({
+        method: 'GET',
+        url: `/api/blogs`,
+        data: { string }
+    }))
+}
 
 
 export const createBlog = blog => {

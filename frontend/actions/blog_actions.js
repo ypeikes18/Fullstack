@@ -5,10 +5,13 @@ export const RECEIVE_BLOG = 'RECEIVE_BLOG';
 export const REMOVE_BLOG = 'REMOVE_BLOG';
 export const RECEIVE_BLOG_ERRORS = 'RECEIVE_BLOG_ERRORS';
 
-const receiveBlogs = blogs => ({
-    type: RECEIVE_BLOGS,
-    blogs
-})
+const receiveBlogs = blogs => {
+    return {
+        type: RECEIVE_BLOGS,
+        blogs
+    }
+}
+
 
 const receiveBlog = blog => ({
     type: RECEIVE_BLOG,
@@ -31,6 +34,12 @@ const receiveErrors = errors => {
 export const fetchBlog = blogId => dispatch => {
     return BlogApiUtil.fetchBlog(blogId)
     .then(blog => dispatch(receiveBlog(blog)),
+    errors => dispatch(receiveErrors(errors.responseJSON)))
+}
+
+export const fetchBlogs = string => dispatch => {
+    return BlogApiUtil.fetchBlogs(string)
+    .then(blog => dispatch(receiveBlogs(blog)),
     errors => dispatch(receiveErrors(errors.responseJSON)))
 }
 

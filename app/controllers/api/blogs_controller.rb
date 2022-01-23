@@ -1,7 +1,7 @@
 class Api::BlogsController < ApplicationController
 
     def index
-        @blogs = Blog.all
+        @blogs = Blog.search(params[:string])
         render :index
     end
     

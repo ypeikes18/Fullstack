@@ -10,7 +10,6 @@ const receivePosts = posts => ({
 })
 
 export const receivePost = post => {
-    debugger
     return {
         type: RECEIVE_POST,
         post

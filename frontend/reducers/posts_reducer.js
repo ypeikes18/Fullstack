@@ -6,7 +6,6 @@ import { RECEIVE_POST,
 const postsReducer = (prevState = {}, action) => {
     Object.freeze(prevState);
     const newState = Object.assign({}, prevState);
-    debugger
 
     switch(action.type) {
     case RECEIVE_POST:

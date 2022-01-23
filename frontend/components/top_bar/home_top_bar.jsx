@@ -1,7 +1,7 @@
 import React from 'react'
 
 import RightTopBar from './right_top_bar'
-import SearchBar from "../search_bar/search_bar";
+import SearchBarContainer from "../search_bar/search_bar";
 import { subStackURL } from '../../util/urls'
 
 class HomeTopBar extends React.Component {
@@ -10,7 +10,7 @@ class HomeTopBar extends React.Component {
             <nav id='top-bar'> 
                 <img src={subStackURL}
                  id='full-stack-icon'/>
-                <SearchBar/> 
+                <SearchBarContainer/> 
                 <RightTopBar/> 
             </nav>
         )
