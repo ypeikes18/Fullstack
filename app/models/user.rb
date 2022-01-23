@@ -8,6 +8,10 @@ class User < ApplicationRecord
   foreign_key: :commenter_id,
   class_name: :Comment
 
+  has_many :subscriptions,
+  foreign_key: :subscriber_id,
+  class_name: :Subscription
+
   has_many :posts, through: :blogs
 
   attr_reader :password

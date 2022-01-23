@@ -1,0 +1,1 @@
+json.extract @subscription, :subscriber, :blog_id
