@@ -22,11 +22,9 @@ class BlogSearch extends React.Component {
         } else {
             blogPreviews = (
                 <div>
-                    {
-                    blogs.map(blog => (
-                        <BlogPreview blog={blog}/>
-                    ))
-                    }
+                    { blogs.map(blog => (
+                        <BlogPreview blog={blog}/>)
+                        )}
                 </div>
             )
         }

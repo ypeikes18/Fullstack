@@ -1,4 +1,9 @@
-subscription = Subscription.find_by(subscriber_id: current_user.id)
+current_user_id = current_user ? current_user.id : nil
+subscription = (
+    Subscription.find_by(
+        subscriber_id: current_user_id,
+        blog_id: blog.id)
+)
 
 json.extract! blog, :id, :title, :description, :icon_url, :author_id
 json.posts blog.posts.pluck(:id).reverse
