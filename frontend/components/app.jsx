@@ -33,7 +33,8 @@ export default class App extends React.Component {
     }
 
     render() {
-      return (<div>                        
+      return (<div>
+                <div id='main'>                        
                 <Switch>
                   <Route exact path='/blogs/:blogId' component={ BlogBannerContainer }/>
                   <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/>
@@ -57,8 +58,11 @@ export default class App extends React.Component {
                           component={ PostShowContainer }/>
                   < ProtectedRoute exact path='/account-dashboard' component={ AccountDashboard }/>
                </Switch>
-                  < Route path='/' component={ Footer }/>
-             </div>)  
+                  
+             </div>
+                < Route path='/' component={ Footer }/>
+             </div>
+              )  
     }
 
 }
