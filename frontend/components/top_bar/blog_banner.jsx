@@ -11,16 +11,6 @@ class BlogBanner extends React.Component {
         this.createButtons = this.createButtons.bind(this);
     }
 
-    componentDidMount() {
-        const { fetchBlog, match } = this.props;
-        const blogId = match.params.blogId;
-        fetchBlog(blogId);
-
-        if(this.props.fetchPost) {
-            this.props.fetchPost(match.params.postId)
-        }
-    }
-
     showButton() {
         const { currentUserId, blog } = this.props;
         return (currentUserId === blog.author_id);

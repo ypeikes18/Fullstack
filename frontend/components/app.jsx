@@ -36,9 +36,9 @@ export default class App extends React.Component {
       return (<div>
                 <div id='main'>                        
                 <Switch>
-                  <Route exact path='/blogs/:blogId' component={ BlogBannerContainer }/>
-                  <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/>
-                  <Route path='/' component={ HomeTopBar }/>
+                  {/* <Route exact path='/blogs/:blogId' component={ BlogBannerContainer }/> */}
+                  {/* <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/> */}
+                  <Route exact path='/' component={ HomeTopBar }/>
                 </Switch>            
                
                <Switch>

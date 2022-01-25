@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 
 import PostPreviewContainer from './post_preview_container';
+import BlogBanner from '../top_bar/blog_banner'
 
 class BlogShow extends React.Component {
 
@@ -37,10 +38,14 @@ class BlogShow extends React.Component {
                                 postId={postId}
                                 key={postId}/>)
                             )
-                            }</div>) : (<div></div>));
+                            }</div>) : null);
         
         return (
             <div id='blog-show-container'>
+                <BlogBanner 
+                blog={ this.props.blog }
+                currentUserId={ this.props.currentUserId }/>
+
                 {posts[0] ? postPreview : null}
                 <div id='blog-nav-link-list'>
                         <NavLink to={`blogs/${blogId}`}>
