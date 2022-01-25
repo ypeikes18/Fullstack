@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import SubscribeButtonContainer from '../buttons/subscribe_button_container';
+import DeleteButtonContainer from '../buttons/delete_button_container';
 
 class BlogBanner extends React.Component {   
     constructor(props) {
@@ -25,15 +26,15 @@ class BlogBanner extends React.Component {
     createButtons() {
         if(!this.showButton()) return null;
         
-        switch(this.props.match.path) {
+        const { currentUserId, match, blog } = this.props;
+        const { path, params } = match;
+        
+        switch(path) {
             case `/blogs/:blogId/posts/:postId/edit`:
-                return (<div id='authors-buttons-container'>
-                            <button
-                            type='button'
-                            onClick={deletePost()}>
-                                Delete Post
-                            </button>
-                        </div>)
+                return (<DeleteButtonContainer
+                        currentUserId={ currentUserId }
+                        type='post'
+                        entityId={params}/>)
             case `/blogs/:blogId`:
                 return (
                     <div id='authors-buttons-container'>
