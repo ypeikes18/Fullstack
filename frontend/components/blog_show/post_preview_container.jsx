@@ -66,7 +66,7 @@ class PostPreview extends React.Component {
                              </div>
                        </div>);
 
-        const dropdown = (<div class='button-bar'>
+        const dropdown = (<div className='button-bar'>
                         {/* takes in an array of props to display as option */}
                             {<Dropdown 
                               options=

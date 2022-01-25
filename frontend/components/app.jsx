@@ -21,9 +21,6 @@ import EditBlogContainer from './blog_forms/edit_blog_container';
 import CreatePostContainer from './post_forms/create_post_form_container';
 import EditPostContainer from './post_forms/edit_post_form_container';
 import BlogSearchContainer from './blog_search_results/blog_search_container';
-
-import BlogBannerContainer from './top_bar/blog_banner_container';
-import BlogPostBannerContainer from './top_bar/blog_banner_container';
 import Footer from './footer/footer';
 
 export default class App extends React.Component {

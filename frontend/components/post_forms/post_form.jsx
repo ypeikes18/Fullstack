@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { defaultPostIconUrl } from '../../util/urls';
-
 class PostForm extends React.Component {
 
     constructor(props) {
@@ -18,17 +16,11 @@ class PostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        const imageUrl = defaultPostIconUrl;
-
-        if(this.state.image_url === '') {
-            this.setState({
-                image_url: imageUrl
-            })
-        }
 
         if(this.props.action(this.state)){
             this.props.history.push(`/blogs/${this.props.match.params.blogId}`)
         }
+        // add a line to handle error if desired
     }
 
     update(field) {
@@ -67,17 +59,19 @@ class PostForm extends React.Component {
             image_url 
         } = this.state;
 
+        const { formType } = this.props;
+
 
         const submitButton = (<button 
                               type='submit'
                               id='post-submit-button'>
-                                {this.props.formType}
+                                {formType}
                               </button>)
             
         const button = (<button 
                         type='button'
                         id='post-unsubmittable-button'>
-                            {this.props.formType}
+                            {formType}
                         </button>)    
 
         return(

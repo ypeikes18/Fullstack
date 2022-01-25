@@ -18,8 +18,9 @@ class BlogBanner extends React.Component {
     }
 
     deletePost() {
+        const { deletePost, match} = this.props;
         return () => (
-            this.props.deletePost(this.props.match.params.postId)
+            deletePost(match.params.postId)
         )
     }
 
@@ -28,7 +29,7 @@ class BlogBanner extends React.Component {
         
         const { currentUserId, match, blog } = this.props;
         const { path, params } = match;
-        
+
         switch(path) {
             case `/blogs/:blogId/posts/:postId/edit`:
                 return (<DeleteButtonContainer
@@ -52,7 +53,7 @@ class BlogBanner extends React.Component {
     }
 
     render() {
-        const { blog, match } = this.props
+        const { blog } = this.props
         
         if(!blog) return null;
 

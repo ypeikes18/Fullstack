@@ -10,11 +10,9 @@ const SignOut = (props) => {
     )
 }
 
-const mSTP = () => ({})
-
 const mDTP = dispatch => ({
     logout: () => dispatch(logout())
 })
 
-export default connect(mSTP, mDTP)(SignOut);
+export default connect(null, mDTP)(SignOut);
 
