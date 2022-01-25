@@ -1,5 +1,7 @@
 class Api::BlogsController < ApplicationController
 
+    helper Api::PostsHelper
+
     def index
         @blogs = Blog.search(params[:string])
         render :index
@@ -30,7 +32,7 @@ class Api::BlogsController < ApplicationController
             render :show
         else
             if @blog 
-                render json: @blog.errors.full_messages, status: 422
+                render :show
             else
                 render json: ['Unable to find blog'] , status: 422
             end

@@ -12,15 +12,12 @@ class BlogForm extends React.Component {
 
     handleSubmit(e) {   
         e.preventDefault()
-        const { image_url } = this.state;
+        const { id, author_id, title, description, icon_url } = this.state;
 
-        if(image_url) {
-            this.setState({
-                icon_url: defaultBlogIconUrl
-            })
-        }
+        const updatedBlog = { id, author_id, title, description, icon_url };
 
-        this.props.action(this.state)
+        debugger
+        this.props.action(updatedBlog)
         .then(action => this.props.history.push(`/blogs/${action.blog.id}`))
                  
     }
@@ -56,6 +53,7 @@ class BlogForm extends React.Component {
         if(!this.props.blog) return null;
         const { title, icon_url, description } = this.state;
         const { submitButtonText, formTitle } = this.props;
+
         return(
             <div>
             <div id='blog-form-container'>
@@ -67,7 +65,7 @@ class BlogForm extends React.Component {
                 id='blog-form'>
                     
                     <label 
-                    for='blog-title-input'
+                    htmlFor='blog-title-input'
                     id='blog-title-label'>
                         Publication name *
                     </label>
@@ -81,7 +79,7 @@ class BlogForm extends React.Component {
 
 
                     <label 
-                    for='blog-description-input'
+                    htmlFor='blog-description-input'
                     id='blog-description-label'>
                         {`What’s it about? *`}
                     </label>
