@@ -1,5 +1,15 @@
 class Api::CommentsController < ApplicationController
 
+    def index
+        @comments = Comment.post_comments(params[:post_id])
+        if @comments
+            render :index
+        else
+            ## not sure if I need the full messages or something else
+            render json: @comments.errors.full_messages, status: 404
+        end    
+    end
+    
     def show
         @comment = Comment.find(params[:id])
         if @comment

@@ -8,7 +8,8 @@ export const fetchComment = commentId => {
 export const fetchComments = postId => {
     return ($.ajax({
         method: 'GET',
-        url: `/api/comments/${postId}`
+        url: `/api/comments`,
+        data: { post_id: postId }
     }))
 }
 

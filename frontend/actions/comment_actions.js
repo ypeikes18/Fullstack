@@ -5,7 +5,7 @@ export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
 
-const receiveComments = comments => ({
+export const receiveComments = comments => ({
     type: RECEIVE_COMMENTS,
     comments
 })
@@ -30,13 +30,12 @@ const receiveErrors = errors => {
 
 export const fetchComment = commentId => dispatch => {
     return CommentApiUtil.fetchComment(commentId)
-    .then(comment => dispatch(receiveComment(comment)),
-    errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then(comment => dispatch(receiveComment(comment)))
 }
 
 export const fetchComments = postId => dispatch => {
-    return CommentApiUtil.fetchComment(postId)
-    .then(comments => dispatch(receiveComment(comments)),
+    return CommentApiUtil.fetchComments(postId)
+    .then(comments => dispatch(receiveComments(comments)),
     errors => dispatch(receiveErrors(errors.responseJSON)))
 }
 
@@ -55,6 +54,5 @@ export const updateComment = comment => dispatch => (
 export const createComment = comment => dispatch => {
 
     return CommentApiUtil.createComment(comment)
-    .then(comment => dispatch(receiveComment(comment)),
-    errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then(comment => dispatch(receiveComment(comment)))
 }

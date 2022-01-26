@@ -8,25 +8,30 @@ class PostShow extends React.Component {
 
     constructor(props) {
         super(props);
-        this.CreateCommentContainer = this.createCommentsIndex.bind(this);
+        this.createCommentsIndex = this.createCommentsIndex.bind(this);
     }
     
     componentDidMount() {
-        const { fetchPost, match, post } = this.props;
+        const { fetchPost, 
+                match, 
+                post, 
+                fetchComments } = this.props;
+        
         const postId = match.params.postId;
+        
         if(!post) {
-            fetchPost(postId);
+            debugger
+            fetchPost(postId)
+            .then(() => fetchComments(postId));
         }
     }
 
     createCommentsIndex() {
-        if(!this.props.post) return null;
-
-        const { parentComments } = this.props.post;
-
-        return parentComments.map((commentId, i) => {
+        const { parentComments } = this.props;
+        debugger
+        return parentComments.map((comment, i) => {
             return (< CommentContainer 
-                    commentId={commentId}
+                    comment={ comment } 
                     key={i}/>)
         })
     }
@@ -35,7 +40,7 @@ class PostShow extends React.Component {
         const { post } = this.props;
 
         if(!post) return null;
-        
+
         const { title, subtitle, body, id, likeId } = post;
 
         return (
@@ -67,7 +72,7 @@ class PostShow extends React.Component {
                         {< CreateCommentContainer
                         postId={post.id}
                         topLevel={true}
-                        parentCommentId={''}/>}
+                        parentCommentId={null}/>}
                         {this.createCommentsIndex()}
                     </div>
                 </div>

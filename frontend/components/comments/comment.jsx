@@ -14,10 +14,10 @@ class Comment extends React.Component {
         this.deleteComment = this.deleteComment.bind(this);
     }
 
-    componentDidMount() {        
-        const { fetchComment, commentId } = this.props;
-        fetchComment(commentId);
-    }
+    // componentDidMount() {        
+    //     const { fetchComment, commentId } = this.props;
+    //     fetchComment(commentId);
+    // }
 
     makeEditable(e) {
         e.preventDefault()
@@ -32,7 +32,7 @@ class Comment extends React.Component {
             comment, { body: 'deleted'}
         );
         updateComment(newComment)
-        .then(action => fetchComment(action.comment.id))
+        .then(() => fetchComment(comment.id))
     }
 
     render() {
@@ -41,8 +41,9 @@ class Comment extends React.Component {
         const { commenterName, 
                 body, 
                 created_at, 
-                childComments,
                 id } = this.props.comment;
+
+        const { childComments } = this.props;
 
         if(this.state.editable) {
             return <EditCommentContainer 
@@ -82,9 +83,9 @@ class Comment extends React.Component {
                 parentCommentId={this.props.comment.id}/>}
                 { this.props.isCommenter ? dropdown : null}
             </div>         
-                {childComments.map((commentId, i) => {
+                {childComments.map((comment, i) => {
                     return < CommentContainer 
-                            commentId={commentId}
+                            comment={comment}
                             key={i}/>
                 })}
             </div>

@@ -6,12 +6,23 @@ import { fetchComment,
          updateComment } from '../../actions/comment_actions'
 
 const mSTP = (state, ownProps) => {
-    const commentId = ownProps.commentId;
+    const commentId = ownProps.comment.id;
     const currentUserId = state.session.currentUserId;
-    const comment = state.entities.comments[commentId];
+    const comment = ownProps.comment;
+
+    const childComments = (
+        Object.values(
+            state.entities.comments
+        )
+        .filter(comment => (
+            comment.parent_comment_id === commentId
+            )
+        )
+    )
     return {
         comment,
-        isCommenter: currentUserId === (comment ? comment.commenter_id : false)
+        isCommenter: currentUserId === (comment ? comment.commenter_id : false),
+        childComments
     }
 }
 
