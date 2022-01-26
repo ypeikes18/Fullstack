@@ -5,7 +5,12 @@ export const fetchComment = commentId => {
     }))
 }
 
-
+export const fetchComments = postId => {
+    return ($.ajax({
+        method: 'GET',
+        url: `/api/comments/${postId}`
+    }))
+}
 
 export const createComment = comment => {
     return ($.ajax({
@@ -14,8 +19,6 @@ export const createComment = comment => {
         data: { comment }
     }))
 }
-
-
 
 export const updateComment = comment => (
     $.ajax({

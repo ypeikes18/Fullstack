@@ -34,6 +34,12 @@ export const fetchComment = commentId => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON)))
 }
 
+export const fetchComments = postId => dispatch => {
+    return CommentApiUtil.fetchComment(postId)
+    .then(comments => dispatch(receiveComment(comments)),
+    errors => dispatch(receiveErrors(errors.responseJSON)))
+}
+
 export const deleteComment = commentId => dispatch => (
     CommentApiUtil.deleteComment(commentId)
     .then(comment => dispatch(removeComment(comment.id)),

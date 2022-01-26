@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
+import { fetchBlogs } from '../../actions/blog_actions';
 
 class SearchBar extends React.Component {
 
@@ -13,7 +14,9 @@ class SearchBar extends React.Component {
     }
 
     search(string) {
-        this.props.history.push(`/discover/${string}`)
+        const { fetchBlogs } = this.props;
+        fetchBlogs(string)
+        .then(() => this.props.history.push(`/discover/${string}`))    
     }
 
     handleChange(e) {
@@ -36,7 +39,13 @@ class SearchBar extends React.Component {
     }
 }
 
+const mDTP = dispatch => {
+    return {
+        fetchBlogs: string => dispatch(fetchBlogs(string))
+    }
+}
+
 
 export default withRouter(
-    connect(null, null)(SearchBar)
+    connect(null, mDTP)(SearchBar)
 );

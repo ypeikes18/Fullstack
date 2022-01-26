@@ -11,7 +11,7 @@ const blogReducer = (prevState = {}, action) => {
             newState[action.blog.id] = action.blog;
             return newState;
         case RECEIVE_BLOGS:
-            return Object.assign(newState, action.blogs);
+            return action.blogs;
         case REMOVE_BLOG:
             delete newState[action.blogId]
             return newState;

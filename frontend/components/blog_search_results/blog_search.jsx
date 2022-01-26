@@ -10,10 +10,10 @@ class BlogSearch extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        const { string, fetchBlogs } = this.props;
-        fetchBlogs(string)
-    }
+    // componentDidMount() {
+    //     const { string, fetchBlogs } = this.props;
+    //     fetchBlogs(string)
+    // }
 
     render() {
         const { blogs } = this.props;
@@ -33,11 +33,24 @@ class BlogSearch extends React.Component {
    
         return (<div id='blog-search-container'>
             <TopBar hideSearch={true}/>
-            <h1>Find great things to read</h1>
-            <p> Find writers you follow or search by title
+            <h1 id='blog-search-page-header'>
+                Find great things to read
+            </h1>
+            <p id='blog-search-page-p'> 
+                Find writers you follow or search by title
             </p>
-            <SearchBarContainer/>
+            
             <div className='search-results-content-body'>
+                <div id='search-bar-form-container'>
+                    <SearchBarContainer/>
+                    
+                </div>
+                <p>
+                        Showing results for 
+                        <strong>
+                            {` "${this.props.string}"`}
+                        </strong>
+                </p>
                 { blogPreviews }
             </div>
 

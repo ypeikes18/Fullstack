@@ -21,8 +21,8 @@ const BlogPreview = ({ blog }) => {
                 <div className='blog-preview-text'>
                     <h1 className='blog-preview-title'>{title}</h1>
                     <p className='blog-preview-description'>{description}</p>
-                    <span className='blog-preview-description'>
-                        {`By #${author}`}
+                    <span className='blog-preview-details'>
+                        {`By ${author}`}
                     </span>
                 </div>
             </div>
