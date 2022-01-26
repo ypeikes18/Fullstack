@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import SubscribeButton from './subscribe_button';
 import { createSubscription, 
-    deleteSubscription } from '../../actions/subscription_actions';
+         deleteSubscription } from '../../actions/subscription_actions';
 
 const mSTP = state => {
     return {
@@ -17,4 +18,6 @@ const mDTP = dispatch => {
     }
 }
 
-export default connect(mSTP,mDTP)(SubscribeButton);
+export default withRouter(
+    connect(mSTP,mDTP)(SubscribeButton)
+);

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import SubscribeButtonContainer from '../buttons/subscribe_button_container';
 import DeleteButtonContainer from '../buttons/delete_button_container';
 
@@ -7,12 +8,12 @@ class BlogBanner extends React.Component {
     constructor(props) {
         super(props);
         this.state = { showButton: true }
-        this.showButton = this.showButton.bind(this)
+        this.isAuthor = this.isAuthor.bind(this)
         this.deletePost = this.deletePost.bind(this)
         this.createButtons = this.createButtons.bind(this);
     }
 
-    showButton() {
+    isAuthor() {
         const { currentUserId, blog } = this.props;
         return (currentUserId === blog.author_id);
     }
@@ -24,52 +25,45 @@ class BlogBanner extends React.Component {
         )
     }
 
-    createButtons() {
-        if(!this.showButton()) return null;
-        
+    createButtons() {        
         const { currentUserId, match, blog } = this.props;
-        const { path, params } = match;
 
-        switch(path) {
-            case `/blogs/:blogId/posts/:postId/edit`:
-                return (<DeleteButtonContainer
-                        currentUserId={ currentUserId }
-                        type='post'
-                        entityId={params}/>)
-            case `/blogs/:blogId`:
-                return (
-                    <div id='authors-buttons-container'>
-                        <Link to={`/blogs/${blog.id}/new-post`}>
-                            New post
-                        </Link>
-                        <Link to={`/blogs/${blog.id}/edit`}>
-                            Edit blog
-                        </Link>
-                     </div>
-                )
-            default:
-                return null;
+        if(this.isAuthor()) {
+            const { path, params } = match;
+
+            switch(path) {
+                case `/blogs/:blogId/posts/:postId/edit`:
+                    return (<DeleteButtonContainer
+                            currentUserId={ currentUserId }
+                            type='post'
+                            entityId={params}/>)
+                case `/blogs/:blogId`:
+                    return (
+                        <div id='authors-buttons-container'>
+                            <Link to={`/blogs/${blog.id}/new-post`}>
+                                New post
+                            </Link>
+                            <Link to={`/blogs/${blog.id}/edit`}>
+                                Edit blog
+                            </Link>
+                         </div>
+                    )
+                default:
+                    return null;
+            }
+        } else {
+            return (< SubscribeButtonContainer
+                    blogId={blog.id}
+                    subscriptionId={blog.subscriptionId}/>)
         }
     }
+        
+
 
     render() {
         const { blog } = this.props
         
         if(!blog) return null;
-
-        const blogButtons = (this.showButton()) ? (
-            <div id='authors-buttons-container'>
-                <Link to={`/blogs/${blog.id}/new-post`}>
-                    New post
-                </Link>
-                <Link to={`/blogs/${blog.id}/edit`}>
-                    Edit blog
-                </Link>
-                < SubscribeButtonContainer
-                        blogId={blog.id}
-                        subscriptionId={blog.subscriptionId}/>
-            </div>
-            ) : (null);
             
         const { icon_url, title } = blog;
         return (<div id='blog-banner'>
@@ -78,9 +72,13 @@ class BlogBanner extends React.Component {
                     <h2  id='top-bar-blog-title'>
                         {title}
                     </h2>
-                    { blogButtons }
+                    { this.createButtons() }
                 </div>)
     }
 }
 
-export default BlogBanner;
+
+
+export default withRouter(
+    connect(null, null)(BlogBanner)
+);

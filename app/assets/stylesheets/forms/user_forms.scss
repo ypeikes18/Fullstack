@@ -30,11 +30,6 @@
     outline: none;
 }
 
-.user-form > textarea {
-    resize: none;
-}
-
-
 .user-form > input {
     width: 50%;
     height: 2%;
@@ -43,6 +38,7 @@
     outline: none;
     border: none;
     border-bottom: 1px solid lightgray;
+    resize: none;
 }
 
 .user-form > textarea {

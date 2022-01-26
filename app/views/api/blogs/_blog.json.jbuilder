@@ -1,10 +1,11 @@
 current_user_id = current_user ? current_user.id : nil
+blog_id = blog ? blog : nil
 subscription = (
     Subscription.find_by(
         subscriber_id: current_user_id,
-        blog_id: blog.id)
+        blog_id: blog_id)
 )
-icon_url = (@blog.icon_url == '' ? default_blog_icon_url : @blog.icon_url)
+icon_url = (blog.icon_url == '' ? default_blog_icon_url : blog.icon_url)
 
 
 json.extract! blog, :id, :title, :description, :author_id

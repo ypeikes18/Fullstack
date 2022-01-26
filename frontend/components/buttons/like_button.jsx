@@ -15,9 +15,15 @@ class LikeButton extends React.Component {
             userId, 
             likableId, 
             likableType,
-            likeId } = this.props;
+            likeId,
+            history } = this.props;
               
         e.preventDefault();
+        e.stopPropagation();
+
+        if(!userId) {
+            history.push('./sign-in')
+        }
         
         if(!likeId) {
             createLike({

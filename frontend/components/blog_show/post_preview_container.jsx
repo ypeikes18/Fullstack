@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchPost, deletePost } from '../../actions/post_actions';
 import Dropdown from '.././dropdowns/dropdown';
+import LikeButtonContainer from '../buttons/like_button_container';
 
 class PostPreview extends React.Component {
 
@@ -12,6 +13,16 @@ class PostPreview extends React.Component {
         this.editPost = this.editPost.bind(this);
         this.deletePost = this.deletePost.bind(this);
         this.forceUpdate = this.forceUpdate.bind(this);
+    }
+
+    createDropdown() {
+        return (<div className='button-bar'>
+                        {/* takes in an array of props to display as option */}
+                            {<Dropdown 
+                              options=
+                              {[(<div onClick={this.editPost}>Edit</div>),
+                                (<div onClick={this.deletePost}>Delete</div>)]}/>}
+                </div>);
     }
 
     componentDidMount() {
@@ -39,24 +50,38 @@ class PostPreview extends React.Component {
         return this.props.currentUserId === this.props.post.authorId;
     }
 
+    createButtons() {
+
+        const { post } = this.props;
+        
+        const likeButton = <LikeButtonContainer
+                            likableType='Post'
+                            likableId={post.id}
+                            likeId={post.likeId}/>
+
+        const dropdown = this.userIsAuthor() ? this.createDropdown() : null
+
+        return (<div className='post-preview-buttons-container'>
+                    {dropdown}
+                    {likeButton}
+                </div>)
+    }
+
     render() {
 
-        const { latestPost, post, postId } = this.props;
+        const { latestPost, post } = this.props;
 
         if(!post) return null;
 
         const { title, 
                 subtitle, 
-                created_at, 
-                blog_id,
-                author_id,
-                id } = post;
-
-        const postUrl = `/blogs/${blog_id}/posts/${id}`;    
+                created_at } = post;
 
         const img = (<img 
                      src={post.image_url}
                      id='post-preview-image'/>);
+        
+
 
         const text = ( <div className='post-preview-text'>
                              <h1>{ title }</h1>
@@ -66,26 +91,21 @@ class PostPreview extends React.Component {
                              </div>
                        </div>);
 
-        const dropdown = (<div className='button-bar'>
-                        {/* takes in an array of props to display as option */}
-                            {<Dropdown 
-                              options=
-                              {[(<div onClick={this.editPost}>Edit</div>),
-                                (<div onClick={this.deletePost}>Delete</div>)]}/>}
-                         </div>);
-
-        const latestPostPreview = (<div id='latest-post-preview'>
-                            <div onClick={this.handleClick}>
-                                {img}
-                                {text}
-                                {this.userIsAuthor() ? dropdown : null}
-                            </div>
-                            </div>);               
+        const latestPostPreview = (<div id='latest-post-preview'
+                                   onClick={this.handleClick}>
+                                     <div className='latest-post-preview-image-container'>
+                                        {img}
+                                     </div>
+                                     <div className='latest-post-preview-content-container'>
+                                        {text}
+                                        {this.createButtons()}
+                                     </div>
+                                   </div>);               
        
         const postPreview = (<div className='post-preview-container'>
                                 <div onClick={this.handleClick}>
                                     {text}
-                                    {this.userIsAuthor() ? dropdown : null}
+                                    {this.createButtons()}
                                 </div> 
                             </div>)
 

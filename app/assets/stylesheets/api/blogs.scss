@@ -55,6 +55,18 @@
     margin: auto;
 }
 
+.latest-post-preview-content-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.post-preview-buttons-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0.5vw 0 0;
+}
+
 .post-preview-container:hover,
 #latest-post-preview:hover {
     background-color: rgb(238, 236, 236);

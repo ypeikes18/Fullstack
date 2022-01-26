@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import LikeButton from './like_button';
 import { createLike, deleteLike } from '../../actions/like_actions';
@@ -16,4 +17,5 @@ const mDTP = dispatch => {
     }
 }
 
-export default connect(mSTP,mDTP)(LikeButton);
+export default withRouter(
+    connect(mSTP,mDTP)(LikeButton));
