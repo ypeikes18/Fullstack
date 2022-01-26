@@ -12,13 +12,18 @@ const BlogPreview = ({ blog }) => {
         <Link to={`/blogs/${id}`}>
             <div 
             className='blog-preview-container'>
-                <img 
-                src={icon_url}
-                className='blog-preview-image'/>
+                <div className='blog-preview-image-container'> 
+                    <img 
+                    src={icon_url}
+                    className='blog-preview-image'/>
+                </div>
+
                 <div className='blog-preview-text'>
-                    <h1>{title}</h1>
-                    <h3>{description}</h3>
-                    <span>{`By #${author}`}</span>
+                    <h1 className='blog-preview-title'>{title}</h1>
+                    <p className='blog-preview-description'>{description}</p>
+                    <span className='blog-preview-description'>
+                        {`By #${author}`}
+                    </span>
                 </div>
             </div>
         </Link>

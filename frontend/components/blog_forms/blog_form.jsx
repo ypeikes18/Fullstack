@@ -16,7 +16,6 @@ class BlogForm extends React.Component {
 
         const updatedBlog = { id, author_id, title, description, icon_url };
 
-        debugger
         this.props.action(updatedBlog)
         .then(action => this.props.history.push(`/blogs/${action.blog.id}`))
                  

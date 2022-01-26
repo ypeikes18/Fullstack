@@ -2,24 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#blog-search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.blog-preview-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.blog-preview-text {
-    display:flex;
-    flex-direction: column;
-}
-
-
-
 #blog-show-container {
     display: flex;
     flex-direction: column;
@@ -106,6 +88,72 @@
     left: 2em;
     width: 5%;
     height: 5%;
+}
+
+// Below is styling for the blog search results page
+
+#blog-search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 9vh 0;
+}
+
+
+.blog-preview-container {
+    display: flex;
+    flex-direction: row;
+    margin: 3vh 0 0 0;
+    cursor: pointer;
+}
+
+.blog-preview-container:visited {
+    text-decoration: none;
+}
+
+.blog-previews-container {
+    margin: 8vh 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-preview-text {
+    display:flex;
+    flex-direction: column;
+    border-bottom: 0.15vh solid lightgray;
+    width: 34vw;
+    margin: 1vw 0 0 2vw;
+    padding: 0 0 4.25vh 0;
+}
+
+
+.blog-preview-text > * {
+    height:fit-content;
+}
+
+
+
+.search-results-content-body form {
+    width: 100%;
+}
+
+.blog-preview-container .blog-preview-image {
+    width: 7.5vw;
+    height: 7.5vw;
+}
+
+.blog-preview-title {
+    font-size: 2.1vh;
+    font-weight: bold;
+    margin: 0 0 0 0;
+}
+
+.blog-preview-image-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: fit-content;
 }
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
+import TopBar from '../top_bar/home_top_bar';
 
-import BlogPreview from './blog_preview'
+import BlogPreview from './blog_preview';
+import SearchBarContainer from '../search_bar/search_bar';
 
 class BlogSearch extends React.Component {
 
@@ -21,7 +23,7 @@ class BlogSearch extends React.Component {
             return null
         } else {
             blogPreviews = (
-                <div>
+                <div className='blog-previews-container'>
                     { blogs.map(blog => (
                         <BlogPreview blog={blog}/>)
                         )}
@@ -30,12 +32,15 @@ class BlogSearch extends React.Component {
         }
    
         return (<div id='blog-search-container'>
-            <h1>The home for great writing.</h1>
-            <p>We believe that what you read matters and great writing 
-                is valuable. We’re building a future where writers can 
-                flourish by being paid directly by readers.
+            <TopBar hideSearch={true}/>
+            <h1>Find great things to read</h1>
+            <p> Find writers you follow or search by title
             </p>
-            { blogPreviews }
+            <SearchBarContainer/>
+            <div className='search-results-content-body'>
+                { blogPreviews }
+            </div>
+
         </div>)
     }
 }
