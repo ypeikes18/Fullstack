@@ -19,9 +19,4 @@ class Comment < ApplicationRecord
 
     has_many :likes, as: :likable
 
-    def self.post_comments(post_id) 
-        Comment
-          .where(post_id: post_id)
-    end
-
 end

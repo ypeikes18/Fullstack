@@ -6,13 +6,13 @@ import { RECEIVE_COMMENT,
 const commentsReducer = (prevState = {}, action) => {
 Object.freeze(prevState);
 const newState = Object.assign({}, prevState)
-debugger
+
 switch(action.type) {
 case RECEIVE_COMMENT:
    newState[action.comment.id] = action.comment;
    return newState;
 case RECEIVE_COMMENTS:
-   return Object.assign(newState, action.comments);
+   return action.comments;
 case REMOVE_COMMENT:
    delete newState[action.commentId]
    return newState;

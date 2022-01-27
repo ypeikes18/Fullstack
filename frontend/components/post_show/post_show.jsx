@@ -19,16 +19,13 @@ class PostShow extends React.Component {
         
         const postId = match.params.postId;
         
-        if(!post) {
-            debugger
-            fetchPost(postId)
-            .then(() => fetchComments(postId));
-        }
+
+        fetchPost(postId)
+        .then(() => fetchComments(postId));
     }
 
     createCommentsIndex() {
         const { parentComments } = this.props;
-        debugger
         return parentComments.map((comment, i) => {
             return (< CommentContainer 
                     comment={ comment } 
@@ -40,7 +37,6 @@ class PostShow extends React.Component {
         const { post } = this.props;
 
         if(!post) return null;
-
         const { title, subtitle, body, id, likeId } = post;
 
         return (

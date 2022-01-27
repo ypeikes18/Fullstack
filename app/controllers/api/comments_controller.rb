@@ -1,7 +1,7 @@
 class Api::CommentsController < ApplicationController
 
     def index
-        @comments = Comment.post_comments(params[:post_id])
+        @comments = Post.find(params[:post_id]).comments
         if @comments
             render :index
         else

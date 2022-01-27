@@ -12,7 +12,6 @@ class PostPreview extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.editPost = this.editPost.bind(this);
         this.deletePost = this.deletePost.bind(this);
-        this.forceUpdate = this.forceUpdate.bind(this);
     }
 
     createDropdown() {
@@ -32,6 +31,7 @@ class PostPreview extends React.Component {
     handleClick(e) {
         const { postId, history, post } = this.props;
         history.push(`/blogs/${post.blog_id}/posts/${postId}`);
+
     }
 
     editPost() {
