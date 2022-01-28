@@ -9,15 +9,9 @@ class Comment extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { editable: this.props.editable };
         this.makeEditable = this.makeEditable.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
     }
-
-    // componentDidMount() {        
-    //     const { fetchComment, commentId } = this.props;
-    //     fetchComment(commentId);
-    // }
 
     makeEditable(e) {
         e.preventDefault()
@@ -35,40 +29,41 @@ class Comment extends React.Component {
         .then(() => fetchComment(comment.id))
     }
 
+    createDropdown() {
+        const editButton = (<div 
+            className='comment-form-button' 
+            type='button'
+            onClick={this.makeEditable}>
+                Edit
+            </div>);
+
+        const deleteButton = (<div
+                    className='comment-form-button' 
+                    type='button'
+                    onClick={this.deleteComment}>
+                        Delete
+                    </div>);
+
+        return (< Dropdown
+                options=
+                {[editButton,
+                deleteButton]}/>);
+    }
+
     render() {
-        if(!this.props.comment) return null;
+        const { comment, editComment, childComments } = this.props;
+        if(!comment) return null;
 
         const { commenterName, 
                 body, 
                 created_at, 
-                id } = this.props.comment;
+                id } = comment;
 
-        const { childComments } = this.props;
-
-        if(this.state.editable) {
+        if(editComment) {
             return <EditCommentContainer 
                     commentId={id}/>
         }
 
-        const editButton = (<div 
-                            className='comment-form-button' 
-                            type='button'
-                            onClick={this.makeEditable}>
-                                Edit
-                            </div>);
-
-        const deleteButton = (<div
-                               className='comment-form-button' 
-                               type='button'
-                               onClick={this.deleteComment}>
-                                  Delete
-                              </div>);
-
-        const dropdown = (
-            < Dropdown
-            options=
-            {[editButton,
-              deleteButton]}/>);
 
         return (
             <div className='comment'>
@@ -76,18 +71,22 @@ class Comment extends React.Component {
                     <strong>{commenterName}</strong>
                     <span className='comment-date'>{created_at}</span>
                 </div>
-                <p>{body}</p>
 
-            <div className='comment-buttons-container'>
-                { < CreateCommentContainer 
-                parentCommentId={this.props.comment.id}/>}
-                { this.props.isCommenter ? dropdown : null}
-            </div>         
-                {childComments.map((comment, i) => {
-                    return < CommentContainer 
-                            comment={comment}
-                            key={i}/>
-                })}
+                <div className='comment-body-and-buttons'>
+                    <p>{body}</p>
+
+                    <div className='comment-buttons-container'>
+                        { < CreateCommentContainer 
+                        parentCommentId={this.props.comment.id}/>}
+                        { this.props.isCommenter ? this.createDropdown() : null}
+                    </div>         
+                        {childComments.map((comment, i) => {
+                            return < CommentContainer 
+                                    comment={comment}
+                                    key={i}/>
+                        })}
+                </div>
+
             </div>
         )
     }

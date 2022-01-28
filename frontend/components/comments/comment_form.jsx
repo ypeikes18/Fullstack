@@ -20,12 +20,12 @@ class CommentForm extends React.Component {
         return state;
     }
 
-    componentDidMount() {
-        const { fetchComment, type, commentId } = this.props;
-        if(type === 'edit') {
-            fetchComment(commentId)
-        }
-    }
+    // componentDidMount() {
+    //     const { fetchComment, type, commentId } = this.props;
+    //     if(type === 'edit') {
+    //         fetchComment(commentId)
+    //     }
+    // }
 
     handleSubmit(e) {
         const { fetchComment } = this.props; 
@@ -64,11 +64,12 @@ class CommentForm extends React.Component {
     }
 
     createCancelButton() {
+        const { topLevel, type } = this.props;
 
-        if(this.props.topLevel){
+        if(topLevel) {
             return null;
-        } else {
-            const action = this.props.type === 'create' ? (
+        }   else {
+            const action = type === 'create' ? (
                 this.handleClick) : (
                 this.handleSubmit);
                 
