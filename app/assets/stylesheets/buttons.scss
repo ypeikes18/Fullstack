@@ -4,14 +4,18 @@
     background-color: lightskyblue;
     border-radius: 5%;
     border: none;
-    padding: 1em 2em;
+    padding: 0 1vw;
     font-size: 1.7vh;
 }
 
 .liked, .not-liked {
     display: flex;
     flex-direction: row;
-    margin: 0 0 0 0.5vw;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 0 0 1vw;
+    width: 2.5vw;
+    max-width: 30px;
 }
 
 .not-liked .heart::after {
@@ -29,5 +33,5 @@
 }
 
 .like-count {
-    margin: 0 0 0 1vh 4vw;
+    color: inherit;
 }

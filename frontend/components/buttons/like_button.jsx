@@ -21,7 +21,6 @@ class LikeButton extends React.Component {
             likeId,
             history } = this.props;
               
-        debugger
         if(!userId) {
             history.push('/sign-in')
             return

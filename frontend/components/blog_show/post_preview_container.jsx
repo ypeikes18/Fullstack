@@ -53,7 +53,6 @@ class PostPreview extends React.Component {
 
     createButtons() {
         const { id, likeId, likeCount, created_at } = this.props.post;
-        debugger
         
         const likeButton = <LikeButtonContainer
                             likableType='Post'

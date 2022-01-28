@@ -66,13 +66,17 @@ class BlogBanner extends React.Component {
         if(!blog) return null;
             
         const { icon_url, title } = blog;
-        return (<div id='blog-banner'>
-                    <img id='top-bar-blog-image' 
-                         src={icon_url}/>
-                    <h2  id='top-bar-blog-title'>
-                        {title}
-                    </h2>
-                    { this.createButtons() }
+        return (<div id='blog-banner-container'>
+                    <div className='blog-banner'>
+                        <div className='image-and-text'>
+                            <img id='top-bar-blog-image' 
+                                src={icon_url}/>
+                            <h2  id='top-bar-blog-title'>
+                                {title}
+                            </h2>
+                        </div>      
+                            { this.createButtons() }                  
+                    </div>
                 </div>)
     }
 }
