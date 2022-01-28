@@ -31,10 +31,12 @@
 #main {
     position: relative;
     min-height: 71vw;
+    margin: 0;
 }
 
 body {
     margin: 0;
+    width: 100vw;
 }
 
 // body :nth-last-child(2n) {

@@ -105,6 +105,7 @@
     font-weight: lighter;
     font-size: 5.5vw;
     margin: 12vh 0 2vh 0;
+    max-width: 700px;
 }
 
 #blog-search-page-p {
@@ -136,6 +137,7 @@
     justify-content: space-between;
     border-bottom: 0.15vh solid lightgray;
     width: 34vw;
+    max-width: 400px;
     margin: 0 0 0 2vw;
     padding: 0 0 4.25vh 0;
 }
@@ -157,6 +159,7 @@
 .search-results-content-body #search-bar-form-container {
     margin: 5vh 0;
     width: 88%;
+    max-width: 400px;
 }
 
 #search-bar-form-container {
@@ -179,6 +182,8 @@
     width: 7.5vw;
     height: 7.5vw;
     border: 0.04vh solid lightgray;
+    max-width: 84px;
+    max-height: 84px;
 }
 
 .blog-preview-title {

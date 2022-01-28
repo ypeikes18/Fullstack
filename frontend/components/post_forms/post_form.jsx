@@ -17,8 +17,10 @@ class PostForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
 
-        if(this.props.action(this.state)){
-            this.props.history.push(`/blogs/${this.props.match.params.blogId}`)
+        const { action, history, match } = this.props;
+
+        if(action(this.state)){
+            history.push(`/blogs/${match.params.blogId}`)
         }
         // add a line to handle error if desired
     }
@@ -31,10 +33,8 @@ class PostForm extends React.Component {
     }
 
     postValid() {
-        let valid = true;
-        Object.values(this.state).forEach(value => {
-            if(value === '') valid = false; 
-        })   
+        const { title, body } = this.state;
+        return title && body;  
     }
 
     renderErrors() {
@@ -95,6 +95,11 @@ class PostForm extends React.Component {
                     onChange={this.update('subtitle')}>
                     </input>
 
+                    {/* <input
+                    id='post-image_url' 
+                    type='file'>
+                    </input> */}
+
                     <textarea
                     id='post-body' 
                     placeholder='Write your post...'
@@ -103,19 +108,12 @@ class PostForm extends React.Component {
                     onChange={this.update('body')}>
                     </textarea>
 
-                    <input
-                    id='post-image_url' 
-                    type='text'
-                    value={image_url}
-                    onChange={this.update('image_url')}>
-                    </input>
-
                     <div 
                     id='post-form-bottom-buttons-container'>
                         {
                         this.postValid() ? ( 
                             submitButton) : (
-                                submitButton
+                                button
                             )
                         }
                     </div>

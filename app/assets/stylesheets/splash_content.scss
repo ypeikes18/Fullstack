@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
 .blurb > * {
@@ -57,16 +58,21 @@
 
 #splash-content-banner > h1 {
     font-size: 60px;
+    min-width: 845px;
 }
 
 #splash-content-banner > p {
     width: 58%;
     margin: auto;
     text-align: center;
+    min-width: 600px;
 }
 
 #blurb-index {
     background-color: white;
+    > * {
+        min-width: 860px;
+    }
 }
 
 .blurb-text-container {
@@ -77,28 +83,49 @@
     display: flex;
     flex-direction: column;
     border: 1px solid darkgray;
+    height: 35vh;
+    min-width: 340px;
+    width: 35%;
+    padding: 3.2%;
+    h1 {
+        font-size: 125%;
+        margin: 0 0 7% 0;
+    }
+
+    span {
+        margin: 0 0 5% 0;
+        font-size: 150%;
+    }
+    .orange-button{
+        width: 100%;
+        padding: 1.5vh 0; 
+    }
+
+    > select {
+        width: 100%;
+        height: 20%;
+        margin: 0 0 6% 0;
+    }
 }
 
 #calculator > * {
-    margin: 10px 10px 0 10px;
-}
-
-#calculator > select {
-    width: 375px;
-    height: 43px;
+    margin: 0;
 }
 
 #calculator-and-small-blurb {
     display: flex;
     flex-direction: row;
-}
-
-#calculator-and-small-blurb > div {
-    padding: 15px;
+    justify-content: center;
+    min-width: 860px;
+    padding: 0 auto;
+    #small-blurb {
+        padding: 15px;
+    }
 }
 
 #calculator-and-small-blurb > h1 {
-    font-size: 6px;
+    font-size: 1.25vh;
+    margin: 0 auto;
 }
 
 
