@@ -38,7 +38,7 @@ module ApplicationHelper
                  "10"=>"Oct",
                  "11"=>"Nov",
                  "12"=>"Dec" }
-        return hash[num.downcase]
+        hash[num.downcase]
     end
 
 

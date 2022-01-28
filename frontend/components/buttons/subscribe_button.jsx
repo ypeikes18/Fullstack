@@ -20,6 +20,7 @@ class SubscribeButton extends React.Component {
 
         if(!userId) {
             history.push('/sign-in')
+            return
         }
         
         if(!subscriptionId) {

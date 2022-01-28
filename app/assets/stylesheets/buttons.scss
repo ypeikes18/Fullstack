@@ -1,18 +1,33 @@
-.Subscribe {
-    margin: 100%;
+
+.Subscribe, .Unsubscribe {
+    color: white;
+    background-color: lightskyblue;
+    border-radius: 5%;
+    border: none;
+    padding: 1em 2em;
+    font-size: 1.7vh;
+}
+
+.liked, .not-liked {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 0.5vw;
 }
 
 .not-liked .heart::after {
     content: '\2764';
     width: 3vw;
     height: 3vw;
-    color: gray;
+    color: lightgray;
 }
 
 .liked  .heart::after {
     content: '\2764';
     width: 3vw;
     height: 3vw;
-    background-color: inherit;
     color: red;
+}
+
+.like-count {
+    margin: 0 0 0 1vh 4vw;
 }

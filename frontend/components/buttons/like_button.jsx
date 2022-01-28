@@ -10,6 +10,9 @@ class LikeButton extends React.Component {
     }
 
     handleLike(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
         const { createLike,
             deleteLike, 
             userId, 
@@ -18,12 +21,11 @@ class LikeButton extends React.Component {
             likeId,
             history } = this.props;
               
-        e.preventDefault();
-        e.stopPropagation();
-
+        debugger
         if(!userId) {
-            history.push('./sign-in')
-        }
+            history.push('/sign-in')
+            return
+        }        
         
         if(!likeId) {
             createLike({
@@ -37,13 +39,17 @@ class LikeButton extends React.Component {
     }
 
     render() {
-        const { likeId } = this.props;
+        const { likeId, likeCount } = this.props;
         const className = likeId ? 'liked' : 'not-liked';
         return(
             <div className={ className }>
                 <div 
                 className='heart'
                 onClick={this.handleLike}/>
+
+                <span className='like-count'>
+                    {likeCount}
+                </span>
             </div>
         )
     }
