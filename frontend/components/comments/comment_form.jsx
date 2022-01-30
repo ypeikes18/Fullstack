@@ -7,25 +7,21 @@ class CommentForm extends React.Component {
         this.state = this.createState();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.createState = this.createState.bind(this)
+        this.createState = this.createState.bind(this);
     }
 
+    // dynamic for for creating, editing and top level creating comments
+
     createState() {
-        const { type, topLevel } = this.props;
+        const { type, topLevel, comment } = this.props;
         const state = { show: 'button',
-                        comment: this.props.comment };
+                        comment };
 
         if(topLevel || type === 'edit') state.show = 'form';
 
         return state;
     }
 
-    // componentDidMount() {
-    //     const { fetchComment, type, commentId } = this.props;
-    //     if(type === 'edit') {
-    //         fetchComment(commentId)
-    //     }
-    // }
 
     handleSubmit(e) {
         const { fetchComment } = this.props; 
@@ -42,11 +38,11 @@ class CommentForm extends React.Component {
     
     }
 
+    //when reply is clicked this changes state so reply form renders
     handleClick(e) {        
         e.preventDefault();
         const value = (
             this.state.show === 'button' ? 'form' : 'button');
-
         this.setState({
             show: value
         })
@@ -64,28 +60,28 @@ class CommentForm extends React.Component {
     }
 
     createCancelButton() {
-        const { topLevel, type } = this.props;
+        const { topLevel, type, removeEditComment } = this.props;
 
-        if(topLevel) {
-            return null;
-        }   else {
-            const action = type === 'create' ? (
-                this.handleClick) : (
-                this.handleSubmit);
-                
-            return (
-                <button
-                type='button'
-                className='comment-cancel-button'
-                onClick={action}>
-                    cancel
-                </button>
-            )
-        }
+        if(topLevel) return null;
+      
+        let action;
+        if(type === 'edit') {
+            action = () => removeEditComment(); 
+        } else {
+            action = this.handleClick;
+        }  
+            
+        return (
+            <button
+            type='button'
+            className='comment-cancel-button'
+            onClick={action}>
+                cancel
+            </button>
+        )       
     }
     
     render() {
-
         const buttons = (<div className='comment-form-reply-container'>
                             <button
                             className='comment-reply-button'

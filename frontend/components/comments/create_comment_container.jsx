@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import CommentForm from './comment_form';
 import { createComment, fetchComment } from '../../actions/comment_actions';
-import removeEditComment from '../../actions/ui_actions'
+import { removeEditComment } from '../../actions/ui_actions';
 
 const mSTP = (state, ownProps) => {
     const parentCommentId = ownProps.parentCommentId;

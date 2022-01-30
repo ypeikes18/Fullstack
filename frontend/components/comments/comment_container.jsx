@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Comment from './comment';
-import receiveEditComment from '../../actions/ui_actions'
+import { receiveEditComment } from '../../actions/ui_actions'
 import { fetchComment, 
          deleteComment, 
          updateComment } from '../../actions/comment_actions';

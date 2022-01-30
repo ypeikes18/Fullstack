@@ -6,15 +6,14 @@ const receiveEdit = commentId => ({
     commentId
 });
 
-const removeEdit = commentId => ({
-    type: REMOVE_EDIT_COMMENT,
-    commentId
+const removeEdit = () => ({
+    type: REMOVE_EDIT_COMMENT
 });
 
 export const receiveEditComment = commentId => dispatch => {
-    dispatch(receiveEdit(commentId))
+    return dispatch(receiveEdit(commentId))
 };
 
-export const removeEditComment = commentId => dispatch => (
-    dispatch(removeEdit(commentId))
-);
+export const removeEditComment = () => dispatch => {
+    return dispatch(removeEdit())
+};

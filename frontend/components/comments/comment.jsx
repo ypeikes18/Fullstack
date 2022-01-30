@@ -14,10 +14,9 @@ class Comment extends React.Component {
     }
 
     makeEditable(e) {
-        e.preventDefault()
-        this.setState({
-            editable: true
-        })
+        const { receiveEditComment, comment } = this.props;
+        e.preventDefault();
+        receiveEditComment(comment.id);
     }
 
     deleteComment() {
@@ -58,12 +57,26 @@ class Comment extends React.Component {
                 body, 
                 created_at, 
                 id } = comment;
+        
+        let commentBody;        
+        if(editComment === id) {
+            commentBody = ( <div className='comment-body-and-buttons'>
+                                    <EditCommentContainer/>
+                            </div> )
+        } else {
+            commentBody = (<div className='comment-body-and-buttons'>
+                                <p>{body}</p>
 
-        if(editComment) {
-            return <EditCommentContainer 
-                    commentId={id}/>
+                                <div className='comment-buttons-container'>
+                                    
+                                    { < CreateCommentContainer 
+                                    parentCommentId={this.props.comment.id}/>}
+
+                                    { this.props.isCommenter ? this.createDropdown() : null}
+                                </div>         
+                
+                            </div>)
         }
-
 
         return (
             <div className='comment'>
@@ -72,21 +85,12 @@ class Comment extends React.Component {
                     <span className='comment-date'>{created_at}</span>
                 </div>
 
-                <div className='comment-body-and-buttons'>
-                    <p>{body}</p>
-
-                    <div className='comment-buttons-container'>
-                        { < CreateCommentContainer 
-                        parentCommentId={this.props.comment.id}/>}
-                        { this.props.isCommenter ? this.createDropdown() : null}
-                    </div>         
-                        {childComments.map((comment, i) => {
+                { commentBody }
+                {childComments.map((comment, i) => {
                             return < CommentContainer 
                                     comment={comment}
                                     key={i}/>
-                        })}
-                </div>
-
+                        })}          
             </div>
         )
     }
