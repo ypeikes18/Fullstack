@@ -30,11 +30,11 @@ class CommentForm extends React.Component {
         this.handleClick(e)
 
         this.props.action(comment)
-        .then(action => (
-            fetchComment(action.comment.parent_comment_id)))
-        .then(() => this.setState(
-            this.createState())
-        )
+        // .then(action => (
+        //     fetchComment(action.comment.parent_comment_id)))
+        // .then(() => this.setState(
+        //     this.createState())
+        // )
     
     }
 

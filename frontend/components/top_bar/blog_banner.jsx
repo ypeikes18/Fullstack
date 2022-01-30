@@ -36,7 +36,7 @@ class BlogBanner extends React.Component {
                     return (<DeleteButtonContainer
                             currentUserId={ currentUserId }
                             type='post'
-                            entityId={params}/>)
+                            entityId={params.postId}/>)
                 case `/blogs/:blogId`:
                     return (
                         <div id='authors-buttons-container'>

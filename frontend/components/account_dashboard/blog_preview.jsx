@@ -48,10 +48,14 @@ class BlogPreview extends React.Component {
                 <img src={blog.icon_url}/>
                 < Dropdown options={
                     [
-                        <div onClick={this.deleteBlog}>
+                        <div 
+                        onClick={this.deleteBlog}
+                        key={Math.random()}>
                             Delete
                         </div>,
-                        <div onClick={this.editBlog}>
+                        <div 
+                        onClick={this.editBlog}
+                        key={Math.random()}>
                             Edit
                         </div>
                     ]
