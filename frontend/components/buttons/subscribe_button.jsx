@@ -34,19 +34,13 @@ class SubscribeButton extends React.Component {
     }
 
     render() {
-        const { subscriptionId, userId } = this.props;
-        let className; 
-        if(userId){
-            className = subscriptionId ? 'Unsubscribe' : 'Subscribe';
-        } else {
-            className = 'Subscribe';
-        }
-
+        const { subscriptionId } = this.props;
+        const className = subscriptionId ? 'subscribed' : 'not-subscribed';
         return(
                 <button 
                 className={ className }
                 onClick={this.handleSubscribe}>
-                { className }
+                {className === 'subscribed' ? 'Unsubscribe' : 'Subscribe'}
                 </button>
         )
     }
