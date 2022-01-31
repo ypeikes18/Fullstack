@@ -25,22 +25,26 @@ class CommentForm extends React.Component {
 
     handleSubmit(e) {
         const { comment } = this.state;
+        const { removeSelectedComment } = this.props;
 
         this.toggleForm(e) // changes form back into reply button
 
         this.props.action(comment)
-        .then(() => this.setState(
+        .then(() => this.setState( //clears state 
             this.createState()
         ))
+        .then(() => removeSelectedComment())
     }
 
     //when reply is clicked this changes state so reply form renders
-    toggleForm(e) {        
+    toggleForm(e) {  
+        const { comment } = this.props;      
         e.preventDefault();
         const value = (
             this.state.show === 'button' ? 'form' : 'button');
         this.setState({
-            show: value
+            show: value,
+            comment
         })
     }
 
