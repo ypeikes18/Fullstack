@@ -50,7 +50,10 @@ class Comment extends React.Component {
     }
 
     render() {
-        const { comment, selectedComment, childComments } = this.props;
+        const { comment, 
+                selectedComment, 
+                childComments, 
+                isCommenter } = this.props;
         if(!comment) return null;
 
         const { commenterName, 
@@ -72,7 +75,9 @@ class Comment extends React.Component {
                                     { < CreateCommentContainer 
                                     parentCommentId={this.props.comment.id}/>}
 
-                                    { this.props.isCommenter ? this.createDropdown() : null}
+                                    { isCommenter && ! comment.id !== selectedComment ? (
+                                         this.createDropdown()
+                                    )  : null }
                                 </div>         
                 
                             </div>)
