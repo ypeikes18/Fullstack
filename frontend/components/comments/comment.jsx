@@ -11,11 +11,15 @@ class Comment extends React.Component {
         super(props);
         this.makeEditable = this.makeEditable.bind(this);
         this.deleteComment = this.deleteComment.bind(this);
+        this.state = { status: 'comment'}
     }
 
     makeEditable(e) {
         const { receiveSelectedComment, comment } = this.props;
         e.preventDefault();
+        this.setState({
+            status: (this.state.status === 'comment' ? 'reply' : 'comment') 
+        })
         receiveSelectedComment(comment.id);
     }
 
@@ -29,6 +33,9 @@ class Comment extends React.Component {
     }
 
     createDropdown() {
+
+        const { isCommenter, comment, selectedComment } = this.props;
+
         const editButton = (<div 
             className='comment-form-button' 
             type='button'
@@ -42,6 +49,9 @@ class Comment extends React.Component {
                     onClick={this.deleteComment}>
                         Delete
                     </div>);
+        if(this.state.status === 'reply' || 
+        !isCommenter || 
+        comment.id === selectedComment) return null;
 
         return (< Dropdown
                 options=
@@ -52,8 +62,7 @@ class Comment extends React.Component {
     render() {
         const { comment, 
                 selectedComment, 
-                childComments, 
-                isCommenter } = this.props;
+                childComments } = this.props;
         if(!comment) return null;
 
         const { commenterName, 
@@ -73,11 +82,9 @@ class Comment extends React.Component {
                                 <div className='comment-buttons-container'>
                                     
                                     { < CreateCommentContainer 
-                                    parentCommentId={this.props.comment.id}/>}
-
-                                    { isCommenter && ! comment.id !== selectedComment ? (
-                                         this.createDropdown()
-                                    )  : null }
+                                    parentCommentId={ id }/>}
+                                    { this.createDropdown() }
+                                    
                                 </div>         
                 
                             </div>)

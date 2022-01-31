@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 
 import Comment from './comment';
 import { receiveSelectedComment,
-         removeSelectedComment } from '../../actions/ui_actions'
+         removeSelectedComment,
+         removeReplyForm,
+         receiveReplyForm } from '../../actions/ui_actions';
 import { fetchComment, 
          deleteComment, 
          updateComment } from '../../actions/comment_actions';
@@ -12,6 +14,7 @@ const mSTP = (state, ownProps) => {
     const currentUserId = state.session.currentUserId;
     const comment = ownProps.comment;
     const commentId = comment.id;
+    const { selectedComment, replyForm } = state.ui;
 
     const childComments = (
         Object.values(
@@ -26,7 +29,8 @@ const mSTP = (state, ownProps) => {
         comment,
         isCommenter: currentUserId === (comment ? comment.commenter_id : false),
         childComments,
-        selectedComment: state.ui.selectedComment
+        selectedComment,
+        replyForm
     }
 }
 
@@ -35,7 +39,9 @@ const mDTP = dispatch => {
         fetchComment: commentId => dispatch(fetchComment(commentId)),
         deleteComment: commentId => dispatch(deleteComment(commentId)),
         updateComment: comment => dispatch(updateComment(comment)),
-        receiveSelectedComment: commentId => dispatch(receiveSelectedComment(commentId))
+        receiveSelectedComment: commentId => dispatch(receiveSelectedComment(commentId)),
+        receiveReplyForm: () => dispatch(receiveReplyForm()),
+        removeReplyForm: () => dispatch(removeReplyForm())
     }
 }
 
