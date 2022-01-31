@@ -45,11 +45,11 @@ export const deleteComment = commentId => dispatch => (
     errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 
-export const updateComment = comment => dispatch => (
-    CommentApiUtil.updateComment(comment)
-    .then(comment => dispatch(receiveComment(comment)),
-    errors => dispatch(receiveErrors(errors.responseJSON)))
-)
+export const updateComment = comment => dispatch => {
+    return CommentApiUtil.updateComment(comment)
+    .then(comment => dispatch(receiveComment(comment)))
+
+}
 
 export const createComment = comment => dispatch => {
 

@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
         super(props);
         this.state = this.createState();
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.toggleForm = this.toggleForm.bind(this);
         this.createState = this.createState.bind(this);
     }
 
@@ -24,22 +24,18 @@ class CommentForm extends React.Component {
 
 
     handleSubmit(e) {
-        const { fetchComment } = this.props; 
         const { comment } = this.state;
 
-        this.handleClick(e)
+        this.toggleForm(e) // changes form back into reply button
 
         this.props.action(comment)
-        // .then(action => (
-        //     fetchComment(action.comment.parent_comment_id)))
-        // .then(() => this.setState(
-        //     this.createState())
-        // )
-    
+        .then(() => this.setState(
+            this.createState()
+        ))
     }
 
     //when reply is clicked this changes state so reply form renders
-    handleClick(e) {        
+    toggleForm(e) {        
         e.preventDefault();
         const value = (
             this.state.show === 'button' ? 'form' : 'button');
@@ -60,15 +56,15 @@ class CommentForm extends React.Component {
     }
 
     createCancelButton() {
-        const { topLevel, type, removeEditComment } = this.props;
+        const { topLevel, type, removeSelectedComment } = this.props;
 
         if(topLevel) return null;
       
         let action;
         if(type === 'edit') {
-            action = () => removeEditComment(); 
+            action = () => removeSelectedComment(); 
         } else {
-            action = this.handleClick;
+            action = this.toggleForm;
         }  
             
         return (
@@ -86,7 +82,7 @@ class CommentForm extends React.Component {
                             <button
                             className='comment-reply-button'
                             type='button'
-                            onClick={this.handleClick}>
+                            onClick={this.toggleForm}>
                             Reply
                             </button>
                         </div>);

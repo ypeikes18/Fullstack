@@ -14,9 +14,9 @@ class Comment extends React.Component {
     }
 
     makeEditable(e) {
-        const { receiveEditComment, comment } = this.props;
+        const { receiveSelectedComment, comment } = this.props;
         e.preventDefault();
-        receiveEditComment(comment.id);
+        receiveSelectedComment(comment.id);
     }
 
     deleteComment() {
@@ -50,7 +50,7 @@ class Comment extends React.Component {
     }
 
     render() {
-        const { comment, editComment, childComments } = this.props;
+        const { comment, selectedComment, childComments } = this.props;
         if(!comment) return null;
 
         const { commenterName, 
@@ -59,7 +59,7 @@ class Comment extends React.Component {
                 id } = comment;
         
         let commentBody;        
-        if(editComment === id) {
+        if(selectedComment === id) {
             commentBody = ( <div className='comment-body-and-buttons'>
                                     <EditCommentContainer/>
                             </div> )

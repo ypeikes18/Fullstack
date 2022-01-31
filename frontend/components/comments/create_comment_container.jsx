@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import CommentForm from './comment_form';
 import { createComment, fetchComment } from '../../actions/comment_actions';
-import { removeEditComment } from '../../actions/ui_actions';
+import { removeSelectedComment } from '../../actions/ui_actions';
 
 const mSTP = (state, ownProps) => {
     const parentCommentId = ownProps.parentCommentId;
@@ -24,7 +24,7 @@ const mDTP = dispatch => {
     return {
         action: comment => dispatch(createComment(comment)),
         fetchComment: commentId => dispatch(fetchComment(commentId)),
-        removeEditComment: commentId => dispatch(removeEditComment(commentId))
+        removeSelectedComment: commentId => dispatch(removeSelectedComment(commentId))
     }
 }
 

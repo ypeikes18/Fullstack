@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Comment from './comment';
-import { receiveEditComment } from '../../actions/ui_actions'
+import { receiveSelectedComment } from '../../actions/ui_actions'
 import { fetchComment, 
          deleteComment, 
          updateComment } from '../../actions/comment_actions';
@@ -25,7 +25,7 @@ const mSTP = (state, ownProps) => {
         comment,
         isCommenter: currentUserId === (comment ? comment.commenter_id : false),
         childComments,
-        editComment: state.ui.editComment
+        selectedComment: state.ui.selectedComment
     }
 }
 
@@ -34,7 +34,7 @@ const mDTP = dispatch => {
         fetchComment: commentId => dispatch(fetchComment(commentId)),
         deleteComment: commentId => dispatch(deleteComment(commentId)),
         updateComment: comment => dispatch(updateComment(comment)),
-        receiveEditComment: commentId => dispatch(receiveEditComment(commentId))
+        receiveSelectedComment: commentId => dispatch(receiveSelectedComment(commentId))
     }
 }
 

@@ -1,19 +1,19 @@
-export const RECEIVE_EDIT_COMMENT = 'RECEIVE_EDIT_COMMENT';
-export const REMOVE_EDIT_COMMENT = 'REMOVE_EDIT_COMMENT';
+export const RECEIVE_SELECTED_COMMENT = 'RECEIVE_EDIT_COMMENT';
+export const REMOVE_SELECTED_COMMENT = 'REMOVE_EDIT_COMMENT';
 
 const receiveEdit = commentId => ({
-    type: RECEIVE_EDIT_COMMENT,
+    type: RECEIVE_SELECTED_COMMENT,
     commentId
 });
 
 const removeEdit = () => ({
-    type: REMOVE_EDIT_COMMENT
+    type: REMOVE_SELECTED_COMMENT
 });
 
-export const receiveEditComment = commentId => dispatch => {
+export const receiveSelectedComment = commentId => dispatch => {
     return dispatch(receiveEdit(commentId))
 };
 
-export const removeEditComment = () => dispatch => {
+export const removeSelectedComment = () => dispatch => {
     return dispatch(removeEdit())
 };
