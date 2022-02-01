@@ -4,117 +4,84 @@ class CommentForm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = this.createState();
+        this.state = this.props.comment;
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.toggleForm = this.toggleForm.bind(this);
-        this.createState = this.createState.bind(this);
+        this.update = this.update.bind(this);
     }
 
-    // dynamic for for creating, editing and top level creating comments
+    resetState() {
+        const { removeSelectedComment,
+                removeReplyFormId,
+                comment, 
+                type } = this.props;
+        this.setState(comment);
 
-    createState() {
-        const { type, topLevel, comment } = this.props;
-        const state = { show: 'button',
-                        comment };
-
-        if(topLevel || type === 'edit') state.show = 'form';
-
-        return state;
+        if(type === 'edit') {
+            removeSelectedComment(); 
+        } else {
+            removeReplyFormId();
+        }  
     }
 
 
     handleSubmit(e) {
-        const { comment } = this.state;
-        const { removeSelectedComment } = this.props;
+        e.preventDefault()
+        const comment = this.state;
+        const { action } = this.props;
 
-        this.toggleForm(e) // changes form back into reply button
-
-        this.props.action(comment)
-        .then(() => this.setState( //clears state 
-            this.createState()
-        ))
-        .then(() => removeSelectedComment())
-    }
-
-    //when reply is clicked this changes state so reply form renders
-    toggleForm(e) {  
-        const { comment } = this.props;      
-        e.preventDefault();
-        const value = (
-            this.state.show === 'button' ? 'form' : 'button');
-        this.setState({
-            show: value,
-            comment
-        })
+        action(comment)
+            .then(() => this.resetState())
     }
 
     update(field) {
         return (e) => {
-            const newComment = Object.assign({}, this.state.comment);
+            e.preventDefault()
+            const newComment = Object.assign({}, this.state);
             newComment[field] = e.currentTarget.value;
             
-            this.setState({
-                comment: newComment
-            })
+            this.setState(newComment)
         }
     }
 
-    createCancelButton() {
-        const { topLevel, type, removeSelectedComment } = this.props;
+    cancelButton() {
+        const { topLevel } = this.props;
 
-        if(topLevel) return null;
-      
-        let action;
-        if(type === 'edit') {
-            action = () => removeSelectedComment(); 
-        } else {
-            action = this.toggleForm;
-        }  
+        if(topLevel) return null;  
             
         return (
             <button
             type='button'
             className='comment-cancel-button'
-            onClick={action}>
+            onClick={() => this.resetState()}>
                 cancel
             </button>
         )       
     }
     
     render() {
-        const buttons = (<div className='comment-form-reply-container'>
-                            <button
-                            className='comment-reply-button'
-                            type='button'
-                            onClick={this.toggleForm}>
-                            Reply
-                            </button>
-                        </div>);
-
-        const form = (<form 
-                        onSubmit={this.handleSubmit}
-                        className='comment-form'>
-
-                            <textarea
-                            className='comment-body-field'
-                            placeholder='write a comment...'
-                            value={this.state.comment.body}
-                            onChange={this.update('body')}/>
-
-                            <div className='comment-form-button-container'>
-                                <button
-                                type='submit'
-                                className='comment-submit-button'>
-                                    Post
-                                </button>
-                                {this.createCancelButton()}
-                            </div>
-                        </form>)
-
         return (<div className='comment-form-container'>
-                    {this.state.show === 'form' ? form : buttons}    
-                </div>)
-        
+                    <form 
+                    onSubmit={this.handleSubmit}
+                    className='comment-form'>
+
+                        <textarea
+                        className='comment-body-field'
+                        placeholder='write a comment...'
+                        value={this.state.body}
+                        onChange={this.update('body')}/>
+
+                        <div className='comment-form-button-container'>
+                            <button
+                            type='submit'
+                            className='comment-submit-button'>
+                                Post
+                            </button>
+
+                            {this.cancelButton()}
+                        </div>
+
+                    </form>
+                </div>)       
     }
 }
 

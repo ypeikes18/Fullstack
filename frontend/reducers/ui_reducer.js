@@ -1,11 +1,11 @@
 import { RECEIVE_SELECTED_COMMENT, 
         REMOVE_SELECTED_COMMENT,
-        RECEIVE_REPLY_FORM,
-        REMOVE_REPLY_FORM } from '../actions/ui_actions.js'
+        RECEIVE_REPLY_FORM_ID,
+        REMOVE_REPLY_FORM_ID } from '../actions/ui_actions.js'
 
 const _nullState = { 
     selectedComment: null,
-    replyForm: false
+    replyFormId: null
 }
 
 const uiReducer = (prevState = _nullState, action) => {
@@ -18,10 +18,10 @@ const uiReducer = (prevState = _nullState, action) => {
         return newState; 
     case REMOVE_SELECTED_COMMENT:
         return _nullState;
-    case RECEIVE_REPLY_FORM:
-        newState.replyForm = true;
+    case RECEIVE_REPLY_FORM_ID:
+        newState.replyFormId = action.commentId;
         return newState;
-    case REMOVE_REPLY_FORM:
+    case REMOVE_REPLY_FORM_ID:
         return _nullState;
     default:
         return prevState; 

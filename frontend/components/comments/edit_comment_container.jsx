@@ -5,11 +5,12 @@ import { removeSelectedComment } from '../../actions/ui_actions';
 import { fetchComment, 
          updateComment } from '../../actions/comment_actions'
 
-const mSTP = (state) => {
-    const selectedComment = state.ui.selectedComment;
+const mSTP = state => {
+    const { selectedComment, replyFormId } = state.ui;
     return {
         comment: state.entities.comments[selectedComment],
         selectedComment,
+        replyFormId,
         type: 'edit'        
     }
 }

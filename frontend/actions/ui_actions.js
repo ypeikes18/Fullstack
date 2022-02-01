@@ -1,7 +1,7 @@
 export const RECEIVE_SELECTED_COMMENT = 'RECEIVE_SELECTED_COMMENT';
 export const REMOVE_SELECTED_COMMENT = 'REMOVE_SELECTED_COMMENT';
-export const RECEIVE_REPLY_FORM = 'RECEIVE_REPLY_FORM';
-export const REMOVE_REPLY_FORM = 'REMOVE_REPLY_FORM';
+export const RECEIVE_REPLY_FORM_ID = 'RECEIVE_REPLY_FORM_ID';
+export const REMOVE_REPLY_FORM_ID = 'REMOVE_REPLY_FORM_ID';
 
 const receiveSelection = commentId => ({
     type: RECEIVE_SELECTED_COMMENT,
@@ -12,12 +12,13 @@ const removeSelection = () => ({
     type: REMOVE_SELECTED_COMMENT
 });
 
-const receiveReply = () => ({
-    type: RECEIVE_REPLY_FORM,
+const receiveReply = commentId => ({
+    type: RECEIVE_REPLY_FORM_ID,
+    commentId
 });
 
 const removeReply = () => ({
-    type: REMOVE_REPLY_FORM
+    type: REMOVE_REPLY_FORM_ID
 });
 
 
@@ -29,10 +30,10 @@ export const removeSelectedComment = () => dispatch => {
     return dispatch(removeSelection())
 };
 
-export const receiveReplyForm = () => dispatch => {
-    return dispatch(receiveReply())
+export const receiveReplyFormId = commentId => dispatch => {
+    return dispatch(receiveReply(commentId))
 };
 
-export const removeReplyForm = () => dispatch => {
+export const removeReplyFormId = () => dispatch => {
     return dispatch(removeReply())
 };
