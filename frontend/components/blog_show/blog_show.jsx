@@ -17,13 +17,26 @@ class BlogShow extends React.Component {
         this.props.fetchBlog(blogId);
     }
 
+    createAttribution() {
+        const { attribution_url } = this.props.blog;
+        if(!attribution_url) return null;
+        
+        return (<div className='attribution-container'>
+                    <p className='attribution'>
+                        This blog was reposted here with the generous permission
+                        of the author. Check out the original <a href={blog.attribution_url}>here</a>
+                    </p>
+                </div>)   
+    }
+
     render() {
-        if(!this.props.blog) return null; 
-        const { posts } = this.props.blog;
+        const { blog, match, currentUserId } = this.props;
+        if(!blog) return null; 
+        const { posts } = blog;
 
         if(!posts[0]) return null;
 
-        const blogId = this.props.match.params.blogId;
+        const blogId = match.params.blogId;
 
         const postPreview = (< PostPreviewContainer 
                                 latestPost={true} 
@@ -43,8 +56,10 @@ class BlogShow extends React.Component {
         return (
             <div id='blog-show-container'>
                 <BlogBanner 
-                blog={ this.props.blog }
-                currentUserId={ this.props.currentUserId }/>
+                blog={ blog }
+                currentUserId={ currentUserId }/>
+                
+                {this.createAttribution()}
 
                 {posts[0] ? postPreview : null}
                 <div id='blog-nav-link-list'>

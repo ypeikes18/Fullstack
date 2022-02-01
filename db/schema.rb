@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_172219) do
+ActiveRecord::Schema.define(version: 2022_02_01_161401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_01_23_172219) do
     t.string "icon_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "attribution_url"
     t.index ["author_id", "title"], name: "index_blogs_on_author_id_and_title", unique: true
     t.index ["author_id"], name: "index_blogs_on_author_id"
     t.index ["title"], name: "index_blogs_on_title"

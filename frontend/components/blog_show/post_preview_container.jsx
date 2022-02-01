@@ -19,8 +19,8 @@ class PostPreview extends React.Component {
                         {/* takes in an array of props to display as option */}
                             {<Dropdown 
                               options=
-                              {[(<div onClick={this.editPost}>Edit</div>),
-                                (<div onClick={this.deletePost}>Delete</div>)]}/>}
+                              {[(<div onClick={this.editPost} key='1'>Edit</div>),
+                                (<div onClick={this.deletePost} key='2'>Delete</div>)]}/>}
                 </div>);
     }
 

@@ -36,6 +36,7 @@ class Comment extends React.Component {
         const editButton = (<div 
             className='comment-form-button' 
             type='button'
+            key='edit'
             onClick={() => receiveSelectedComment(commentId) }>
                 Edit
             </div>);
@@ -43,6 +44,7 @@ class Comment extends React.Component {
         const deleteButton = (<div
                     className='comment-form-button' 
                     type='button'
+                    key='delete'
                     onClick={this.deleteComment}>
                         Delete
                     </div>);

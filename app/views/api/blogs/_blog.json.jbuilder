@@ -8,7 +8,7 @@ subscription = (
 icon_url = (blog.icon_url == '' ? default_blog_icon_url : blog.icon_url)
 
 
-json.extract! blog, :id, :title, :description, :author_id
+json.extract! blog, :id, :title, :description, :author_id, :attribution_url
 json.icon_url icon_url
 json.posts blog.posts.pluck(:id).reverse
 json.created_at parse_time_stamp(blog.created_at)
