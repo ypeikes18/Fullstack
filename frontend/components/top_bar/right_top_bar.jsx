@@ -40,16 +40,7 @@ class RightTopBar extends React.Component {
                                             Sign in</Link>)]
 
         return (
-            <ul id='right-top-bar'>
-                < Dropdown 
-                options={[]}
-                icon={'Reader'}/>
-                < Dropdown 
-                options={[]}
-                icon={'Resources'}/>
-                < Dropdown 
-                options={[]}
-                icon={'Writers'}/>                
+            <ul id='right-top-bar'>                
                 {this.props.currentUserId ? (
                     loggedInComponents) : (
                     loggedOutComponents   

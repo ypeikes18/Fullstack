@@ -16,24 +16,18 @@
 
 
 #authors-buttons-container {
-    width: 40%;
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    top: 0.5%;
-    right: 1%;
-    margin: 10% 0;
-}
+    margin:auto;
+}   
 
 #blog-banner-container > * {
-    margin: 0.1em;
+    // margin: 0.1em;
     padding: 0.5em;
 }
 
 #blog-banner-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     border-bottom: 0.1em solid lightgray;
     padding: 1vh 0;

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 
 import PostPreviewContainer from './post_preview_container';
-import BlogBanner from '../top_bar/blog_banner'
+import BlogBanner from './blog_banner'
 
 class BlogShow extends React.Component {
 
@@ -13,18 +13,20 @@ class BlogShow extends React.Component {
     }
 
     componentDidMount() {
-        const blogId = parseInt(this.props.match.params.blogId);
-        this.props.fetchBlog(blogId);
+        const { fetchBlog, match } = this.props;
+        const blogId = match.params.blogId;
+        fetchBlog(blogId);
     }
 
-    createAttribution() {
-        const { attribution_url } = this.props.blog;
+    createAttribution() {        
+        const { blog } = this.props;
+        const { attribution_url } = blog;
         if(!attribution_url) return null;
         
         return (<div className='attribution-container'>
                     <p className='attribution'>
                         This blog was reposted here with the generous permission
-                        of the author. Check out the original <a href={blog.attribution_url}>here</a>
+                        of the author. Check out the original <a href={attribution_url}>here</a>
                     </p>
                 </div>)   
     }
@@ -34,10 +36,8 @@ class BlogShow extends React.Component {
         if(!blog) return null; 
         const { posts } = blog;
 
-        if(!posts[0]) return null;
-
         const blogId = match.params.blogId;
-
+        
         const postPreview = (< PostPreviewContainer 
                                 latestPost={true} 
                                 postId={posts[0]}/>)

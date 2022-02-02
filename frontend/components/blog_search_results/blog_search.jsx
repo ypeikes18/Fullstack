@@ -25,7 +25,8 @@ class BlogSearch extends React.Component {
             blogPreviews = (
                 <div className='blog-previews-container'>
                     { blogs.map(blog => (
-                        <BlogPreview blog={blog}/>)
+                        <BlogPreview blog={blog}
+                        key={blog.id}/>)
                         )}
                 </div>
             )

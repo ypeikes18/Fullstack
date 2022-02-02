@@ -3,7 +3,7 @@ import React from 'react';
 import CommentContainer from '.././comments/comment_container';
 import CreateCommentContainer from '.././comments/create_comment_container';
 import LikeButtonContainer from '../buttons/like_button_container';
-import BlogBanner from '../top_bar/blog_banner';
+import BlogBanner from '../blog_show/blog_banner';
 
 class PostShow extends React.Component {
 
