@@ -23,9 +23,9 @@ class RightTopBar extends React.Component {
 
         const loggedInComponents = [
             <Link 
-             to='/account-dashboard'
+             to='/new-blog'
              className='orange-button'>
-               Writer Dashboard
+               Create a blog
             </Link>,
             userIconDropdown 
         ];

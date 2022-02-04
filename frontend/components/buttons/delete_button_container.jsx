@@ -5,6 +5,12 @@ import { deleteComment } from '../../actions/comment_actions';
 import { deletePost } from '../../actions/post_actions';
 import { deleteBlog } from '../../actions/blog_actions';
 
+const mSTP = state => {
+    return {
+        currentUserId: state.session.currentUserId
+    }
+}
+
 const mDTP = dispatch => {
     return {
         deleteComment: id => dispatch(deleteComment(id)),
@@ -13,4 +19,4 @@ const mDTP = dispatch => {
     }
 }
 
-export default connect(null,mDTP)(DeleteButton);
+export default connect(mSTP, mDTP)(DeleteButton);

@@ -3,7 +3,16 @@ class Api::BlogsController < ApplicationController
     helper Api::PostsHelper
 
     def index
-        @blogs = Blog.search(params[:string])
+        case params[:type]
+            when 'search'
+                @blogs = Blog.find_topic(params[:string])
+            when 'subscribed' 
+                @blogs = current_user.subscribed_blogs
+            when 'authored'
+                @blogs = current_user.blogs
+            when 'featured'
+                @blogs = Blog.all.sample(6)
+        end
         render :index
     end
     

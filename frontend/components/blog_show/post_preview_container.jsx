@@ -60,9 +60,6 @@ class PostPreview extends React.Component {
                             likeId={likeId}
                             likeCount={likeCount}/>
                                                                   
-                            
-
-
         const dropdown = this.userIsAuthor() ? this.createDropdown() : null
 
         return (<div className='post-preview-buttons-container'>

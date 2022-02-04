@@ -5,6 +5,7 @@ import BlurbIndexContainer from './blurb_index_container';
 import Testimonial from './testimonial';
 import { greeting } from '../../util/content';
 import Calculator from "./calculator";
+import BlogIndexContainer from './blog_index_container';
 
 const SplashContent = (props) => {
 
@@ -21,7 +22,7 @@ const SplashContent = (props) => {
                 </Link>  
                 </div>
             </div>
-
+            < BlogIndexContainer />
             < BlurbIndexContainer/>
             <div id='calculator-and-small-blurb'>
                 <div id='small-blurb'>

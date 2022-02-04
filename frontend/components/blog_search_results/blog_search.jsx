@@ -1,7 +1,7 @@
 import React from 'react';
 import TopBar from '../top_bar/home_top_bar';
 
-import BlogPreview from './blog_preview';
+import BlogPreviews from './blog_previews';
 import SearchBarContainer from '../search_bar/search_bar';
 
 class BlogSearch extends React.Component {
@@ -10,27 +10,8 @@ class BlogSearch extends React.Component {
         super(props);
     }
 
-    // componentDidMount() {
-    //     const { string, fetchBlogs } = this.props;
-    //     fetchBlogs(string)
-    // }
-
     render() {
         const { blogs } = this.props;
-        let blogPreviews;
-
-        if(!blogs) {
-            return null
-        } else {
-            blogPreviews = (
-                <div className='blog-previews-container'>
-                    { blogs.map(blog => (
-                        <BlogPreview blog={blog}
-                        key={blog.id}/>)
-                        )}
-                </div>
-            )
-        }
    
         return (<div id='blog-search-container'>
             <TopBar hideSearch={true}/>
@@ -52,7 +33,7 @@ class BlogSearch extends React.Component {
                             {` "${this.props.string}"`}
                         </strong>
                 </p>
-                { blogPreviews }
+                { blogs ? <BlogPreviews blogs={blogs}/> : null }
             </div>
 
         </div>)

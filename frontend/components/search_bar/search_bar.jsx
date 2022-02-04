@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
 
 const mDTP = dispatch => {
     return {
-        fetchBlogs: string => dispatch(fetchBlogs(string))
+        fetchBlogs: string => dispatch(fetchBlogs('search', string))
     }
 }
 

@@ -37,9 +37,9 @@ export const fetchBlog = blogId => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON)))
 }
 
-export const fetchBlogs = string => dispatch => {
-    return BlogApiUtil.fetchBlogs(string)
-    .then(blog => dispatch(receiveBlogs(blog)),
+export const fetchBlogs = (type, string) => dispatch => {
+    return BlogApiUtil.fetchBlogs(type, string)
+    .then(blogs => dispatch(receiveBlogs(blogs)),
     errors => dispatch(receiveErrors(errors.responseJSON)))
 }
 

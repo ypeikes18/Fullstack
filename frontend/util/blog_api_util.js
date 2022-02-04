@@ -5,11 +5,11 @@ export const fetchBlog = blogId => {
     }))
 }
 
-export const fetchBlogs = (string) => {
+export const fetchBlogs = (type, string) => {
     return ($.ajax({
         method: 'GET',
         url: `/api/blogs`,
-        data: { string }
+        data: { type, string }
     }))
 }
 

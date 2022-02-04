@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
 
-import BlogSearch from './blog_search';
 import { fetchBlogs } from '../../actions/blog_actions';
+import BlogIndex from './blog_index';
 
-const mSTP = (state, ownProps) => {
+const mSTP = state => {
     const { blogs } = state.entities;
     return {
         blogs: Object.values(blogs),
-        string: ownProps.match.params.string
     }
 }
 
 const mDTP = dispatch => {
     return {
-        fetchBlogs: string => dispatch(fetchBlogs('search', string))
+        fetchBlogs: (type, string) => dispatch(fetchBlogs(type, string))
     }
 }
 
-export default connect(mSTP, mDTP)(BlogSearch);
+export default connect(mSTP, mDTP)(BlogIndex);

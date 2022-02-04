@@ -1,7 +1,5 @@
 import React from 'react';
 
-//needs to be passed likeable_id and likeable type and 
-//like(id or nil) as props from the post or comment
 class DeleteButton extends React.Component {
     
     constructor(props) {
@@ -17,6 +15,7 @@ class DeleteButton extends React.Component {
                 entityId } = this.props;
               
         e.preventDefault();
+        e.stopPropagation();
         
         switch(entityType) {
             case 'post':
@@ -32,8 +31,9 @@ class DeleteButton extends React.Component {
         
         return(
             <div 
-            className={ `${entityType}-delete-button` }
-            onClick={handleDelete}>                
+            className={ `${this.props.entityType}-delete-button` }
+            onClick={this.handleDelete}>
+                Delete                
             </div>
         )
     }

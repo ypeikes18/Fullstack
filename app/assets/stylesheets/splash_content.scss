@@ -128,4 +128,36 @@
     margin: 0 auto;
 }
 
+#blog-index {
+    display: flex;
+    flex-direction: row;
+    min-width: 30vw;
+}
+
+.category-button {
+    padding: 1.2vw 0.8vh;
+    border: 0.1vh solid black;
+    border-radius: 3.5px;
+    cursor: pointer;
+    margin: 0 0 0 6px;
+    height: fit-content;
+}
+
+.category-buttons-row {
+    display: flex;
+    flex-direction: row;
+    margin: 4px 0 0 0;
+}
+
+#category-buttons-container {
+    margin-bottom: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+// .blog-preview-text:last-of-type {
+//     border-bottom: none;
+// }
 

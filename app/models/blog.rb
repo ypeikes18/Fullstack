@@ -23,4 +23,10 @@ class Blog < ApplicationRecord
           .limit(10)
     end
 
+    def self.find_topic(string)
+        string = "%#{string.upcase}%"
+        Blog
+        .where('upper(title) LIKE ? OR upper(description) LIKE ?', string, string)
+    end
+
 end

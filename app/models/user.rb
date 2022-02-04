@@ -12,10 +12,13 @@ class User < ApplicationRecord
   foreign_key: :subscriber_id,
   class_name: :Subscription
 
+  has_many :subscribed_blogs,
+  through: :subscriptions,
+  source: :blog
+
   has_many :posts, through: :blogs
 
   attr_reader :password
-
 
   validates :password, length: {minimum: 6}, allow_nil: true
   validates :email, :name, presence: true
