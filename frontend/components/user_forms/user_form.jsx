@@ -121,7 +121,7 @@ class UserForm extends React.Component {
 
         return (
             <div id='user-form-container'>
-                < img src={subStackURL}
+                < img src={window.faviconURL}
                            id='full-stack-icon'/>
                 <span>continue to</span>
                 <strong>Fullstack</strong>

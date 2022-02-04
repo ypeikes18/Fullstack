@@ -15,21 +15,24 @@ const Footer = (props) => {
                             <a href="https://www.linkedin.com/in/yisrael-peikes-16b87356/" 
                             target="_blank" 
                             className="icon brands fa-linkedin">
-                                <span className="label">Linkedin</span>
+
+                                <img src={window.linkedinLogoURL}/>
                             </a>
                         </li>
                         <li>
                             <a href="https://angel.co/u/yisrael-peikes-2" 
                             target="_blank" 
                             className="icon brands fa-angellist">
-                                <span className="label">Angelist</span>
                             </a>
+
+                            <img src={window.angelListIconUrl}/>
                         </li>
                         <li>
                             <a href="https://github.com/ypeikes18" 
                             target="_blank" 
                             className="icon brands fa-github">
-                                <span className="label">GitHub</span>
+
+                                <img src={window.gitHubLogoURL}/>
                             </a>
                         </li>
                     </ul>

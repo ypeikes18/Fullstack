@@ -39,6 +39,7 @@ export default class App extends React.Component {
               <Switch>  
                 <Route exact path='/' component={ HomeTopBar }/>
                 <Route exact path='/sign-up' component={ BackButtonBar }/>
+                <Route exact path='/new-blog' component={ BackButtonBar }/>
                 <Route exact path='/sign-in' component={ BackButtonBar }/>
                 <Route exact path='/blogs/:blogId/edit' component={ BackButtonBar }/>
                 <Route exact path='/blogs/:blogId/new-post' component={ BackButtonBar }/>

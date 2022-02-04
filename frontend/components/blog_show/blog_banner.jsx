@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import SubscribeButtonContainer from '../buttons/subscribe_button_container';
 import DeleteButtonContainer from '../buttons/delete_button_container';
 
@@ -11,7 +10,12 @@ class BlogBanner extends React.Component {
         this.isAuthor = this.isAuthor.bind(this)
         this.deletePost = this.deletePost.bind(this)
         this.createButtons = this.createButtons.bind(this);
-        debugger
+    }
+
+    componentDidMount() {
+        const { fetchBlog, match, blog } = this.props;
+        if(blog) return;
+        fetchBlog(match.params.blogId)
     }
 
     isAuthor() {
@@ -31,7 +35,6 @@ class BlogBanner extends React.Component {
 
         if(this.isAuthor()) {
             const { path, params } = match;
-            debugger
             switch(path) {
                 case `/blogs/:blogId/posts/:postId`:
                     return [<DeleteButtonContainer

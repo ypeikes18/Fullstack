@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 import DeleteButtonContainer from '../buttons/delete_button_container';
@@ -10,6 +10,12 @@ class BlogPreview extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        const { history, blog} = this.props;
+        history.push(`/blogs/${blog.id}`)
     }
 
     createDropdown() {
@@ -41,8 +47,8 @@ class BlogPreview extends React.Component {
             description } = this.props.blog;
 
         return(
-            <Link to={`/blogs/${id}`}>
-                <div 
+                <div
+                onClick={this.handleClick} 
                 className='blog-preview-container'>
                     <div className='blog-preview-image-container'> 
                         <img 
@@ -59,7 +65,6 @@ class BlogPreview extends React.Component {
                     </div>
                     {this.createDropdown()}
                 </div>
-            </Link>
         )
     }
 
@@ -73,4 +78,6 @@ const mSTP = state => {
 
 
 
-export default connect(mSTP, null)(BlogPreview);
+export default withRouter(
+    connect(mSTP, null)(BlogPreview)
+);

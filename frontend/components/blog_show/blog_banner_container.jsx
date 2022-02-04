@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import BlogBanner from './blog_banner';
 
 const mSTP = (state, ownProps) => {
+    debugger
     const blog = state.entities.blogs[ownProps.match.params.blogId];
     const currentUserId = state.session.currentUserId;
     return { 

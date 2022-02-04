@@ -34,7 +34,7 @@ class PostShow extends React.Component {
     }
 
     render() {
-        const { post, currentUserId } = this.props;
+        const { post } = this.props;
 
         if(!post) return null;
         const { title, subtitle, body, id, likeId, likeCount } = post;

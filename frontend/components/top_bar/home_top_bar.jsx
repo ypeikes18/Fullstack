@@ -14,7 +14,7 @@ class HomeTopBar extends React.Component {
         const searchBar = this.props.hideSearch ? null : (<SearchBarContainer/>);
         return (
             <nav id='top-bar'> 
-                <img src={subStackURL}
+                <img src={window.faviconURL}
                  id='full-stack-icon'/>
                 { searchBar } 
                 <RightTopBar/> 
