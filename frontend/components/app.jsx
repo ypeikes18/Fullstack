@@ -3,10 +3,11 @@ import {
   Route,
   Switch,
   Link,
-  HashRouter,
+  HashRouter
 } from 'react-router-dom';
 
 import HomeTopBar from './top_bar/home_top_bar';
+import BackButtonBar from './top_bar/back_button_bar';
 import AccountDashboard from './account_dashboard/account_dashboard';
 import SignInFormContainer from './user_forms/sign_in_form_container';
 import SplashContent from './splash_content/splash_content';
@@ -32,11 +33,19 @@ export default class App extends React.Component {
     render() {
       return (<div>
                 <div id='main'>                        
-                <Switch>
-                  {/* <Route exact path='/blogs/:blogId' component={ BlogBannerContainer }/> */}
-                  {/* <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/> */}
-                  <Route exact path='/' component={ HomeTopBar }/>
-                </Switch>            
+                
+                {/* <Route exact path='/blogs/:blogId' component={ BlogBannerContainer }/> */}
+                {/* <Route path='/blogs/:blogId/posts' component={ BlogPostBannerContainer }/> */}
+              <Switch>  
+                <Route exact path='/' component={ HomeTopBar }/>
+                <Route exact path='/sign-up' component={ BackButtonBar }/>
+                <Route exact path='/sign-in' component={ BackButtonBar }/>
+                <Route exact path='/blogs/:blogId/edit' component={ BackButtonBar }/>
+                <Route exact path='/blogs/:blogId/new-post' component={ BackButtonBar }/>
+                <Route exact path='/blogs/:blogId/posts/:postId/edit' component={ BackButtonBar }/>
+                <Route exact path='/blogs/:blogId/new-post' component={ BackButtonBar }/>
+                <Route exact path='/blogs/:blogId/new-post' component={ BackButtonBar }/>
+              </Switch>            
                
                <Switch>
                   < Route exact path='/' component={ SplashContent }/>

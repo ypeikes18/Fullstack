@@ -3,7 +3,7 @@ import React from 'react';
 import CommentContainer from '.././comments/comment_container';
 import CreateCommentContainer from '.././comments/create_comment_container';
 import LikeButtonContainer from '../buttons/like_button_container';
-import BlogBanner from '../blog_show/blog_banner';
+import BlogBannerContainer from '../blog_show/blog_banner_container';
 
 class PostShow extends React.Component {
 
@@ -14,8 +14,7 @@ class PostShow extends React.Component {
     
     componentDidMount() {
         const { fetchPost, 
-                match, 
-                post, 
+                match,  
                 fetchComments } = this.props;
         
         const postId = match.params.postId;
@@ -35,16 +34,16 @@ class PostShow extends React.Component {
     }
 
     render() {
-        const { post, blog, currentUserId } = this.props;
+        const { post, currentUserId } = this.props;
 
         if(!post) return null;
-        const { title, subtitle, body, id, likeId } = post;
+        const { title, subtitle, body, id, likeId, likeCount } = post;
 
         return (
             <div id='post-show-page'>
-                <BlogBanner 
-                blog={ blog }
-                currentUserId={ currentUserId }/>
+
+                <BlogBannerContainer />
+
                 <div id='post-content-section'>
                     <div id='post-container'>
                         <div id='post-title-container'>
@@ -58,7 +57,8 @@ class PostShow extends React.Component {
                         <LikeButtonContainer
                             likableType='Post'
                             likableId={ id }
-                            likeId={ likeId }/>
+                            likeId={ likeId }
+                            likeCount={likeCount}/>
 
                         <div id='post-body-container'>
                             <p id='post-body'>{body}</p>
@@ -74,6 +74,7 @@ class PostShow extends React.Component {
                             postId={post.id}
                             topLevel={true}
                             parentCommentId={null}/>}
+
                             {this.createCommentsIndex()}
                         </div>
                     </div>

@@ -11,6 +11,7 @@ class BlogBanner extends React.Component {
         this.isAuthor = this.isAuthor.bind(this)
         this.deletePost = this.deletePost.bind(this)
         this.createButtons = this.createButtons.bind(this);
+        debugger
     }
 
     isAuthor() {
@@ -30,13 +31,16 @@ class BlogBanner extends React.Component {
 
         if(this.isAuthor()) {
             const { path, params } = match;
-
+            debugger
             switch(path) {
-                case `/blogs/:blogId/posts/:postId/edit`:
-                    return (<DeleteButtonContainer
+                case `/blogs/:blogId/posts/:postId`:
+                    return [<DeleteButtonContainer
                             currentUserId={ currentUserId }
-                            type='post'
-                            entityId={params.postId}/>)
+                            entityType='post'
+                            entityId={params.postId}/>,
+                            <Link to={`/blogs/${blog.id}/posts/${params.postId}/edit`}>
+                            Edit blog
+                            </Link>]
                 case `/blogs/:blogId`:
                     return (
                         <div id='authors-buttons-container'>
@@ -64,7 +68,6 @@ class BlogBanner extends React.Component {
         const { blog } = this.props
         
         if(!blog) return null;
-            
         const { icon_url, title } = blog;
         return (<div id='blog-banner-container'>
                     <div className='blog-banner'>
@@ -80,9 +83,4 @@ class BlogBanner extends React.Component {
                 </div>)
     }
 }
-
-
-
-export default withRouter(
-    connect(null, null)(BlogBanner)
-);
+ export default BlogBanner;

@@ -1,4 +1,5 @@
-import * as PostApiUtil from '../util/post_api_util'
+import * as PostApiUtil from '../util/post_api_util';
+import { fetchBlog } from './blog_actions';
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
@@ -38,5 +39,8 @@ export const updatePost = post => dispatch => (
 
 export const createPost = post => dispatch => (
     PostApiUtil.createPost(post)
-    .then(post => dispatch(receivePost(post)))
+    .then(post => {
+        dispatch(receivePost(post))
+        dispatch(fetchBlog(post.blog_id))
+    })
 )

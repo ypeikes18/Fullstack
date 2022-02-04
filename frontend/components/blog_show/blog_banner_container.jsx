@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-
+import { withRouter } from 'react-router-dom';
 import BlogBanner from './blog_banner';
 
 const mSTP = (state, ownProps) => {
@@ -7,8 +7,7 @@ const mSTP = (state, ownProps) => {
     const currentUserId = state.session.currentUserId;
     return { 
         blog, 
-        currentUserId,
-        type: 'edit'
+        currentUserId
     }
 }
 
@@ -17,4 +16,6 @@ const mDTP = dispatch => ({
     deletePost: postId => dispatch(deletePost(postId))
 })
 
-export default connect(mSTP,mDTP)(BlogBanner);
+export default withRouter(
+    connect(mSTP,mDTP)(BlogBanner)
+);

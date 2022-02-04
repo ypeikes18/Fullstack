@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class DeleteButton extends React.Component {
     
@@ -12,18 +13,24 @@ class DeleteButton extends React.Component {
                 deleteBlog,
                 deleteComment,
                 entityType,
-                entityId } = this.props;
+                entityId,
+                history, 
+                match } = this.props;
               
         e.preventDefault();
         e.stopPropagation();
         
         switch(entityType) {
             case 'post':
+                const { blogId } = match.params
                 deletePost(entityId);
+                history.push(`/blogs/${blogId}`)
             case 'comment':
                 deleteComment(entityId);
             case 'blog':
                 deleteBlog(entityId);
+                history.push('/')
+                
         }
     }
 
@@ -31,7 +38,7 @@ class DeleteButton extends React.Component {
         
         return(
             <div 
-            className={ `${this.props.entityType}-delete-button` }
+            className={ `${this.props.entityType}-delete-button delete-button` }
             onClick={this.handleDelete}>
                 Delete                
             </div>
@@ -39,4 +46,4 @@ class DeleteButton extends React.Component {
     }
 }
 
-export default DeleteButton;
+export default withRouter(DeleteButton);

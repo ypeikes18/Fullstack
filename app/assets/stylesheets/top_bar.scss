@@ -109,6 +109,21 @@ ul.revealed  * {
     padding-right: 0.5em;
 }
 
+.back-button-bar {
+    margin: 2em 0 0 2em;
+}
+
+.back-button::after {
+    content: '\003C';
+    color: black;
+    background-color: #f8f8f8;
+    border-radius: 100%;
+    height: 2em;
+    width: 2em;
+    padding: .75em 1em;
+    cursor: pointer;
+}
+
 
 
 

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 
 import PostPreviewContainer from './post_preview_container';
-import BlogBanner from './blog_banner'
+import BlogBannerContainer from './blog_banner_container'
 
 class BlogShow extends React.Component {
 
@@ -55,7 +55,7 @@ class BlogShow extends React.Component {
         
         return (
             <div id='blog-show-container'>
-                <BlogBanner 
+                <BlogBannerContainer 
                 blog={ blog }
                 currentUserId={ currentUserId }/>
                 
