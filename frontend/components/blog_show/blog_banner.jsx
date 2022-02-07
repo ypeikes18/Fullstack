@@ -37,16 +37,21 @@ class BlogBanner extends React.Component {
             const { path, params } = match;
             switch(path) {
                 case `/blogs/:blogId/posts/:postId`:
-                    return [<DeleteButtonContainer
+                    return (
+                        <div className='authors-buttons-container'>
+                            <DeleteButtonContainer
                             currentUserId={ currentUserId }
                             entityType='post'
-                            entityId={params.postId}/>,
+                            entityId={params.postId}/>
+
                             <Link to={`/blogs/${blog.id}/posts/${params.postId}/edit`}>
                             Edit post
-                            </Link>]
+                            </Link>
+                        </div>)
+                   
                 case `/blogs/:blogId`:
                     return (
-                        <div id='authors-buttons-container'>
+                        <div className='authors-buttons-container'>
                             <Link to={`/blogs/${blog.id}/new-post`}>
                                 New post
                             </Link>

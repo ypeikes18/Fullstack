@@ -1,23 +1,16 @@
-#authors-buttons-container > a:first-child {
-    padding: 1em 1.75em;
+.authors-buttons-container > a:first-child {
     background-color: lightsalmon;
     color: white;
     border-radius: 5%;
 }
 
-#authors-buttons-container > a:last-child {
-    padding: 1em 1.75em;
+.authors-buttons-container > a:last-child {
     background-color: white;
     color: lightsalmon;
     border: 0.1em solid lightsalmon;
     border-radius: 5%;
     margin-left: 1em;
-}
-
-
-#authors-buttons-container {
-    margin:auto;
-}   
+}  
 
 #blog-banner-container > * {
     // margin: 0.1em;
@@ -39,8 +32,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 70%;
-    height: 4vh
+    width: 60%;
+    height: 4vh;
+    margin: auto;
+    
+    .authors-buttons-container {
+        display: flex;
+        flex-direction: row;
+        
+        a {
+            margin-left: 8px;
+        }
+    }
+}
+
+.blog-banner a, .button {
+    cursor: pointer;
 }
 
 .image-and-text {

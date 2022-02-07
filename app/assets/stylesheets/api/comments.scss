@@ -22,6 +22,9 @@
     font-size: 0.75em;
     border: none;
     cursor: pointer;
+    height: 22px;
+    display: flex;
+    align-items: flex-end;
 }
 
 .comment-body-field {
@@ -62,6 +65,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: flex-end;
 }
 
 .comment-banner-container {
@@ -71,11 +75,6 @@
 .comment-buttons-container > *:last-child {
     padding: 0 0 0 1vw;
 }
-
-.dropdown .comment-form-button {
-    padding: 1vh 1vw;
-    width: auto;
-} 
 
 .comment-body-field {
     width: 33vw;

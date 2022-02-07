@@ -9,9 +9,10 @@
     min-height: 90vh;
     margin: 0;
 
-    a {
+    #blog-nav-link-list a {
         padding: 0 0 2px 0;
         margin: 2em 1.25em 0 0;
+        color: black;
     }
 
     .active {
@@ -47,15 +48,12 @@
     align-items: flex-start;
 }
 
-#blog-show-container a {
-    color: black;
-}
 
 #latest-post-preview {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 60em;
+    width: 60vw;
     margin: 4vh 0 0 0;    
     cursor: pointer;
 }
@@ -80,8 +78,13 @@
 }
 
 .post-preview-container {
-    width: 100%;
+    padding: 0 2vw;
+    width: 40vw;
     cursor: pointer;
+}
+
+.created_at {
+    margin: 4px 0;
 }
 
 #blog-nav-link-list {

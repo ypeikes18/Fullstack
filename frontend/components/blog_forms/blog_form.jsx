@@ -12,12 +12,12 @@ class BlogForm extends React.Component {
 
     handleSubmit(e) {   
         e.preventDefault()
-        const { id, author_id, title, description, icon_url } = this.state;
 
-        const updatedBlog = { id, author_id, title, description, icon_url };
-
-        this.props.action(updatedBlog)
-        .then(action => this.props.history.push(`/blogs/${action.blog.id}`))
+        this.props.action(this.state)
+        .then(
+            action => this.props.history.push(`/blogs/${action.blog.id}`), 
+            () => null
+        )
                  
     }
 
@@ -29,18 +29,22 @@ class BlogForm extends React.Component {
     }
 
     componentDidMount() {
-        const blogId = this.props.match.params.blogId;
-        if(blogId) {
-            this.props.fetchBlog(blogId);
+        const { match, blog } = this.props;
+        const blogId = match.params.blogId;
+        if(blogId && !blog) {
+            this.props.fetchBlog(blogId)
+            .then(action => this.setState(action.blog)); 
         }
- 
     }
 
     renderErrors() {
+        const { errors } = this.props;
+        if(!errors.length) return null;
+
         return (
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li key={i}>
+            <ul id='blog-errors'>
+                {errors.map((error, i) => (
+                    <li key={Math.random()}>
                         {error}
                     </li>
                 ))}
@@ -49,7 +53,8 @@ class BlogForm extends React.Component {
     }
     
     render() {
-        if(!this.props.blog) return null;
+        if(!this.state) return null;
+        
         const { title, icon_url, description } = this.state;
         const { submitButtonText, formTitle } = this.props;
 
@@ -91,7 +96,7 @@ class BlogForm extends React.Component {
                     </input>
 
                     <label 
-                    for='blog-image_url-input'
+                    htmlFor='blog-image_url-input'
                     id='blog-description-label'>
                         {`Choose an image url *`}
                     </label>
@@ -109,9 +114,9 @@ class BlogForm extends React.Component {
                     </button>
 
                 </form>
+                {this.renderErrors()}
+
             </div>
-            <span id='below-blog-form-text'>
-            </span>
             </div>)
         
     }

@@ -9,9 +9,29 @@ class PostForm extends React.Component {
     }
 
     componentDidMount() {
+        this.addListener()
+
         const postId = this.props.match.params.postId;
         const fetchPost = this.props.fetchPost;
-        if(fetchPost) fetchPost(postId);   
+        
+        if(fetchPost) {
+            fetchPost(postId)
+            .then(action => this.setState(action.post));
+        }   
+    }
+
+    addListener() {
+        document.addEventListener('scroll', () => {
+            const footer = document.getElementById('footer');
+            const footerHeight = footer.offsetHeight;
+
+            const button = document.getElementById('post-form-bottom-buttons-container');
+            if(window.scrollY >= window.innerHeight - footerHeight) {
+                button.className = 'absolute';
+            } else {
+                button.className = 'fixed';
+            }
+        })
     }
 
     handleSubmit(e) {

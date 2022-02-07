@@ -15,7 +15,8 @@ const mSTP = state => {
             author_id: state.session.currentUserId
         },
         formTitle: 'Create your publication',
-        submitButtonText: 'Continue'
+        submitButtonText: 'Continue',
+        errors: state.errors.blog
     }
 };
 

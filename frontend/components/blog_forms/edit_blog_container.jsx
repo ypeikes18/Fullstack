@@ -4,11 +4,14 @@ import BlogForm from './blog_form';
 import { updateBlog, fetchBlog } from '../../actions/blog_actions';
 
 const mSTP = (state, ownProps) => {
+    
     const blogId = ownProps.match.params.blogId;
+    debugger
     return  {
         blog: state.entities.blogs[blogId],
         formTitle: 'Edit your blog info',
-        submitButtonText: 'Continue'
+        submitButtonText: 'Continue',
+        errors: state.errors.blog
     }
 };
 

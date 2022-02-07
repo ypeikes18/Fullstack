@@ -52,7 +52,7 @@ class PostPreview extends React.Component {
     }
 
     createButtons() {
-        const { id, likeId, likeCount, created_at } = this.props.post;
+        const { id, likeId, likeCount } = this.props.post;
         
         const likeButton = <LikeButtonContainer
                             likableType='Post'
@@ -63,7 +63,6 @@ class PostPreview extends React.Component {
         const dropdown = this.userIsAuthor() ? this.createDropdown() : null
 
         return (<div className='post-preview-buttons-container'>
-                    {created_at}
                     {dropdown}
                     {likeButton}
                 </div>)
@@ -75,7 +74,7 @@ class PostPreview extends React.Component {
 
         if(!post) return null;
 
-        const { title, subtitle } = post;
+        const { title, subtitle, created_at } = post;
 
         const img = (<img 
                      src={post.image_url}
@@ -86,6 +85,7 @@ class PostPreview extends React.Component {
         const text = ( <div className='post-preview-text'>
                              <h1>{ title }</h1>
                              <span>{ subtitle }</span>
+                             <div className='created_at'>{created_at}</div>
                        </div>);
 
         const latestPostPreview = (<div id='latest-post-preview'
