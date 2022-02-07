@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 
 import PostPreviewContainer from './post_preview_container';
-import BlogBannerContainer from './blog_banner_container'
+import BlogBannerContainer from './blog_banner_container';
+import PostPlaceholder from './post_placeholder';
 
 class BlogShow extends React.Component {
 
@@ -60,14 +61,16 @@ class BlogShow extends React.Component {
                 currentUserId={ currentUserId }/>
                 
                 {this.createAttribution()}
+                
+                {/* {preview of latest post or placeholder} */}
+                {posts[0] ? postPreview : <PostPlaceholder/>}
 
-                {posts[0] ? postPreview : null}
                 <div id='blog-nav-link-list'>
-                        <NavLink to={`blogs/${blogId}`}>
+                        <NavLink to={`/blogs/${blogId}`}>
                             Latest
                         </NavLink>
 
-                        <NavLink to={`blogs/${blogId}/sort=popular`}>
+                        <NavLink to={`/blogs/${blogId}/sort=popular`}>
                             Popular
                         </NavLink>
                 </div>

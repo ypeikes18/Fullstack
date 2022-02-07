@@ -16,6 +16,7 @@
     margin: 0 0 0 1vw;
     width: 2.5vw;
     max-width: 30px;
+    cursor: pointer;
 }
 
 .not-liked .heart::after {
@@ -23,6 +24,7 @@
     width: 3vw;
     height: 3vw;
     color: lightgray;
+   
 }
 
 .liked  .heart::after {

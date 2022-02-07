@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
 
     helper Api::PostsHelper
-
+    
     def show
         @post = Post.find(params[:id])
         if @post

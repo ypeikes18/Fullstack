@@ -3,7 +3,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    .blog-preview-text {
+        position: relative;
+    }
 
+    // .dropdown-container {
+    //     bottom: 0;
+    //     left: 0;
+    //     position: absolute;
+    // }
 }
 
 #splash-content  > * {
@@ -157,7 +166,8 @@
     
 }
 
-// .blog-preview-text:last-of-type {
-//     border-bottom: none;
-// }
+.blog-preview-text:last-of-type {
+    display: flex;
+    flex-direction: column;
+}
 

@@ -1,3 +1,4 @@
+
 <% if logged_in? %>
   <script id="bootstrap-current-user" type="text/javascript">
   	window.currentUser = <%= render("api/users/user.json.jbuilder",
@@ -11,6 +12,8 @@
   window.linkedinLogoURL = "<%= image_url('linkedin.png') %>";
   window.faviconURL = "<%= image_url('favicon.png') %>";
   window.angelListIconUrl = "<%= image_url('angel_list.png') %>";
+  window.comingSoonPhoto = "<%= image_url('coming_soon.png') %>";
+
 </script>
 
 <main id="root"></main>

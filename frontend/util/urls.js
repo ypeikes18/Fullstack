@@ -7,3 +7,4 @@ export const defaultBlogIconUrl = 'https://images.unsplash.com/photo-15009891456
 export const defaultPostIconUrl = 'https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60';
 export const gitHubIcon = 'https://cdn-icons-png.flaticon.com/512/25/25231.png';
 export const linkedinIcon = 'https://www.flaticon.com/free-icon/linkedin-logo_61109';
+export const comingSoonPhoto = 'https://images.unsplash.com/photo-1614332287897-cdc485fa562d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29taW5nJTIwc29vbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';

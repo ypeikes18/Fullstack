@@ -35,12 +35,12 @@ class DeleteButton extends React.Component {
     }
 
     render() {
-        
+        const { entityType } = this.props;
         return(
             <div 
-            className={ `${this.props.entityType}-delete-button delete-button` }
+            className={ `${entityType}-delete-button delete-button` }
             onClick={this.handleDelete}>
-                Delete                
+                { `Delete ${entityType} `}               
             </div>
         )
     }

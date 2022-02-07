@@ -14,7 +14,7 @@ class BlogPreview extends React.Component {
     }
 
     handleClick(e) {
-        const { history, blog} = this.props;
+        const { history, blog } = this.props;
         history.push(`/blogs/${blog.id}`)
     }
 

@@ -42,7 +42,7 @@ class BlogBanner extends React.Component {
                             entityType='post'
                             entityId={params.postId}/>,
                             <Link to={`/blogs/${blog.id}/posts/${params.postId}/edit`}>
-                            Edit blog
+                            Edit post
                             </Link>]
                 case `/blogs/:blogId`:
                     return (
