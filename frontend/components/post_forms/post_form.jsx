@@ -13,12 +13,29 @@ class PostForm extends React.Component {
 
         const postId = this.props.match.params.postId;
         const fetchPost = this.props.fetchPost;
-        
+
         if(fetchPost) {
             fetchPost(postId)
             .then(action => this.setState(action.post));
         }   
     }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', () => {
+            const footer = document.getElementById('footer');
+            const footerHeight = footer.offsetHeight;
+
+            const button = document.getElementById('post-form-bottom-buttons-container');
+            if(!button) return;
+
+            if(window.scrollY >= window.innerHeight - footerHeight) {
+                button.className = 'absolute';
+            } else {
+                button.className = 'fixed';
+            }
+        })
+    }
+
 
     addListener() {
         document.addEventListener('scroll', () => {
@@ -26,6 +43,8 @@ class PostForm extends React.Component {
             const footerHeight = footer.offsetHeight;
 
             const button = document.getElementById('post-form-bottom-buttons-container');
+            if(!button) return;
+
             if(window.scrollY >= window.innerHeight - footerHeight) {
                 button.className = 'absolute';
             } else {
@@ -129,7 +148,8 @@ class PostForm extends React.Component {
                     </textarea>
 
                     <div 
-                    id='post-form-bottom-buttons-container'>
+                    id='post-form-bottom-buttons-container'
+                    className='fixed'>
                         {
                         this.postValid() ? ( 
                             submitButton) : (
