@@ -12,25 +12,34 @@ Blog.destroy_all
 Post.destroy_all
 
 User.create(name: 'Demo user', email: 'demouser@demouser.com', password: '123456')
-scott = User.create(name: 'Scott Alexander', email: 'sa@gmail.com', password: '123456')
-blog1 = Blog.create(author_id: scott.id, title: 'SSC', description: 'A cool blog', 
-            icon_url: ssc_icon)
+bryan = User.create(name: 'Bryan Caplan', email: 'bc@gmail.com', password: '123456')
+zvi =  User.create(name: 'Zvi Mowshowitz', email: 'zm@gmail.com', password: '123456')    
+scott =  User.create(name: 'Scott Aaronson', email: 'sa@gmail.com', password: '123456') 
+steven =  User.create(name: 'Steven Hayes', email: 'sh@gmail.com', password: '123456')    
+
+
+
+blog1 = Blog.create(
+        author_id: bryan.id, 
+        title: "Brian Caplan's Early Writings", 
+        description: "Brian Caplan's early writings on economics, philosophy, and political theory",
+        attribution_url: 'https://econfaculty.gmu.edu/bcaplan/early.html'
+)
             
-post1 = Post.create(blog_id: blog1.id, title: 'First SSC Post', 
-        subtitle: 'pretty self explanatory', body: 'My first post',
-        image_url: image_url)
+blog2 = Blog.create(
+        author_id: zvi.id, 
+        title: "Don't Worry About the Vase", 
+        description: 'Trying to dig out from minus a million points', 
+        icon_url: 'https://defaultcustomheadersdata.files.wordpress.com/2016/07/city1.jpg?resize=940,198',
+        attribution_url: 'https://thezvi.wordpress.com/'
+)
 
-post2 = Post.create(blog_id: blog1.id, title: 'Second SSC Post', 
-        subtitle: 'Also pretty self explanatory', body: 'My second post',
-        image_url: image_url)
+blog3 = Blog.create(
+        author_id: scott.id, 
+        title: "Shtetl Optimized", 
+        description: "If you take nothing else from this blog: quantum computers won't
+        solve hard problems instantly by just trying all solutions in parallel. \n Also, next pandemic, let's approve the vaccines faster!", 
+        icon_url: 'https://defaultcustomheadersdata.files.wordpress.com/2016/07/city1.jpg?resize=940,198',
+        attribution_url: 'https://scottaaronson.blog/'
+)
 
-zvi =  User.create(name: 'Zvi Mowhshowitz', email: 'zvi123456@gmail.com', password: '123456')    
-
-blog2 = Blog.create(author_id: zvi.id, title: "Don't Worry About the Vase", description: 'Trying to dig out from minus a million points', 
-        icon_url: 'https://defaultcustomheadersdata.files.wordpress.com/2016/07/city1.jpg?resize=940,198')
-
-# comment1 = Comment.create(body: 'first comment', commenter_id: 43, post_id: 24 )
-# comment2 = Comment.create(body: 'child of first comment', 
-#                           commenter_id: 43, 
-#                           post_id: 24, 
-#                           parent_comment_id: 1 )
