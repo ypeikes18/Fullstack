@@ -4,6 +4,13 @@
 
 ![image](https://user-images.githubusercontent.com/59425912/149536189-4cde2765-2b32-4dc1-a6c5-6ca948d6acda.png)
 
+### Technologies
+
+- Ruby on Rails for the backend
+- PostgreSQL database
+- Javascript, React on the frontend
+- Redux for state management 
+
 ### Notable points:
 
 Comments are nested as pictured below:
