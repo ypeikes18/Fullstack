@@ -18,15 +18,11 @@ Comments are nested as pictured below:
 ![image](https://user-images.githubusercontent.com/59425912/149536599-ada46624-126e-4b0b-96af-74c7bff0fef3.png)
 
 This was accomplished as follows:
-* creating a query in the `Post` model for all of the posts comments
+* fetch all of the posts comments
 * in the post container the comments were filtered to take in top level comments as props
 * each comment filters the state to take in it's child comments as props
 * comment component recursively renders child comments
  
-
-* Similiarly, each comment in the the state has an array of child comment IDs. This allows us to recursively render comments in the `Comment` component by iterating through each child comment Id and rendering it as another comment. 
-
-
 ```    render() {
         const { comment, childComments } = this.props;
 
