@@ -61,6 +61,7 @@ export default class App extends React.Component {
                   < Route path="/blogs/:blogId/posts/:postId/edit" component={EditPostContainer} />
 
                   < Route exact path='/blogs/:blogId' component={ BlogShowContainer }/>
+
                   < Route exact path='/blogs/:blogId/posts/:postId' 
                           component={ PostShowContainer }/>
                   < ProtectedRoute exact path='/account-dashboard' component={ AccountDashboard }/>

@@ -5,14 +5,14 @@
 .comment > .comment {
     display: flex;
     flex-direction: column;
-    margin-left: 15%;
+    margin-left: 0%;
     border-left: 0.1em solid lightgray;
 }
 
 .comment {
     margin-left: 0;
-    padding: 0 0 0 3vw;  
-    margin: 1vh 0 0 0; 
+    padding: 0 0 0 1.9vw;  
+    margin: 2vh 0 0 0; 
     width: 100%; 
 }
 

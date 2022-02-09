@@ -80,8 +80,12 @@ class BlogBanner extends React.Component {
         return (<div id='blog-banner-container'>
                     <div className='blog-banner'>
                         <div className='image-and-text'>
-                            <img id='top-bar-blog-image' 
+                            <Link to='/'> 
+                                <img id='top-bar-blog-image' 
                                 src={icon_url}/>
+                            </Link>
+                            
+                            
                             <h2  id='top-bar-blog-title'>
                                 {title}
                             </h2>

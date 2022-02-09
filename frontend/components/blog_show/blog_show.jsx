@@ -11,12 +11,18 @@ class BlogShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = { stop: 10, sort: 'latest' };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
         const { fetchBlog, match } = this.props;
         const blogId = match.params.blogId;
         fetchBlog(blogId);
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.setState({ sort: e.currentTarget.id })
     }
 
     createAttribution() {        
@@ -65,15 +71,22 @@ class BlogShow extends React.Component {
                 {/* {preview of latest post or placeholder} */}
                 {posts[0] ? postPreview : <PostPlaceholder/>}
 
-                <div id='blog-nav-link-list'>
-                        <NavLink to={`/blogs/${blogId}`}>
+                <ul id='blog-nav-link-list'>
+                        <li 
+                        onClick={this.handleClick}
+                        className={this.state.sort === 'latest' ? 'active' :  null}
+                        id='latest'>
                             Latest
-                        </NavLink>
+                        </li>
 
-                        <NavLink to={`/blogs/${blogId}/sort=popular`}>
+                        <li 
+                        onClick={this.handleClick}
+                        className={this.state.sort === 'popular' ? 'active' :  null}
+                        id='popular'>
+
                             Popular
-                        </NavLink>
-                </div>
+                        </li>
+                </ul>
                 {posts[1] ? postIndex : null}
             </div>
         )

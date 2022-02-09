@@ -23,9 +23,11 @@ const Footer = (props) => {
                             <a href="https://angel.co/u/yisrael-peikes-2" 
                             target="_blank" 
                             className="icon brands fa-angellist">
+                                
+                                <img src={window.angelListIconUrl}/>
                             </a>
 
-                            <img src={window.angelListIconUrl}/>
+                            
                         </li>
                         <li>
                             <a href="https://github.com/ypeikes18" 

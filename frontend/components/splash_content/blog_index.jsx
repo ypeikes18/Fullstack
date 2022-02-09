@@ -19,21 +19,35 @@ class BlogIndex extends React.Component {
 
     }
 
+    redirectToLogin() {
+        this.props.history.push('/sign-in')
+    }
+
     handleClick(e) {
         e.preventDefault();
-        const { fetchBlogs } = this.props;
+        const { fetchBlogs, currentUserId } = this.props;
         const requestType = e.currentTarget.id;
 
         switch(requestType) {
             case this.state.requestType:
                 return;
             case 'authored':
+                if(!currentUserId) {
+                    this.redirectToLogin()
+                    return;
+                }
+
                 fetchBlogs(requestType);
                 this.setState({ requestType });
             case 'featured':
                 fetchBlogs(requestType);
                 this.setState({ requestType });
             case 'subscribed':
+                if(!currentUserId) {
+                    this.redirectToLogin()
+                    return;
+                }
+                
                 fetchBlogs(requestType);
                 this.setState({ requestType });
             default:
@@ -64,28 +78,18 @@ class BlogIndex extends React.Component {
                         id='subscribed'>
                             Subscribed
                         </div>
-
-                        <div
-                        className='category-button' 
-                        onClick={this.handleClick}
-                        id='economics'>
-                            Economics
-                        </div>
-                    </div>
-
-                    <div className='category-buttons-row'>
                         <div
                         className='category-button' 
                         onClick={this.handleClick}
                         id='featured'>
                             Featured
                         </div>
-                        <div
-                        className='category-button' 
-                        onClick={this.handleClick}
-                        id='sports'>
-                            Featured
-                        </div>
+
+                    </div>
+
+                    <div className='category-buttons-row'>
+
+
                     </div>
                     
 

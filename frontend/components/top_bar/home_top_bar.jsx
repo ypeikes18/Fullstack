@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 import RightTopBar from './right_top_bar'
 import SearchBarContainer from "../search_bar/search_bar";
-import { subStackURL } from '../../util/urls'
 
 class HomeTopBar extends React.Component {
 
@@ -11,11 +11,17 @@ class HomeTopBar extends React.Component {
     }
 
     render() {
-        const searchBar = this.props.hideSearch ? null : (<SearchBarContainer/>);
+        const { hideSearch, match, history } = this.props;
+        const searchBar = hideSearch ? null : (<SearchBarContainer/>);
         return (
-            <nav id='top-bar'> 
-                <img src={window.faviconURL}
-                 id='full-stack-icon'/>
+            <nav id='top-bar'>
+                    
+                        <img src={window.faviconURL}
+                        id='full-stack-icon'
+                        onClick={match.path === '/' ? null : () => history.push('/')}/>
+                    
+                    
+                               
                 { searchBar } 
                 <RightTopBar/> 
             </nav>
@@ -23,4 +29,4 @@ class HomeTopBar extends React.Component {
     }
 }
 
-export default HomeTopBar;
+export default withRouter(HomeTopBar);

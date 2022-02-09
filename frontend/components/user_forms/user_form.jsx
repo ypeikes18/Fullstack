@@ -31,7 +31,9 @@ class UserForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
-                    <li key={i}>
+                    <li
+                    className='error' 
+                    key={i}>
                         {error}
                     </li>
                 ))}
