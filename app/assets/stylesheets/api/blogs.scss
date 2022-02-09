@@ -109,6 +109,10 @@
     position: relative;
 }
 
+.post-preview-container:last-child {
+    margin: 0 0 3vh 0;
+}
+
 #latest-post-preview-container .dropdown-container {
     position: absolute;
     bottom: 1em;
