@@ -19,7 +19,7 @@ Comments are nested as pictured below:
 
 This was accomplished as follows:
 * fetch all of the posts comments
-* in the post container the comments were filtered to take in top level comments as props
+* filter comments in the post constainer to take in top level comments as props
 * each comment filters the state to take in it's child comments as props
 * comment component recursively renders child comments
  
